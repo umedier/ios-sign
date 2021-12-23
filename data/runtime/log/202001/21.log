@@ -1,0 +1,3327 @@
+---------------------------------------------------------------
+[ 2020-01-21T00:34:18+08:00 ] 111.177.32.82 120.229.171.14 GET /
+[ info ] www.cydiavip.live/ [运行时间：0.119915s][吞吐率：8.34req/s] [内存消耗：3,255.43kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.028232s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;U;Android 5.1.1;zh-CN;OPPO A33 Build/LMY47V) AppleWebKit/537.36(KHTML,like Gecko) Version/4.0 Chrome/40.0.2214.89 UCBrowser/11.7.0.953 Mobile Safari/537.36',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002445s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001617s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000860s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002181s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000599s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.003033s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000514s ]
+---------------------------------------------------------------
+[ 2020-01-21T00:37:02+08:00 ] 111.177.32.82 124.129.68.60 GET /static/app/3ka/imgs/img_02.png
+[ info ] www.cydiavip.live/static/app/3ka/imgs/img_02.png [运行时间：0.063544s][吞吐率：15.74req/s] [内存消耗：2,224.45kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.029277s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;Android 5.1.1;OPPO A33 Build/LMY47V;wv) AppleWebKit/537.36(KHTML,link Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36 LieBaoFast/4.51.3',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001769s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000893s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002388s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000580s ]
+---------------------------------------------------------------
+[ 2020-01-21T01:12:19+08:00 ] 111.177.32.82 117.94.39.97 HEAD /
+[ info ] app.ios999.com/ [运行时间：0.136465s][吞吐率：7.33req/s] [内存消耗：3,252.77kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.029674s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept' => '*/*',
+  'user-agent' => 'curl/7.64.0',
+  'host' => 'app.ios999.com',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002430s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001779s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000645s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002179s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000780s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.002584s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000477s ]
+---------------------------------------------------------------
+[ 2020-01-21T01:13:07+08:00 ] 111.177.32.82 116.113.3.3 HEAD /
+[ info ] app.ios999.com/ [运行时间：0.142912s][吞吐率：7.00req/s] [内存消耗：3,252.77kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.025776s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept' => '*/*',
+  'user-agent' => 'curl/7.64.0',
+  'host' => 'app.ios999.com',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.003638s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001863s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000666s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002152s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000501s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.002559s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000567s ]
+---------------------------------------------------------------
+[ 2020-01-21T01:15:23+08:00 ] 111.177.32.82 122.193.139.196 HEAD /
+[ info ] app.ios999.com/ [运行时间：0.131250s][吞吐率：7.62req/s] [内存消耗：3,252.77kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.024794s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept' => '*/*',
+  'user-agent' => 'curl/7.64.0',
+  'host' => 'app.ios999.com',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.006107s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.002153s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000754s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002232s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000514s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.002385s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000548s ]
+---------------------------------------------------------------
+[ 2020-01-21T01:31:53+08:00 ] 111.177.32.82 2.80.209.106 GET /
+[ info ] 111.177.32.82:81/ [运行时间：0.098637s][吞吐率：10.14req/s] [内存消耗：3,253.09kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.018985s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '0',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+  'host' => '111.177.32.82:81',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001975s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001350s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000777s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002599s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000496s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.002290s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000470s ]
+---------------------------------------------------------------
+[ 2020-01-21T01:58:19+08:00 ] 111.177.32.82 106.11.156.212 GET /complaint
+[ info ] www.cydiavip.live/complaint [运行时间：0.075581s][吞吐率：13.23req/s] [内存消耗：2,226.16kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.029776s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'complaint',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'YisouSpider',
+  'connection' => 'Keep-Alive',
+  'thumbwidth' => '512',
+  'accept-encoding' => 'gzip',
+  'accept-language' => 'zh-cn,en-us,zh-tw,en-gb,en;',
+  'totaltimeout' => '12000',
+  'thumbquality' => '60',
+  'thumbhight' => '512',
+  'accept' => '*/*',
+  'screenwidth' => '1200',
+  'host' => 'www.cydiavip.live',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001532s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000938s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.001913s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000481s ]
+---------------------------------------------------------------
+[ 2020-01-21T01:58:19+08:00 ] 111.177.32.82 106.11.156.212 GET /complaint
+[ info ] www.cydiavip.live/complaint [运行时间：0.085821s][吞吐率：11.65req/s] [内存消耗：2,226.20kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.033918s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'YisouSpider',
+  'connection' => 'Keep-Alive',
+  'thumbwidth' => '512',
+  'accept-encoding' => 'gzip',
+  'accept-language' => 'zh-cn,en-us,zh-tw,en-gb,en;',
+  'totaltimeout' => '12000',
+  'thumbquality' => '60',
+  'thumbhight' => '512',
+  'accept' => '*/*',
+  'screenwidth' => '1200',
+  'host' => 'www.cydiavip.live',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002704s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000712s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.006473s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000688s ]
+---------------------------------------------------------------
+[ 2020-01-21T01:58:27+08:00 ] 111.177.32.82 42.156.136.3 GET /complaint
+[ info ] www.cydiavip.live/complaint [运行时间：0.083073s][吞吐率：12.04req/s] [内存消耗：2,224.34kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.029283s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'complaint',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 YisouSpider/5.0 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'www.cydiavip.live',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002223s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000671s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002435s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000657s ]
+---------------------------------------------------------------
+[ 2020-01-21T01:58:28+08:00 ] 111.177.32.82 42.156.136.3 GET /complaint
+[ info ] www.cydiavip.live/complaint [运行时间：0.061698s][吞吐率：16.21req/s] [内存消耗：2,224.38kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.021861s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.81 YisouSpider/5.0 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'host' => 'www.cydiavip.live',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002524s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000780s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002661s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000578s ]
+---------------------------------------------------------------
+[ 2020-01-21T02:05:29+08:00 ] 111.177.32.82 120.230.121.81 GET /static/app/3ka/imgs/img_04.png
+[ info ] www.cydiavip.live/static/app/3ka/imgs/img_04.png [运行时间：0.078600s][吞吐率：12.72req/s] [内存消耗：2,224.45kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.022624s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;Android 5.1.1;OPPO A33 Build/LMY47V;wv) AppleWebKit/537.36(KHTML,link Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36 LieBaoFast/4.51.3',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002323s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000799s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002244s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000537s ]
+---------------------------------------------------------------
+[ 2020-01-21T02:16:00+08:00 ] 111.177.32.82 223.214.204.177 GET /complaintquery
+[ info ] www.cydiavip.live/complaintquery [运行时间：0.076360s][吞吐率：13.10req/s] [内存消耗：2,224.38kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.025428s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'complaintquery',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;Android 5.1.1;OPPO A33 Build/LMY47V;wv) AppleWebKit/537.36(KHTML,link Gecko) Version/4.0 Chrome/42.0.2311.138 Mobile Safari/537.36 Mb2345Browser/9.0',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001849s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000799s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002099s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000671s ]
+---------------------------------------------------------------
+[ 2020-01-21T02:16:00+08:00 ] 111.177.32.82 223.214.204.177 GET /complaintquery
+[ info ] www.cydiavip.live/complaintquery [运行时间：0.094799s][吞吐率：10.55req/s] [内存消耗：2,224.40kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.028878s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;Android 5.1.1;OPPO A33 Build/LMY47V;wv) AppleWebKit/537.36(KHTML,link Gecko) Version/4.0 Chrome/42.0.2311.138 Mobile Safari/537.36 Mb2345Browser/9.0',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.003152s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000950s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.007575s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000763s ]
+---------------------------------------------------------------
+[ 2020-01-21T02:17:30+08:00 ] 111.177.32.82 45.56.78.64 GET /403926033d001b5279df37cbbe5287b7c7c267fa00thisisascan
+[ info ] 111.177.32.82/403926033d001b5279df37cbbe5287b7c7c267fa00thisisascan [运行时间：0.065869s][吞吐率：15.18req/s] [内存消耗：2,221.40kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.021848s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '403926033d001b5279df37cbbe5287b7c7c267fa00thisisascan',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36',
+  'host' => '111.177.32.82',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002502s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000837s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.001954s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000741s ]
+---------------------------------------------------------------
+[ 2020-01-21T02:17:30+08:00 ] 111.177.32.82 45.56.78.64 GET /403926033d001b5279df37cbbe5287b7c7c267fa00thisisascan
+[ info ] 111.177.32.82/403926033d001b5279df37cbbe5287b7c7c267fa00thisisascan [运行时间：0.078688s][吞吐率：12.71req/s] [内存消耗：2,226.30kb] [文件加载：50]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.019582s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36',
+  'host' => '111.177.32.82',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001835s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000816s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002476s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000567s ]
+---------------------------------------------------------------
+[ 2020-01-21T02:58:20+08:00 ] 111.177.32.82 203.208.60.68 GET /
+[ info ] app.ios999.com/ [运行时间：0.122958s][吞吐率：8.13req/s] [内存消耗：3,256.68kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.021606s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'host' => 'app.ios999.com',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002855s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001867s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000842s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002533s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000630s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.007954s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000739s ]
+---------------------------------------------------------------
+[ 2020-01-21T03:08:58+08:00 ] 111.177.32.82 42.242.10.102 GET /article/33.html
+[ info ] www.cydiavip.live/article/33.html [运行时间：0.078812s][吞吐率：12.69req/s] [内存消耗：2,224.51kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.028432s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'article',
+    1 => '33',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;Android 5.1.1;OPPO A33 Build/LMY47V;wv) AppleWebKit/537.36(KHTML,link Gecko) Version/4.0 Chrome/42.0.2311.138 Mobile Safari/537.36 Mb2345Browser/9.0',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002128s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000813s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002460s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000589s ]
+---------------------------------------------------------------
+[ 2020-01-21T03:08:58+08:00 ] 111.177.32.82 42.242.10.102 GET /article/33.html
+[ info ] www.cydiavip.live/article/33.html [运行时间：0.073252s][吞吐率：13.65req/s] [内存消耗：2,224.41kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.020761s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;Android 5.1.1;OPPO A33 Build/LMY47V;wv) AppleWebKit/537.36(KHTML,link Gecko) Version/4.0 Chrome/42.0.2311.138 Mobile Safari/537.36 Mb2345Browser/9.0',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002222s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000756s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002257s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000595s ]
+---------------------------------------------------------------
+[ 2020-01-21T03:09:29+08:00 ] 111.177.32.82 182.127.139.235 GET /index/index/content/id/12.html
+[ info ] www.cydiavip.live/index/index/content/id/12.html [运行时间：0.064470s][吞吐率：15.51req/s] [内存消耗：2,225.73kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.015436s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'content',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; FRD-AL00 Build/HUAWEIFRD-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043602 Safari/537.36 MicroMessenger/6.5.16.1120 NetType/WIFI Language/zh_CN',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => '12',
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.011172s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000624s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002098s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000448s ]
+---------------------------------------------------------------
+[ 2020-01-21T03:09:29+08:00 ] 111.177.32.82 182.127.139.235 GET /index/index/content/id/12.html
+[ info ] www.cydiavip.live/index/index/content/id/12.html [运行时间：0.075529s][吞吐率：13.24req/s] [内存消耗：2,224.82kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.024573s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; FRD-AL00 Build/HUAWEIFRD-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043602 Safari/537.36 MicroMessenger/6.5.16.1120 NetType/WIFI Language/zh_CN',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.003079s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000702s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002335s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000564s ]
+---------------------------------------------------------------
+[ 2020-01-21T03:48:26+08:00 ] 111.177.32.82 66.249.65.240 GET /index.php/home
+[ info ] ztc.867893.xyz:81/index.php/home [运行时间：0.082457s][吞吐率：12.13req/s] [内存消耗：2,221.80kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.021577s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'home',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'host' => 'ztc.867893.xyz:81',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002173s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000841s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002336s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000609s ]
+---------------------------------------------------------------
+[ 2020-01-21T03:48:26+08:00 ] 111.177.32.82 66.249.65.240 GET /index.php/home
+[ info ] ztc.867893.xyz:81/index.php/home [运行时间：0.065272s][吞吐率：15.32req/s] [内存消耗：2,225.13kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.020634s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'host' => 'ztc.867893.xyz:81',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002306s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000928s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.001803s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000439s ]
+---------------------------------------------------------------
+[ 2020-01-21T04:38:18+08:00 ] 111.177.32.82 113.200.106.165 GET /
+[ info ] couyji3ejpjbxwrveinylwwyx2rtcq7d.chaochang1314520.app3333.cn:81/ [运行时间：0.131150s][吞吐率：7.62req/s] [内存消耗：3,257.02kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.016819s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-cn',
+  'referer' => 'http://couyji3ejpjbxwrveinylwwyx2rtcq7d.chaochang1314520.app3333.cn:81/bhAPUW',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.4 Mobile/15E148 Safari/604.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'couyji3ejpjbxwrveinylwwyx2rtcq7d.chaochang1314520.app3333.cn:81',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.009870s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.002107s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000764s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002159s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000592s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.005159s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000949s ]
+---------------------------------------------------------------
+[ 2020-01-21T05:20:53+08:00 ] 111.177.32.82 161.82.136.55 GET /
+[ info ] 111.177.32.82:81/ [运行时间：0.104864s][吞吐率：9.54req/s] [内存消耗：3,253.09kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.015382s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '0',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+  'host' => '111.177.32.82:81',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001934s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001827s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002002s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002204s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000638s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.002439s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000834s ]
+---------------------------------------------------------------
+[ 2020-01-21T05:21:36+08:00 ] 111.177.32.82 104.206.128.18 GET /
+[ info ] 111.177.32.82:81/ [运行时间：0.114887s][吞吐率：8.70req/s] [内存消耗：3,252.58kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.019386s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'https://gdnplus.com:Gather Analyze Provide.',
+  'host' => '111.177.32.82:81',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001924s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001424s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000625s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.001809s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000435s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.002566s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000527s ]
+---------------------------------------------------------------
+[ 2020-01-21T05:27:25+08:00 ] 111.177.32.82 60.172.70.243 GET /static/app/3ka/imgs/img_05.png
+[ info ] www.cydiavip.live/static/app/3ka/imgs/img_05.png [运行时间：0.084173s][吞吐率：11.88req/s] [内存消耗：2,224.51kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.018839s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;U;Android 5.1.1;zh-CN;OPPO A33 Build/LMY47V) AppleWebKit/537.36(KHTML,like Gecko) Version/4.0 Chrome/40.0.2214.89 UCBrowser/11.7.0.953 Mobile Safari/537.36',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002678s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000667s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002480s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000593s ]
+---------------------------------------------------------------
+[ 2020-01-21T06:49:02+08:00 ] 111.177.32.82 203.208.60.2 GET /index.php/login
+[ info ] ztc.867893.xyz:81/index.php/login [运行时间：0.084944s][吞吐率：11.77req/s] [内存消耗：2,221.85kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.019185s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'login',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'host' => 'ztc.867893.xyz:81',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001878s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000713s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002277s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000652s ]
+---------------------------------------------------------------
+[ 2020-01-21T06:49:02+08:00 ] 111.177.32.82 203.208.60.2 GET /index.php/login
+[ info ] ztc.867893.xyz:81/index.php/login [运行时间：0.088515s][吞吐率：11.30req/s] [内存消耗：2,225.16kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.033190s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'host' => 'ztc.867893.xyz:81',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.006249s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000668s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002068s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000555s ]
+---------------------------------------------------------------
+[ 2020-01-21T07:03:50+08:00 ] 111.177.32.82 210.250.103.56 GET /
+[ info ] 111.177.32.82:81/ [运行时间：0.116937s][吞吐率：8.55req/s] [内存消耗：3,253.09kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.025886s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '0',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36',
+  'host' => '111.177.32.82:81',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.003003s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.002631s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000786s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002269s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000633s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.002552s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000553s ]
+---------------------------------------------------------------
+[ 2020-01-21T07:41:36+08:00 ] 111.177.32.82 210.52.224.30 GET /
+[ info ] app.ios999.com/ [运行时间：0.109624s][吞吐率：9.12req/s] [内存消耗：3,253.48kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.022141s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip, deflate',
+  'user-agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36',
+  'host' => 'app.ios999.com',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002939s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.002564s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000753s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.003490s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000678s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.002562s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000568s ]
+---------------------------------------------------------------
+[ 2020-01-21T08:11:12+08:00 ] 111.177.32.82 220.181.108.166 GET /
+[ info ] www.867893.xyz:81/ [运行时间：0.076782s][吞吐率：13.02req/s] [内存消耗：3,255.75kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.014234s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip',
+  'if-none-match' => 'W/"5a6c49e4-d84"',
+  'if-modified-since' => 'Sat, 27 Jan 2018 09:44:04 GMT',
+  'accept-language' => 'zh-cn,zh-tw',
+  'user-agent' => 'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',
+  'connection' => 'close',
+  'host' => 'www.867893.xyz:81',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001631s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001575s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000647s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.001843s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000488s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.002441s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000491s ]
+---------------------------------------------------------------
+[ 2020-01-21T08:21:04+08:00 ] 111.177.32.82 223.78.226.227 GET /company/settlement
+[ info ] www.cydiavip.live/company/settlement [运行时间：0.070609s][吞吐率：14.16req/s] [内存消耗：2,224.54kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.016653s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'company',
+    1 => 'settlement',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;U;Android 5.1.1;zh-CN;OPPO A33 Build/LMY47V) AppleWebKit/537.36(KHTML,like Gecko) Version/4.0 Chrome/40.0.2214.89 UCBrowser/11.7.0.953 Mobile Safari/537.36',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.003540s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000639s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002140s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000516s ]
+---------------------------------------------------------------
+[ 2020-01-21T08:21:04+08:00 ] 111.177.32.82 223.78.226.227 GET /company/settlement
+[ info ] www.cydiavip.live/company/settlement [运行时间：0.081768s][吞吐率：12.23req/s] [内存消耗：2,224.48kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.027811s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;U;Android 5.1.1;zh-CN;OPPO A33 Build/LMY47V) AppleWebKit/537.36(KHTML,like Gecko) Version/4.0 Chrome/40.0.2214.89 UCBrowser/11.7.0.953 Mobile Safari/537.36',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001966s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000780s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.003191s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000545s ]
+---------------------------------------------------------------
+[ 2020-01-21T08:26:47+08:00 ] 111.177.32.82 128.14.134.134 GET /version
+[ info ] 111.177.32.82/version [运行时间：0.073934s][吞吐率：13.53req/s] [内存消耗：2,220.58kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.030891s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'version',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'accept' => '*/*',
+  'user-agent' => 'kubectl/v1.12.0 (linux/amd64) kubernetes/0ed3388',
+  'host' => '111.177.32.82',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002034s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000671s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002499s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000614s ]
+---------------------------------------------------------------
+[ 2020-01-21T08:26:47+08:00 ] 111.177.32.82 128.14.134.134 GET /version
+[ info ] 111.177.32.82/version [运行时间：0.069060s][吞吐率：14.48req/s] [内存消耗：2,220.62kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.023050s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'accept' => '*/*',
+  'user-agent' => 'kubectl/v1.12.0 (linux/amd64) kubernetes/0ed3388',
+  'host' => '111.177.32.82',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001462s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000741s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002003s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000450s ]
+---------------------------------------------------------------
+[ 2020-01-21T08:26:49+08:00 ] 111.177.32.82 128.14.134.134 GET /
+[ info ] 111.177.32.82/ [运行时间：0.126919s][吞吐率：7.88req/s] [内存消耗：3,253.11kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.025842s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'accept' => '*/*',
+  'user-agent' => 'kubectl/v1.12.0 (linux/amd64) kubernetes/0ed3388',
+  'host' => '111.177.32.82',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001798s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001801s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000837s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002208s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000427s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.003233s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000726s ]
+---------------------------------------------------------------
+[ 2020-01-21T08:50:00+08:00 ] 111.177.32.82 203.208.60.51 GET /
+[ info ] www.cydiavip.live/ [运行时间：0.090648s][吞吐率：11.03req/s] [内存消耗：3,256.70kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.020170s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'host' => 'www.cydiavip.live',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.005552s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001524s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000794s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002255s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000503s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.002546s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000500s ]
+---------------------------------------------------------------
+[ 2020-01-21T08:57:44+08:00 ] 111.177.32.82 62.219.160.251 GET /
+[ info ] 111.177.32.82:81/ [运行时间：0.146356s][吞吐率：6.83req/s] [内存消耗：3,253.09kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.035719s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '0',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36',
+  'host' => '111.177.32.82:81',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002226s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001670s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000757s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002011s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000518s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.004225s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000639s ]
+---------------------------------------------------------------
+[ 2020-01-21T08:58:03+08:00 ] 111.177.32.82 86.34.44.61 GET /
+[ info ] 111.177.32.82:81/ [运行时间：0.102795s][吞吐率：9.73req/s] [内存消耗：3,253.09kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.019648s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '0',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36',
+  'host' => '111.177.32.82:81',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001404s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001438s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000852s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.001897s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000421s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.002472s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000534s ]
+---------------------------------------------------------------
+[ 2020-01-21T09:17:52+08:00 ] 111.177.32.82 123.125.71.98 GET /
+[ info ] www.867893.xyz:81/ [运行时间：0.122609s][吞吐率：8.16req/s] [内存消耗：3,255.75kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.030480s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip',
+  'if-none-match' => '"W/"5a6c49e4-d84""',
+  'if-modified-since' => 'Sat, 27 Jan 2018 09:44:04 GMT',
+  'accept-language' => 'zh-cn,zh-tw',
+  'user-agent' => 'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',
+  'connection' => 'close',
+  'host' => 'www.867893.xyz:81',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002715s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001333s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000684s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002054s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000526s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.002032s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000406s ]
+---------------------------------------------------------------
+[ 2020-01-21T09:23:24+08:00 ] 111.177.32.82 121.57.165.131 GET /index/index/content/id/38.html
+[ info ] www.cydiavip.live/index/index/content/id/38.html [运行时间：0.063071s][吞吐率：15.86req/s] [内存消耗：2,225.73kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.019004s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'content',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; FRD-AL00 Build/HUAWEIFRD-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043602 Safari/537.36 MicroMessenger/6.5.16.1120 NetType/WIFI Language/zh_CN',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => '38',
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002645s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000808s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.003215s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000689s ]
+---------------------------------------------------------------
+[ 2020-01-21T09:23:24+08:00 ] 111.177.32.82 121.57.165.131 GET /index/index/content/id/38.html
+[ info ] www.cydiavip.live/index/index/content/id/38.html [运行时间：0.083164s][吞吐率：12.02req/s] [内存消耗：2,224.82kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.032567s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; FRD-AL00 Build/HUAWEIFRD-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043602 Safari/537.36 MicroMessenger/6.5.16.1120 NetType/WIFI Language/zh_CN',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001849s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000728s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002421s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.010360s ]
+---------------------------------------------------------------
+[ 2020-01-21T09:51:12+08:00 ] 111.177.32.82 123.125.71.104 GET /
+[ info ] www.867893.xyz:81/ [运行时间：0.190723s][吞吐率：5.24req/s] [内存消耗：3,255.72kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.034768s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip',
+  'if-none-match' => '"W/"5a6c49e4-d84""',
+  'accept-language' => 'zh-cn,zh-tw',
+  'user-agent' => 'Mozilla/5.0 (Linux;u;Android 4.2.2;zh-cn;) AppleWebKit/534.46 (KHTML,like Gecko) Version/5.1 Mobile Safari/10600.6.3 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',
+  'connection' => 'close',
+  'host' => 'www.867893.xyz:81',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001825s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.002422s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000759s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002318s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000527s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.011663s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000605s ]
+---------------------------------------------------------------
+[ 2020-01-21T10:36:09+08:00 ] 111.177.32.82 1.204.107.7 GET /index/index/content/id/12
+[ info ] www.cydiavip.live/index/index/content/id/12 [运行时间：0.084356s][吞吐率：11.85req/s] [内存消耗：2,225.26kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.023620s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'content',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;Android 5.1.1;OPPO A33 Build/LMY47V;wv) AppleWebKit/537.36(KHTML,link Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36 LieBaoFast/4.51.3',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => '12',
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002451s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001301s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.001907s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000449s ]
+---------------------------------------------------------------
+[ 2020-01-21T10:36:10+08:00 ] 111.177.32.82 1.204.107.7 GET /index/index/content/id/12
+[ info ] www.cydiavip.live/index/index/content/id/12 [运行时间：0.075074s][吞吐率：13.32req/s] [内存消耗：2,224.45kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.021579s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;Android 5.1.1;OPPO A33 Build/LMY47V;wv) AppleWebKit/537.36(KHTML,link Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36 LieBaoFast/4.51.3',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001594s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000684s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002257s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000504s ]
+---------------------------------------------------------------
+[ 2020-01-21T10:37:02+08:00 ] 111.177.32.82 184.105.247.195 GET /
+[ info ] 111.177.32.82/ [运行时间：0.114773s][吞吐率：8.71req/s] [内存消耗：3,252.34kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.027972s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '111.177.32.82',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002199s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.002916s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000664s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002382s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000584s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.003102s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000541s ]
+---------------------------------------------------------------
+[ 2020-01-21T11:18:44+08:00 ] 111.177.32.82 5.8.10.202 GET /
+[ info ] 111.177.32.82:443/ [运行时间：0.135998s][吞吐率：7.35req/s] [内存消耗：3,252.59kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.018878s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '111.177.32.82:443',
+  'user-agent' => 'fasthttp',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.003935s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001668s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000679s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002282s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000492s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.002700s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000465s ]
+---------------------------------------------------------------
+[ 2020-01-21T11:22:43+08:00 ] 111.177.32.82 124.112.204.163 GET /article/29.html
+[ info ] www.cydiavip.live/article/29.html [运行时间：0.077746s][吞吐率：12.86req/s] [内存消耗：2,224.51kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.025677s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'article',
+    1 => '29',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;Android 5.1.1;OPPO A33 Build/LMY47V;wv) AppleWebKit/537.36(KHTML,link Gecko) Version/4.0 Chrome/42.0.2311.138 Mobile Safari/537.36 Mb2345Browser/9.0',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002384s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000641s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002470s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.001031s ]
+---------------------------------------------------------------
+[ 2020-01-21T11:22:43+08:00 ] 111.177.32.82 124.112.204.163 GET /article/29.html
+[ info ] www.cydiavip.live/article/29.html [运行时间：0.103652s][吞吐率：9.65req/s] [内存消耗：2,224.41kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.029179s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;Android 5.1.1;OPPO A33 Build/LMY47V;wv) AppleWebKit/537.36(KHTML,link Gecko) Version/4.0 Chrome/42.0.2311.138 Mobile Safari/537.36 Mb2345Browser/9.0',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001984s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001021s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002320s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000765s ]
+---------------------------------------------------------------
+[ 2020-01-21T12:19:37+08:00 ] 111.177.32.82 77.247.110.63 GET /
+[ info ] 111.177.32.82/ [运行时间：0.106276s][吞吐率：9.41req/s] [内存消耗：3,253.32kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.020469s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'python-requests/2.22.0',
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+  'host' => '111.177.32.82',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002738s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.006579s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000722s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002121s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000531s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.003174s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000495s ]
+---------------------------------------------------------------
+[ 2020-01-21T12:19:38+08:00 ] 111.177.32.82 77.247.110.63 GET /
+[ info ] 111.177.32.82/ [运行时间：0.153197s][吞吐率：6.53req/s] [内存消耗：3,253.32kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.022752s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'python-requests/2.22.0',
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+  'host' => '111.177.32.82',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002376s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.006042s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000805s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002187s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000606s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.007926s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000482s ]
+---------------------------------------------------------------
+[ 2020-01-21T12:22:24+08:00 ] 111.177.32.82 203.208.60.30 GET /
+[ info ] app.ios999.com/ [运行时间：0.155626s][吞吐率：6.43req/s] [内存消耗：3,256.68kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.029652s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'host' => 'app.ios999.com',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002159s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001787s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000712s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002405s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000577s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.002610s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000649s ]
+---------------------------------------------------------------
+[ 2020-01-21T12:30:00+08:00 ] 111.177.32.82 111.72.141.35 GET /login/retpwd
+[ info ] www.cydiavip.live/login/retpwd [运行时间：0.067253s][吞吐率：14.87req/s] [内存消耗：2,224.42kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.019271s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'login',
+    1 => 'retpwd',
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;Android 5.1.1;OPPO A33 Build/LMY47V;wv) AppleWebKit/537.36(KHTML,link Gecko) Version/4.0 Chrome/42.0.2311.138 Mobile Safari/537.36 Mb2345Browser/9.0',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.003629s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000786s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002147s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000541s ]
+---------------------------------------------------------------
+[ 2020-01-21T12:30:00+08:00 ] 111.177.32.82 111.72.141.35 GET /login/retpwd
+[ info ] www.cydiavip.live/login/retpwd [运行时间：0.077913s][吞吐率：12.83req/s] [内存消耗：2,224.39kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.023653s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;Android 5.1.1;OPPO A33 Build/LMY47V;wv) AppleWebKit/537.36(KHTML,link Gecko) Version/4.0 Chrome/42.0.2311.138 Mobile Safari/537.36 Mb2345Browser/9.0',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002731s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000742s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002355s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.004104s ]
+---------------------------------------------------------------
+[ 2020-01-21T12:41:56+08:00 ] 111.177.32.82 45.56.78.64 GET /403926033d001b5279df37cbbe5287b7c7c267fa00thisisascan
+[ info ] 111.177.32.82/403926033d001b5279df37cbbe5287b7c7c267fa00thisisascan [运行时间：0.080903s][吞吐率：12.36req/s] [内存消耗：2,221.40kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.024998s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '403926033d001b5279df37cbbe5287b7c7c267fa00thisisascan',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36',
+  'host' => '111.177.32.82',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001924s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000741s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002218s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000526s ]
+---------------------------------------------------------------
+[ 2020-01-21T12:41:57+08:00 ] 111.177.32.82 45.56.78.64 GET /403926033d001b5279df37cbbe5287b7c7c267fa00thisisascan
+[ info ] 111.177.32.82/403926033d001b5279df37cbbe5287b7c7c267fa00thisisascan [运行时间：0.067143s][吞吐率：14.89req/s] [内存消耗：2,221.25kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.019853s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'en-US',
+  'accept-encoding' => 'gzip, deflate, br',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36',
+  'host' => '111.177.32.82',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002113s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000796s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002215s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000619s ]
+---------------------------------------------------------------
+[ 2020-01-21T13:35:41+08:00 ] 111.177.32.82 139.162.204.61 GET /api/v1/pods
+[ info ] 111.177.32.82/api/v1/pods [运行时间：0.155324s][吞吐率：6.44req/s] [内存消耗：2,220.91kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.051610s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'v1',
+    2 => 'pods',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'host' => '111.177.32.82',
+  'accept-encoding' => 'gzip',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.014656s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000653s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.010631s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000535s ]
+---------------------------------------------------------------
+[ 2020-01-21T13:35:41+08:00 ] 111.177.32.82 139.162.204.61 GET /api/v1/pods
+[ info ] 111.177.32.82/api/v1/pods [运行时间：0.087916s][吞吐率：11.37req/s] [内存消耗：2,220.85kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.035548s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'host' => '111.177.32.82',
+  'accept-encoding' => 'gzip',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.009784s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002243s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.012455s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000861s ]
+---------------------------------------------------------------
+[ 2020-01-21T14:01:04+08:00 ] 111.177.32.82 223.71.167.164 GET /
+[ info ] 111.177.32.82:81/ [运行时间：0.176840s][吞吐率：5.65req/s] [内存消耗：3,253.13kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.065160s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'keep-alive',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0',
+  'host' => '111.177.32.82:81',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.006337s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001120s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004338s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.041856s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000887s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.018335s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000696s ]
+---------------------------------------------------------------
+[ 2020-01-21T15:38:13+08:00 ] 111.177.32.82 114.101.247.166 GET /static/app/3ka/imgs/img_26.png
+[ info ] www.cydiavip.live/static/app/3ka/imgs/img_26.png [运行时间：0.079590s][吞吐率：12.56req/s] [内存消耗：2,224.82kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.039997s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; FRD-AL00 Build/HUAWEIFRD-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043602 Safari/537.36 MicroMessenger/6.5.16.1120 NetType/WIFI Language/zh_CN',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002089s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002294s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002086s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000499s ]
+---------------------------------------------------------------
+[ 2020-01-21T16:23:24+08:00 ] 111.177.32.82 93.70.125.94 GET /
+[ info ] 111.177.32.82:81/ [运行时间：0.154415s][吞吐率：6.48req/s] [内存消耗：3,253.09kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.019989s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '0',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36',
+  'host' => '111.177.32.82:81',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.003546s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001848s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000751s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002407s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000522s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.008253s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000595s ]
+---------------------------------------------------------------
+[ 2020-01-21T17:43:35+08:00 ] 111.177.32.82 77.247.110.63 GET /a2billing/customer/templates/default/footer.tpl
+[ info ] 111.177.32.82/a2billing/customer/templates/default/footer.tpl [运行时间：0.055924s][吞吐率：17.88req/s] [内存消耗：2,221.91kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.020429s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'a2billing',
+    1 => 'customer',
+    2 => 'templates',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'python-requests/2.22.0',
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+  'host' => '111.177.32.82',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'default' => 'footer.tpl',
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002325s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000638s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.004283s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000586s ]
+---------------------------------------------------------------
+[ 2020-01-21T17:43:35+08:00 ] 111.177.32.82 77.247.110.63 GET /a2billing/customer/templates/default/footer.tpl
+[ info ] 111.177.32.82/a2billing/customer/templates/default/footer.tpl [运行时间：0.078606s][吞吐率：12.72req/s] [内存消耗：2,220.95kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.029822s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'python-requests/2.22.0',
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+  'host' => '111.177.32.82',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.003062s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008611s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002852s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000577s ]
+---------------------------------------------------------------
+[ 2020-01-21T17:43:36+08:00 ] 111.177.32.82 77.247.110.63 GET /a2billing/customer/templates/default/footer.tpl
+[ info ] 111.177.32.82/a2billing/customer/templates/default/footer.tpl [运行时间：0.088366s][吞吐率：11.32req/s] [内存消耗：2,221.91kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.034301s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'a2billing',
+    1 => 'customer',
+    2 => 'templates',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'python-requests/2.22.0',
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+  'host' => '111.177.32.82',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'default' => 'footer.tpl',
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001551s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000818s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.003186s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.003425s ]
+---------------------------------------------------------------
+[ 2020-01-21T17:43:36+08:00 ] 111.177.32.82 77.247.110.63 GET /a2billing/customer/templates/default/footer.tpl
+[ info ] 111.177.32.82/a2billing/customer/templates/default/footer.tpl [运行时间：0.066916s][吞吐率：14.94req/s] [内存消耗：2,220.95kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.020715s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'python-requests/2.22.0',
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+  'host' => '111.177.32.82',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002660s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000864s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.003017s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000760s ]
+---------------------------------------------------------------
+[ 2020-01-21T18:19:24+08:00 ] 111.177.32.82 203.208.60.83 GET /
+[ info ] www.cydiavip.live/ [运行时间：0.106222s][吞吐率：9.41req/s] [内存消耗：3,256.70kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.016762s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'host' => 'www.cydiavip.live',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001877s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001132s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000868s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.001875s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000463s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.002158s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000439s ]
+---------------------------------------------------------------
+[ 2020-01-21T18:23:30+08:00 ] 111.177.32.82 14.106.107.190 GET /static/app/3ka/imgs/img_28.png
+[ info ] www.cydiavip.live/static/app/3ka/imgs/img_28.png [运行时间：0.065339s][吞吐率：15.30req/s] [内存消耗：2,224.45kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.019025s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;Android 5.1.1;OPPO A33 Build/LMY47V;wv) AppleWebKit/537.36(KHTML,link Gecko) Version/4.0 Chrome/42.0.2311.138 Mobile Safari/537.36 Mb2345Browser/9.0',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002125s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000670s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002441s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000558s ]
+---------------------------------------------------------------
+[ 2020-01-21T18:35:50+08:00 ] 111.177.32.82 198.108.67.48 GET /
+[ info ] 111.177.32.82:81/ [运行时间：0.119598s][吞吐率：8.36req/s] [内存消耗：3,252.24kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.027735s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => '111.177.32.82:81',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002060s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001528s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000778s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.004350s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000827s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.003010s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000537s ]
+---------------------------------------------------------------
+[ 2020-01-21T18:59:30+08:00 ] 111.177.32.82 203.208.60.115 GET /index.php/install
+[ info ] app.cydiavip.live/index.php/install [运行时间：0.094060s][吞吐率：10.63req/s] [内存消耗：2,221.99kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.030134s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'install',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'host' => 'app.cydiavip.live',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.004252s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000721s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002350s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000879s ]
+---------------------------------------------------------------
+[ 2020-01-21T18:59:30+08:00 ] 111.177.32.82 203.208.60.115 GET /index.php/install
+[ info ] app.cydiavip.live/index.php/install [运行时间：0.074095s][吞吐率：13.50req/s] [内存消耗：2,225.30kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.018900s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'host' => 'app.cydiavip.live',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001580s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000750s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002458s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000506s ]
+---------------------------------------------------------------
+[ 2020-01-21T19:16:09+08:00 ] 111.177.32.82 71.6.232.7 GET /
+[ info ] 111.177.32.82/ [运行时间：0.155040s][吞吐率：6.45req/s] [内存消耗：3,253.33kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.029433s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip',
+  'accept' => '*/*',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36',
+  'host' => '111.177.32.82',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002267s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001412s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000779s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002166s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000647s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.012426s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000514s ]
+---------------------------------------------------------------
+[ 2020-01-21T19:52:15+08:00 ] 111.177.32.82 113.100.9.75 GET /index/index/content/id/15.html
+[ info ] www.cydiavip.live/index/index/content/id/15.html [运行时间：0.079282s][吞吐率：12.61req/s] [内存消耗：2,225.41kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.031522s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'index',
+    2 => 'content',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;U;Android 5.1.1;zh-CN;OPPO A33 Build/LMY47V) AppleWebKit/537.36(KHTML,like Gecko) Version/4.0 Chrome/40.0.2214.89 UCBrowser/11.7.0.953 Mobile Safari/537.36',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => '15',
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002204s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000889s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002013s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000521s ]
+---------------------------------------------------------------
+[ 2020-01-21T19:52:15+08:00 ] 111.177.32.82 113.100.9.75 GET /index/index/content/id/15.html
+[ info ] www.cydiavip.live/index/index/content/id/15.html [运行时间：0.070686s][吞吐率：14.15req/s] [内存消耗：2,224.51kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.019558s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0(Linux;U;Android 5.1.1;zh-CN;OPPO A33 Build/LMY47V) AppleWebKit/537.36(KHTML,like Gecko) Version/4.0 Chrome/40.0.2214.89 UCBrowser/11.7.0.953 Mobile Safari/537.36',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.006903s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000955s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.003008s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000649s ]
+---------------------------------------------------------------
+[ 2020-01-21T20:37:20+08:00 ] 111.177.32.82 123.186.228.213 GET /login
+[ info ] www.cydiavip.live/login [运行时间：0.066300s][吞吐率：15.08req/s] [内存消耗：2,224.70kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.021851s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'login',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; FRD-AL00 Build/HUAWEIFRD-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043602 Safari/537.36 MicroMessenger/6.5.16.1120 NetType/WIFI Language/zh_CN',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002033s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000838s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.001963s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000541s ]
+---------------------------------------------------------------
+[ 2020-01-21T20:37:20+08:00 ] 111.177.32.82 123.186.228.213 GET /login
+[ info ] www.cydiavip.live/login [运行时间：0.051670s][吞吐率：19.35req/s] [内存消耗：2,224.74kb] [文件加载：51]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.025128s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '404',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate',
+  'host' => 'www.cydiavip.live',
+  'accept-language' => 'en,zh;q=0.3',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 7.0; FRD-AL00 Build/HUAWEIFRD-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/53.0.2785.49 Mobile MQQBrowser/6.2 TBS/043602 Safari/537.36 MicroMessenger/6.5.16.1120 NetType/WIFI Language/zh_CN',
+  'connection' => 'Close',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001611s ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002433s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002884s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000625s ]
+---------------------------------------------------------------
+[ 2020-01-21T20:58:46+08:00 ] 111.177.32.82 201.124.188.240 GET /
+[ info ] 111.177.32.82:81/ [运行时间：0.137992s][吞吐率：7.25req/s] [内存消耗：3,253.09kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.020583s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'content-length' => '0',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
+  'host' => '111.177.32.82:81',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.010924s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001866s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000744s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002412s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000560s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.003353s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000468s ]
+---------------------------------------------------------------
+[ 2020-01-21T22:00:46+08:00 ] 111.177.32.82 203.208.60.66 GET /
+[ info ] app.ios999.com/ [运行时间：0.150559s][吞吐率：6.64req/s] [内存消耗：3,256.68kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.032145s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept-encoding' => 'gzip,deflate,br',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.96 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+  'from' => 'googlebot(at)googlebot.com',
+  'accept' => 'text/html,application/xhtml+xml,application/signed-exchange;v=b3,application/xml;q=0.9,*/*;q=0.8',
+  'connection' => 'keep-alive',
+  'amp-cache-transform' => 'google;v="1..2"',
+  'host' => 'app.ios999.com',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001638s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001973s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000697s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002295s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000604s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.011729s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000639s ]
+---------------------------------------------------------------
+[ 2020-01-21T22:09:54+08:00 ] 111.177.32.82 95.108.213.9 GET /
+[ info ] app.ios999.com/ [运行时间：0.117060s][吞吐率：8.54req/s] [内存消耗：3,253.57kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.024036s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip,deflate',
+  'from' => 'support@search.yandex.ru',
+  'user-agent' => 'Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)',
+  'connection' => 'Keep-Alive',
+  'host' => 'app.ios999.com',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.002514s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.001210s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000765s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002541s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000617s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.011358s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000760s ]
+---------------------------------------------------------------
+[ 2020-01-21T23:22:12+08:00 ] 111.177.32.82 106.38.241.145 GET /
+[ info ] app.ios999.com/ [运行时间：0.124238s][吞吐率：8.05req/s] [内存消耗：3,254.91kb] [文件加载：73]
+[ info ] [ DB ] INIT mysql
+[ info ] [ BEHAVIOR ] Run cmf\behavior\InitHookBehavior @app_init [ RunTime:0.020109s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/simplewind/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'connection' => 'close',
+  'user-agent' => 'Sogou web spider/4.0(+http://www.sogou.com/docs/help/webmasters.htm#07)',
+  'accept-encoding' => 'gzip,deflate',
+  'accept-language' => 'zh-cn',
+  'accept' => '*/*',
+  'host' => 'app.ios999.com',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../simplewind/cmf/lang/zh-cn.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/admin/lang/zh-cn/common.php
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/common.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\LangBehavior @app_begin [ RunTime:0.001499s ]
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn.php
+[ info ] [ CACHE ] INIT File
+[ info ] [ LANG ] /www/wwwroot/app.ios999.com/public/../app/portal/lang/zh-cn/home.php
+[ info ] [ BEHAVIOR ] Run cmf\behavior\HomeLangBehavior @home_init [ RunTime:0.002589s ]
+[ info ] [ RUN ] app\portal\controller\IndexController->index[ /www/wwwroot/app.ios999.com/app/portal/controller/IndexController.php ]
+[ info ] [ VIEW ] themes/simpleboot3/portal/index.html [ array (
+  0 => 'site_info',
+  1 => 'theme_vars',
+  2 => 'theme_widgets',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000799s ] mysql:dbname=app_ios999_com;host=127.0.0.1;port=3306;charset=utf8mb4
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_hook_plugin` [ RunTime:0.002564s ]
+[ sql ] [ SQL ] SELECT `hook`,`plugin` FROM `cmf_hook_plugin` WHERE  `status` = 1 ORDER BY list_order ASC [ RunTime:0.000569s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `cmf_theme_file` [ RunTime:0.002742s ]
+[ sql ] [ SQL ] SELECT `more` FROM `cmf_theme_file` WHERE  `theme` = 'simpleboot3'  AND (  `is_public` = 1 OR `file` = 'portal/index' ) [ RunTime:0.000596s ]

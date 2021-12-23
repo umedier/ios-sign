@@ -1,0 +1,98 @@
+<include file="public@head"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style>
+    .layui-layer-prompt .layui-layer-btn{text-align: center}
+    .layui-layer-prompt .layui-layer-input{width: 100%;box-sizing: border-box;text-align: center}
+</style>
+
+<body class="body-white" onload="tip()">
+    <div class="templatemo-content">
+        <!--  我的应用左侧 -->
+        <include file="public@tube"/>
+        <!--  我的应用左侧 -->
+
+        <!--  内容中心 -->
+        <div class="templatemo-body">
+            <div class="sq-app">
+                <div class="sq-app__title">我的代理</div>
+                <div class="sq-app__table">
+                    <table class="layui-table sq-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>用户名</th>
+                                <th>电话</th>
+                                <th>已用设备数</th>
+                                <th>剩余设备数</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <if condition="count($list) == 0">
+                                <tr class="">
+                                    <td colspan="6">
+                                        <img style="max-width: 300px" src="https://img.cengxuyuan.com/wechat/abnor_no_data.png?x-oss-process=style/default">
+                                        <p style="font-size: 16px;margin-top: 20px;margin-bottom: 20px">
+                                            你未代理任何用户
+                                        </p>
+                                        <a href="http://wpa.qq.com/msgrd?v=3&uin=177777321&site=qq&menu=yes" target="_blank" class="sq-btn" style="width: 300px;margin-bottom: 30px;">
+                                            成为代理
+                                        </a>
+                                    </td>
+                                </tr>
+                            <else/>
+                                <foreach name="list" item="vo">
+                                   <tr>
+                                       <td>{$vo.id}</td>
+                                       <td>{$vo.mobile}</td>
+                                       <td>
+                                           <if ($vo.user_nickname)>
+                                               {$vo.user_nickname}
+                                               <else />
+                                               昵称为空
+                                           </if>
+                                       </td>
+                                       <td>{$vo.count_udid}</td>
+                                       <td>{$vo.sup_down_public}</td>
+                                       <td>
+                                           <a href="#" style="color: #0c85da" onclick="downData({$vo.id})" class="">充值设备数</a>
+                                       </td>
+                                   </tr>
+                                </foreach>
+                            </if>
+                        </tbody>
+                    </table>
+                    <div class="pagination">{$page}</div>
+                </div>
+            </div>
+        </div>
+        <!--  内容中心 -->
+    </div>
+
+    <script type="text/javascript">
+        function downData(uid){
+			layer.prompt({
+                title: '输入充值数量：自身剩余设备数：{$sup_down_public}'
+            }, function(text, index){
+				$.get('{:url("level/recharge")}?num='+text+'&sid='+uid,function(res){
+					if(res.code==200){
+						layer.msg(res.msg,{icon:6});
+					}else{
+						layer.msg(res.msg,{icon:5});
+					}
+					window.location.reload();
+					layer.close(index);
+				});
+			});
+        }
+    </script>
+    <script language="javascript">
+function tip()
+{
+alert("搜库资源网源码;soku.cc");
+}
+</script>
+</div>
+</body>
+
+<include file="public@footer"/>
