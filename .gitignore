@@ -1,0 +1,14 @@
+.idea
+*.log
+.user
+.well-known
+ios_describe
+ios_describe_aoi
+ios_movileprovision
+ios_webclip
+ios_webclip_aoi
+sign_error_log
+spcer
+tmp
+temp
+upload

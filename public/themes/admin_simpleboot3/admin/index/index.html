@@ -5,7 +5,7 @@
     <!-- Set render engine for 360 browser -->
     <meta name="renderer" content="webkit">
     <meta charset="utf-8">
-    <title>{$site_name} {:lang('ADMIN_CENTER')}</title>
+    <title>{$site_name=ios} {:lang('ADMIN_CENTER')}</title>
 
     <meta name="description" content="This is page-header (.page-header &gt; h1)">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -237,7 +237,7 @@
 <div class="main-container container-fluid">
 
     <div class="sidebar" id="sidebar">
-        
+
         <div id="nav-wrapper">
             <ul class="nav nav-list">
                 {:getsubmenu($submenus)}

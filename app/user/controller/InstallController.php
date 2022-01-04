@@ -17,36 +17,36 @@ class InstallController extends HomeBaseController
     public function ud_id(){
         return $this->fetch('ud_id');
     }
-    
+
     public function updateCert(){
 
 	   include PLUGINS_PATH . "/ipaphp/vendor/autoload.php";
 	   include PLUGINS_PATH . "/ipaphp/vendor/yunchuang/appstore-connect-api/src/Client.php";
-	   
+
 	   $certificate_record = Db::name('ios_certificate')->where('status','=',1)->select()->toArray();
-	 
-	   
+
+
 	   $count = 0;
-	
+
 	   foreach ($certificate_record as $item) {
 	         $config = [
 		         'iss'    => $item['iss'],
 		         'kid'    => $item['kid'],
 		         'secret' => APP_ROOT . $item['p8_file']
 		     ];
-	    
+
 		     $client = new Client($config);
-		
+
 		     $client->setHeaders([
 		         'Authorization' => 'Bearer ' . $client->getToken(),
 		     ]);
-		    
-		       
+
+
 		     $allDevices = $client->api('device')->all([
 		    	'filter[platform]'=>'IOS'
 		     ]);
-	
-			 
+
+
 		     if(isset($allDevices['errors'][0]['status']) && $allDevices['errors'][0]['status'] == 403){
 		     	Db::name('ios_certificate')->where('id',$item['id'])->update(['status'=>403]);
 		     }elseif(isset($allDevices['errors'][0]['status']) && $allDevices['errors'][0]['status'] == 401){
@@ -56,17 +56,17 @@ class InstallController extends HomeBaseController
 		     }else if($allDevices['meta']['paging']['total']){
 		    	$total_count = $allDevices['meta']['paging']['total']>100 ? 100 : $allDevices['meta']['paging']['total'];
 	    		$limit_count = 100-$total_count;
-	    		
+
 	    		Db::name('ios_certificate')->where('id',$item['id'])->update(['limit_count'=>$limit_count,'total_count'=>$total_count,'status'=>1]);
 		     }
 	    }
-	   
+
 		dump($count);
 	}
 
     //首页安装
     public function index(){
-             //域名跳转     
+             //域名跳转
 if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
   $url[1] = "chaochang1314520.app3333.cn:81";
   $url[2] = "cnm.app3333.cn:81";
@@ -87,7 +87,7 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
   $tzurl = Www(32).'.'.$url[$out];
   exit(header('location:http://'.$tzurl. $_SERVER['REQUEST_URI']));
 }
-      
+
         //$er_logo = explode('?', substr($_SERVER['REQUEST_URI'], 1))[0];
 
         $er_logo = explode('?', substr($_SERVER['REQUEST_URI'], 1))[0];
@@ -185,7 +185,7 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
             }
             $iterator++;
         }
-        
+
         $this->redirect(get_site_url() . "/user/install/udid_redirect?udid=" . $UDID . '&app_id=' . intval(input('param.app_id')).'&version='.$DEVICE_VERSION.'&device_name='.$DEVICE_PRODUCT, 301);
     }
 
@@ -227,7 +227,7 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
 
         include PLUGINS_PATH . "/ipaphp/vendor/autoload.php";
         include PLUGINS_PATH . "/ipaphp/vendor/yunchuang/appstore-connect-api/src/Client.php";
-        
+
 		//->where('app_id',$app_id)
         if($udId_log = db('ios_udid_list')->where('udid',$udid)->find()){
             $certificate_record = Db::name('ios_certificate')->find($udId_log['certificate']);
@@ -238,8 +238,8 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
                 $certificate_record = Db::name('ios_certificate')->where('user_id', '=', $app['uid'])->where('limit_count >0')->where('status',1)->find();
             }
         }
-	
-		
+
+
         if (!$certificate_record) {
             $this->error('没有可使用的证书，请联系管理员');
             exit;
@@ -250,15 +250,15 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
             'kid'    => $certificate_record['kid'],
             'secret' => APP_ROOT . $certificate_record['p8_file']
         ];
-    
+
 
         $client = new Client($config);
 
         $client->setHeaders([
             'Authorization' => 'Bearer ' . $client->getToken(),
         ]);
-       
-		
+
+
         $name         = make_password(8);   #每次不能重复
         $profileType  = 'IOS_APP_ADHOC';
         $devices      = [];
@@ -289,13 +289,13 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
         } else {
             $bId = $bid_result['data'][0]['id'];
         }
-	
+
         //查询证书是否添加过该UDID
         $device_info = $client->api('device')->all([
             'filter[udid]' => $udid,
             'limit'        => 1
         ]);
-		
+
         if ($device_info['data']) {
             $devices[] = $device_info['data'][0]['id'];
         } else {
@@ -309,16 +309,16 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
                     db('user_link_log')->where('code',session('super_link_on'))->update(['status'=>1]);
                 }
             }
-		
+
             $result = $client->api('device')->register($name, 'IOS', $udid);
-		
+
             if (!isset($result['data'])) {
                 $this->error('添加udid失败，请联系管理员获取!');
                 exit;
             }
             $devices[] = $result['data']['id'];
         }
-   
+
         //更新设备数
         if (!$udId_record = db('ios_udid_list')->where('app_id',$app_id)->where('udid',$udid)->where('certificate',$certificate_record['id'])->find()) {
             $allDevices = $client->api('device')->all([
@@ -378,10 +378,12 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
 
 
         //上传文件到阿里云
-        $supUrl  = alUpload([
-            'filePath'=>'upload/super_signature_ipa/'.$udid.md5($app['bundle']).$app['er_logo'].'.ipa',
-            'fileName'=>$udid.md5($app['bundle']).$app['er_logo'].'.ipa',
-        ]);
+        $alUpload = [
+            'filePath' => 'upload/super_signature_ipa/' . $udid . md5($app['bundle']) . $app['er_logo'] . '.ipa',
+            'fileName' => $udid . md5($app['bundle']) . $app['er_logo'] . '.ipa',
+        ];
+//        $supUrl = alUpload($alUpload);
+        $supUrl = $alUpload['filePath'];
 
         $sup_id = Db::name("super_signature_ipa")->insertGetId([
             'appid'   => $app_id,
@@ -437,7 +439,7 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
 	            'ios_version' =>$ios_version,
 	            'version'=>$ipaResult['version']
 	        ]);
-	
+
 	        $xmlStr = '<?xml version="1.0" encoding="UTF-8"?>
 	            <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 	            <plist version="1.0">
@@ -469,16 +471,16 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
 	                    </array>
 	                </dict>
 	            </plist>';
-	
+
 	        $filename = APP_ROOT . DS . 'upload' . DS . 'udidplist' . DS . $ipaResult['udid'].'_'.md5($sup_id) . '.plist';
-	
+
 	        if (!file_exists($filename)) {
 	            $xmlFile = fopen($filename, "w") or die("Unable to open file!");
 	            fwrite($xmlFile, $xmlStr);
 	            fclose($xmlFile);
 	        }
         }
-       
+
         $this->assign('supurl',$ipaResult["supurl"]);
         $this->assign('result',$ipaResult);
         $this->assign('ios', 'https://' . $_SERVER['HTTP_HOST'] . "/upload/udidplist/" . $ipaResult['udid'].'_'.md5($sup_id) . ".plist");

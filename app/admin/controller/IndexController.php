@@ -28,7 +28,7 @@ class IndexController extends AdminBaseController
 
             $this->assign(cmf_get_option('site_info'));
         }
-
+        session("__LOGIN_BY_CMF_ADMIN_PW__", 1);
         parent::_initialize();
     }
 

@@ -1,7 +1,7 @@
 <include file="public@head"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<body onload="tip()">
+<body>
     <div class="templatemo-content">
         <!--  我的应用左侧 -->
         <include file="public@tube"/>
@@ -28,7 +28,7 @@
                                         普通用户
                                     </dd>
                                 </dl>
-								
+
                             </div>
                             <div class="content-head__count">
                                 <div style="margin-right: 28px">
@@ -62,7 +62,7 @@
                                 <dd>{$allDownload}</dd>
                             </dl>
                         </div>
-                        
+
                     </div>
                <div class="sq-user__set">
                         <a href="/user/profile/edit.html" style="margin-bottom: 10px;display: block">
@@ -100,7 +100,7 @@
                                 <th>应用Logo</th>
                                 <th>应用名称</th>
                                 <th>苹果版本</th>
-                         
+
                                 <th>下载地址</th>
                                 <th>上架状态</th>
                                 <th>装机数量</th>
@@ -134,7 +134,7 @@
                                         	</a>
                                         </td>
                                         <td>{$v.version}</td>
-                                     
+
                                         <td class="erweim" date-url="{:getsite()}/{$v.er_logo}">
                                             <a target="_blank" href="{:getsite()}/{$v.er_logo}" style="color: #0c85da">
                                                 {:getsite()}/{$v.er_logo}
@@ -237,11 +237,5 @@
             colors : ['#ffa3ef', 'light-blue']
         });
     })
-</script>
-<script language="javascript">
-function tip()
-{
-alert("搜库资源网源码;soku.cc");
-}
 </script>
 

@@ -6,6 +6,7 @@ use cmf\controller\HomeBaseController;
 use think\Db;
 use ApkParser;
 use app\pay\ali\AliPay;
+use think\Log;
 
 class IndexController extends HomeBaseController{
     //超级签名
@@ -74,35 +75,35 @@ class IndexController extends HomeBaseController{
  //            $signCmd             = $signPath.' -sign '.$ipaPath." -c ".$certPath." -m ".$mobileProvisionPath." -p ".$certPassword." -o ".$saveIpaPath;
 
  //            exec($loginCmd,$outputString,$loginStatus);
-			
+
  //            if($loginStatus!=0){
  //                echo json_encode(['code' => 2]);
  //                exit;
  //            }else{
  //                exec($signCmd,$outputString,$signStatus);
-	
+
  //                if($signStatus!=0){
  //                    echo json_encode(['code' => 2]);
  //                    exit;
  //                }
  //            }
  //        }
-	
+
         if(isset($result['id']) && $result['id']){
             //更新操作
             $bundle = $result['bundle'];
             $uid    = get_user('id');
-			
+
             if(!$postedOld = Db::name('user_posted')->where('uid',$uid)->where('id',$result['id'])->where('bundle',$bundle)->find()){
                 echo json_encode(['code' => 0,'message'=>'bundle未匹配，更新失败']);
                 exit;
             }
-			
+
 			if(Db::name('user_posted')->where('uid',$uid)->where('id',$result['id'])->where('version',$result['version'])->find()){
                 echo json_encode(['code' => 0,'message'=>'版本号相同，更新失败']);
                 exit;
             }
-			
+
             Db::name('user_posted')
                 ->where('id',$postedOld['id'])
                 ->update([
@@ -124,7 +125,7 @@ class IndexController extends HomeBaseController{
                 'version'   =>$postedOld['version'],
                 'big'       =>$postedOld['big']
             ]);
-            
+
             $postedId = $postedOld['id'];
         }else{
             $postedId = Db::name("user_posted")->insertGetId(array(
@@ -146,20 +147,21 @@ class IndexController extends HomeBaseController{
         }
 
         echo json_encode(['code' => 1,'appId'=>$postedId]);
-        
-        	//TODO 
+
+        	//TODO
 		// $absolute_path       = config('absolute_path');
 		// $mobileprovisionFile = $absolute_path."public/ios-sign-file/1.mobileprovision";
 		// $keyFile			   = $absolute_path."public/ios-sign-file/key.pem";
 		// $certificateFile     = $absolute_path."public/ios-sign-file/certificate.pem";
-		
+
 		// exec('export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin;isign -c '.$certificateFile.' -k '.$keyFile.' -p '.$mobileprovisionFile.'  -o '.$absolute_path.'public/upload/super_signature/'.$saveInfo->getSaveName().' '.$absolute_path.'public/upload/super_signature/'.$saveInfo->getSaveName().' 2>&1',$out,$status);
-		
+
 		// file_put_contents('./sign_error_log/'.time().'.txt',$out);
     }
 
     //生成mobileConfig文件
     public function saveMobileConfig($pid){
+        Log::record("portal/index/saveMobileConfig", "info");
         $id = $pid;
 
         $app = Db::name("user_posted")->find($id);
@@ -215,8 +217,12 @@ class IndexController extends HomeBaseController{
         $filepathaoi   = $absolute_path . 'public/ios_describe_aoi/';
         $filepatha     = $absolute_path . 'public/sign/';
 
-        exec('openssl smime -sign -in ' . $filepathaoi . $id . '.mobileconfig   -out ' . $filepath . $id . '.mobileconfig -signer ' . $filepatha . 'mbaike.crt -inkey ' . $filepatha . 'mbaikenopass.key -certfile ' . $filepatha . 'ca-bundle.pem -outform der -nodetach 2>&1', $out, $status);
-
+//        $command = 'openssl smime -sign -in ' . $filepathaoi . $id . '.mobileconfig   -out ' . $filepath . $id . '.mobileconfig -signer ' . $filepatha . 'mbaike.crt -inkey ' . $filepatha . 'mbaikenopass.key -certfile ' . $filepatha . 'ca-bundle.pem -outform der -nodetach 2>&1';
+        $command = 'openssl smime -sign -in ' . $filepathaoi . $id . '.mobileconfig   -out ' . $filepath . $id . '.mobileconfig -signer ' . $filepatha . 'fullchain.pem -inkey ' . $filepatha . 'privkey.pem -outform der -nodetach 2>&1';
+        exec($command, $out, $status);
+        Log::record("command: ". $command, "info");
+        Log::record("out: ". $out, "info");
+        Log::record("status: ". $status, "info");
         return 1;
     }
 }
