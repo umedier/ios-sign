@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -29,11 +29,21 @@ class SlideController extends AdminBaseController
      *     'remark' => '幻灯片管理',
      *     'param'  => ''
      * )
+     * @return mixed
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
      */
     public function index()
     {
+        $content = hook_one('admin_slide_index_view');
+
+        if (!empty($content)) {
+            return $content;
+        }
+
         $slidePostModel = new SlideModel();
-        $slides         = $slidePostModel->where(['delete_time' => ['eq', 0]])->select();
+        $slides         = $slidePostModel->where('delete_time', 'eq', 0)->select();
         $this->assign('slides', $slides);
         return $this->fetch();
     }
@@ -73,10 +83,12 @@ class SlideController extends AdminBaseController
     {
         $data           = $this->request->param();
         $slidePostModel = new SlideModel();
-        $result         = $slidePostModel->validate(true)->save($data);
-        if ($result === false) {
-            $this->error($slidePostModel->getError());
+        $result         = $this->validate($data, 'Slide');
+        if ($result !== true) {
+            $this->error($result);
         }
+        $slidePostModel->save($data);
+
         $this->success("添加成功！", url("slide/index"));
     }
 
@@ -119,10 +131,11 @@ class SlideController extends AdminBaseController
     {
         $data           = $this->request->param();
         $slidePostModel = new SlideModel();
-        $result         = $slidePostModel->validate(true)->save($data, ['id' => $data['id']]);
-        if ($result === false) {
-            $this->error($slidePostModel->getError());
+        $result         = $this->validate($data, 'Slide');
+        if ($result !== true) {
+            $this->error($result);
         }
+        $slidePostModel->save($data, ['id' => $data['id']]);
         $this->success("保存成功！", url("slide/index"));
     }
 
@@ -143,8 +156,8 @@ class SlideController extends AdminBaseController
     {
         $id             = $this->request->param('id', 0, 'intval');
         $slidePostModel = new SlideModel();
-        $result       = $slidePostModel->where(['id' => $id])->find();
-        if (empty($result)){
+        $result         = $slidePostModel->where('id', $id)->find();
+        if (empty($result)) {
             $this->error('幻灯片不存在!');
         }
 
@@ -154,7 +167,7 @@ class SlideController extends AdminBaseController
             $this->error('此幻灯片有页面无法删除!');
         }
 
-        $data         = [
+        $data = [
             'object_id'   => $id,
             'create_time' => time(),
             'table_name'  => 'slide',

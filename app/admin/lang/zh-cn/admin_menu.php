@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -47,7 +47,7 @@ return [
     'ADMIN_NAVCAT_DEFAULT1'              => '前台菜单',
     'ADMIN_NAVCAT_EDIT_POST'             => '提交编辑',
     'ADMIN_NAVCAT_INDEX'                 => '菜单分类',
-    'ADMIN_PLUGIN_INDEX'                 => '所有插件',
+    'ADMIN_PLUGIN_INDEX'                 => '插件列表',
     'ADMIN_PLUGIN_INSTALL'               => '插件安装',
     'ADMIN_PLUGIN_SETTING'               => '插件设置',
     'ADMIN_PLUGIN_SETTING_POST'          => '插件设置提交',

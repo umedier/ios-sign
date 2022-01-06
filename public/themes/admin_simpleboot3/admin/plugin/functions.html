@@ -1,10 +1,27 @@
 <php>
-    function _parse_plugin_config($pluginConfig){
+    if (!function_exists('_parse_plugin_config')) {
+        function _parse_plugin_config($pluginConfig){
 
 </php>
 
 <foreach name="pluginConfig" item="form">
     <switch name="form.type">
+        <case value="explain">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="{$key}">
+                {$form.title|default=''}
+                    <notempty name="form.rule.require">
+                        <span class="form-required">*</span>
+                    </notempty>
+                </label>
+                <div class="col-md-6 col-sm-10">
+                    <p class="form-control-static">{$form.value}</p>
+                    <present name="form.tip">
+                        <p class="help-block">{$form.tip}</p>
+                    </present>
+                </div>
+            </div>
+        </case>
         <case value="text">
             <div class="form-group">
                 <label class="col-sm-2 control-label" for="{$key}">
@@ -14,7 +31,7 @@
                     </notempty>
                 </label>
                 <div class="col-md-6 col-sm-10">
-                    <input type="text" name="config[{$key}]" class="form-control" value="{$form.value}" id="{$key}">
+                    <input type="text" name="config[{$key}]" class="form-control" {$form.disabled?'disabled':''} value="{$form.value}" id="{$key}">
                     <present name="form.tip">
                         <p class="help-block">{$form.tip}</p>
                     </present>
@@ -47,7 +64,7 @@
                     </notempty>
                 </label>
                 <div class="col-md-6 col-sm-10">
-                    <input type="number" name="config[{$key}]" class="form-control" value="{$form.value}"
+                    <input type="number" name="config[{$key}]" class="form-control" {$form.disabled?'disabled':''} value="{$form.value}"
                            id="{$key}">
                     <present name="form.tip">
                         <p class="help-block">{$form.tip}</p>
@@ -135,7 +152,7 @@
                     </notempty>
                 </label>
                 <div class="col-md-6 col-sm-10">
-                    <textarea class="form-control" name="config[{$key}]" id="{$key}">{$form.value}</textarea>
+                    <textarea class="form-control" name="config[{$key}]" {$form.disabled?'disabled':''} id="{$key}">{$form.value}</textarea>
                     <present name="form.tip">
                         <p class="help-block">{$form.tip}</p>
                     </present>
@@ -243,6 +260,26 @@
                 </div>
             </div>
         </case>
+        <case value="file">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="{$key}">
+                    {$form.title|default=''}
+                    <notempty name="form.rule.require">
+                        <span class="form-required">*</span>
+                    </notempty>
+                </label>
+                <div class="col-md-6 col-sm-10">
+                    <div>
+                        <input class="form-control" id="js-{$key}-input" type="text" name="config[{$key}]" value="{$form['value']}"
+                               style="width: 300px;display: inline-block;" title="文件名称">
+                        <a href="javascript:uploadOne('文件上传','#js-{$key}-input','file');">上传文件</a>
+                    </div>
+                    <present name="form.tip">
+                        <p class="help-block">{$form.tip}</p>
+                    </present>
+                </div>
+            </div>
+        </case>
         <case value="location">
             <div class="form-group">
                 <label class="col-sm-2 control-label" for="{$key}">
@@ -264,7 +301,7 @@
     </switch>
 </foreach>
 
-
 <php>
+        }
     }
 </php>

@@ -12,3 +12,12 @@ spcer
 tmp
 temp
 upload
+/data/runtime/
+/public/certificate
+/public/ios-sign-file
+/public/ios_describe
+/public/ios_describe_aoi
+/public/ios_movileprovision
+/public/sign_error_log
+/public/spcer
+

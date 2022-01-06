@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -10,9 +10,11 @@
 // +----------------------------------------------------------------------
 namespace app\user\controller;
 
-use app\user\model\AssetModel;
 use cmf\controller\HomeBaseController;
 use cmf\lib\Upload;
+use think\exception\HttpResponseException;
+use think\Response;
+
 /**
  * 百度编辑器文件上传处理控制器
  * Class Ueditor
@@ -46,22 +48,22 @@ class UeditorController extends HomeBaseController
     /**
      * 初始化
      */
-    function _initialize()
+    public function initialize()
     {
         $adminId = cmf_get_current_admin_id();
         $userId  = cmf_get_current_user_id();
         if (empty($adminId) && empty($userId)) {
-            exit("非法上传！");
+            $this->error("非法上传！");
         }
     }
 
     /**
      * 处理上传处理
      */
-    function upload()
+    public function upload()
     {
-        error_reporting(E_ERROR);
-        header("Content-Type: text/html; charset=utf-8");
+//        error_reporting(E_ERROR);
+//        header("Content-Type: text/html; charset=utf-8");
 
         $action = $this->request->param('action');
 
@@ -87,6 +89,7 @@ class UeditorController extends HomeBaseController
             case 'uploadfile':
                 $result = $this->ueditorUpload("file");
                 break;
+
             /* 列出图片 */
             case 'listimage':
                 $result = "";
@@ -116,7 +119,8 @@ class UeditorController extends HomeBaseController
                 ]);
             }
         } else {
-            exit($result);
+            $response = Response::create(json_decode($result,true),'json');
+            throw new HttpResponseException($response);
         }
     }
 
@@ -143,7 +147,7 @@ class UeditorController extends HomeBaseController
         $uploadMaxFileSize = $uploadSetting["image"]['upload_max_filesize'];
         $uploadMaxFileSize = empty($uploadMaxFileSize) ? 2048 : $uploadMaxFileSize;//默认2M
         $allowedExts       = explode(',', $uploadSetting["image"]["extensions"]);
-        $strSavePath       = ROOT_PATH . 'public' . DS . "ueditor" . DS . $date . DS;
+        $strSavePath       = ROOT_PATH . 'public' . DIRECTORY_SEPARATOR . "ueditor" . DIRECTORY_SEPARATOR . $date . DIRECTORY_SEPARATOR;
         //远程抓取图片配置
         $config = [
             "savePath"   => $strSavePath,            //保存路径
@@ -288,8 +292,7 @@ class UeditorController extends HomeBaseController
      */
     private function ueditorConfig()
     {
-
-        $config_text    = preg_replace("/\/\*[\s\S]+?\*\//", "", file_get_contents("./static/js/ueditor/config.json"));
+        $config_text    = preg_replace("/\/\*[\s\S]+?\*\//", "", file_get_contents(WEB_ROOT . "static/js/ueditor/config.json"));
         $config         = json_decode($config_text, true);
         $upload_setting = cmf_get_upload_setting();
 
@@ -316,65 +319,7 @@ class UeditorController extends HomeBaseController
      */
     private function ueditorExtension($str)
     {
-
         return "." . trim($str, '.');
     }
 
-    /**
-     * @function imageManager
-     */
-    public function imageManager()
-    {
-
-        header("Content-Type: text/html; charset=utf-8");
-        //需要遍历的目录列表，最好使用缩略图地址，否则当网速慢时可能会造成严重的延时
-        $paths = [C("TMPL_PARSE_STRING.__UPLOAD__"), 'upload/'];
-
-
-        $files = [];
-        foreach ($paths as $path) {
-            $tmp = $this->getfiles($path);
-            if ($tmp) {
-                $files = array_merge($files, $tmp);
-            }
-        }
-        if (!count($files)) return;
-        rsort($files, SORT_STRING);
-        $str = "";
-        foreach ($files as $file) {
-            $str .= ROOT_PATH . '/' . $file . "ue_separate_ue";
-        }
-        echo $str;
-
-
-    }
-
-    /**
-     * 遍历获取目录下的指定类型的文件
-     * @param $path
-     * @param array $files
-     * @return array
-     */
-    private function getfiles($path, $allowFiles, &$files = [])
-    {
-        if (!is_dir($path)) return null;
-        if (substr($path, strlen($path) - 1) != '/') $path .= '/';
-        $handle = opendir($path);
-        while (false !== ($file = readdir($handle))) {
-            if ($file != '.' && $file != '..') {
-                $path2 = $path . $file;
-                if (is_dir($path2)) {
-                    $this->getfiles($path2, $allowFiles, $files);
-                } else {
-                    if (preg_match("/\.(" . $allowFiles . ")$/i", $file)) {
-                        $files[] = [
-                            'url'   => substr($path2, strlen($_SERVER['DOCUMENT_ROOT'])),
-                            'mtime' => filemtime($path2)
-                        ];
-                    }
-                }
-            }
-        }
-        return $files;
-    }
 }

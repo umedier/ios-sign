@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -13,31 +13,28 @@ namespace app\admin\controller;
 use cmf\controller\AdminBaseController;
 use app\admin\model\PluginModel;
 use app\admin\model\HookPluginModel;
+use mindplay\annotations\Annotations;
 use think\Db;
+use think\facade\Cache;
 use think\Validate;
 
 /**
  * Class PluginController
  * @package app\admin\controller
  * @adminMenuRoot(
- *     'name'   =>'插件管理',
+ *     'name'   =>'插件中心',
  *     'action' =>'default',
  *     'parent' =>'',
  *     'display'=> true,
  *     'order'  => 20,
  *     'icon'   =>'cloud',
- *     'remark' =>'插件管理'
+ *     'remark' =>'插件中心'
  * )
  */
 class PluginController extends AdminBaseController
 {
 
     protected $pluginModel;
-
-    public function _initialize()
-    {
-        parent::_initialize();
-    }
 
     /**
      * 插件列表
@@ -109,6 +106,8 @@ class PluginController extends AdminBaseController
             $this->error('操作失败！');
 
         }
+
+        Cache::clear('init_hook_plugins');
 
         $this->success($successMessage);
     }
@@ -351,6 +350,11 @@ class PluginController extends AdminBaseController
             $hookPluginModel->data(['hook' => $pluginHook, 'plugin' => $pluginName, 'status' => 1])->isUpdate(false)->save();
         }
 
+        $this->_getActions($pluginName);
+
+        Cache::clear('init_hook_plugins');
+        Cache::clear('admin_menus');// 删除后台菜单缓存
+
         $this->success('安装成功!');
     }
 
@@ -428,7 +432,348 @@ class PluginController extends AdminBaseController
             $hookPluginModel->data(['hook' => $pluginHook, 'plugin' => $pluginName])->isUpdate(false)->save();
         }
 
+        $this->_getActions($pluginName);
+
+        Cache::clear('init_hook_plugins');
+        Cache::clear('admin_menus');// 删除后台菜单缓存
+
         $this->success('更新成功!');
+    }
+
+    private function _getActions($pluginName)
+    {
+        Annotations::$config['cache']                 = false;
+        $annotationManager                            = Annotations::getManager();
+        $annotationManager->registry['adminMenu']     = 'app\admin\annotation\AdminMenuAnnotation';
+        $annotationManager->registry['adminMenuRoot'] = 'app\admin\annotation\AdminMenuRootAnnotation';
+        $newMenus                                     = [];
+
+        $pluginDir = cmf_parse_name($pluginName);
+
+        $filePatten = WEB_ROOT . 'plugins/' . $pluginDir . '/controller/Admin*Controller.php';
+
+        $controllers = cmf_scan_dir($filePatten);
+
+        $app = 'plugin/' . $pluginName;
+
+        if (!empty($controllers)) {
+            foreach ($controllers as $controller) {
+                $controller      = preg_replace('/\.php$/', '', $controller);
+                $controllerName  = preg_replace('/\Controller$/', '', $controller);
+                $controllerClass = "plugins\\$pluginDir\\controller\\$controller";
+
+                $menuAnnotations = Annotations::ofClass($controllerClass, '@adminMenuRoot');
+
+                if (!empty($menuAnnotations)) {
+                    foreach ($menuAnnotations as $menuAnnotation) {
+
+                        $name      = $menuAnnotation->name;
+                        $icon      = $menuAnnotation->icon;
+                        $type      = 0;//1:有界面可访问菜单,2:无界面可访问菜单,0:只作为菜单
+                        $action    = $menuAnnotation->action;
+                        $status    = empty($menuAnnotation->display) ? 0 : 1;
+                        $listOrder = floatval($menuAnnotation->order);
+                        $param     = $menuAnnotation->param;
+                        $remark    = $menuAnnotation->remark;
+
+                        if (empty($menuAnnotation->parent)) {
+                            $parentId = 0;
+                        } else {
+
+                            $parent      = explode('/', $menuAnnotation->parent);
+                            $countParent = count($parent);
+                            if ($countParent > 3) {
+                                throw new \Exception($controllerClass . ':' . $action . '  @adminMenuRoot parent格式不正确!');
+                            }
+
+                            $parentApp        = $app;
+                            $parentController = $controllerName;
+                            $parentAction     = '';
+
+                            switch ($countParent) {
+                                case 1:
+                                    $parentAction = $parent[0];
+                                    break;
+                                case 2:
+                                    $parentController = $parent[0];
+                                    $parentAction     = $parent[1];
+                                    break;
+                                case 3:
+                                    $parentApp        = $parent[0];
+                                    $parentController = $parent[1];
+                                    $parentAction     = $parent[2];
+                                    break;
+                            }
+
+                            $findParentAdminMenu = Db::name('admin_menu')->where([
+                                'app'        => $parentApp,
+                                'controller' => $parentController,
+                                'action'     => $parentAction
+                            ])->find();
+
+                            if (empty($findParentAdminMenu)) {
+                                $parentId = Db::name('admin_menu')->insertGetId([
+                                    'app'        => $parentApp,
+                                    'controller' => $parentController,
+                                    'action'     => $parentAction,
+                                    'name'       => '--new--'
+                                ]);
+                            } else {
+                                $parentId = $findParentAdminMenu['id'];
+                            }
+                        }
+
+                        $findAdminMenu = Db::name('admin_menu')->where([
+                            'app'        => $app,
+                            'controller' => $controllerName,
+                            'action'     => $action
+                        ])->find();
+
+                        if (empty($findAdminMenu)) {
+
+                            Db::name('admin_menu')->insert([
+                                'parent_id'  => $parentId,
+                                'type'       => $type,
+                                'status'     => $status,
+                                'list_order' => $listOrder,
+                                'app'        => $app,
+                                'controller' => $controllerName,
+                                'action'     => $action,
+                                'param'      => $param,
+                                'name'       => $name,
+                                'icon'       => $icon,
+                                'remark'     => $remark
+                            ]);
+
+                            $menuName = $name;
+
+//                            array_push($newMenus, $app . "/$controllerName/$action 已导入");
+
+                        } else {
+
+                            if ($findAdminMenu['name'] == '--new--') {
+                                Db::name('admin_menu')->where([
+                                    'app'        => $app,
+                                    'controller' => $controllerName,
+                                    'action'     => $action
+                                ])->update([
+                                    'parent_id'  => $parentId,
+                                    'type'       => $type,
+                                    'status'     => $status,
+                                    'list_order' => $listOrder,
+                                    'param'      => $param,
+                                    'name'       => $name,
+                                    'icon'       => $icon,
+                                    'remark'     => $remark
+                                ]);
+                                $menuName = $name;
+                            } else {
+                                // 只关注菜单层级关系,是否有视图
+                                Db::name('admin_menu')->where([
+                                    'app'        => $app,
+                                    'controller' => $controllerName,
+                                    'action'     => $action
+                                ])->update([
+                                    //'parent_id' => $parentId,
+                                    'type' => $type,
+                                ]);
+                                $menuName = $findAdminMenu['name'];
+                            }
+
+//                            array_push($newMenus, $app."/$controllerName/$action 层级关系已更新");
+                        }
+
+                        $authRuleName      = "plugin/{$pluginName}/{$controllerName}/{$action}";
+                        $findAuthRuleCount = Db::name('auth_rule')->where([
+                            'app'  => $app,
+                            'name' => $authRuleName,
+                            'type' => 'admin_url'
+                        ])->count();
+
+                        if ($findAuthRuleCount == 0) {
+                            Db::name('auth_rule')->insert([
+                                'app'   => $app,
+                                'name'  => $authRuleName,
+                                'type'  => 'admin_url',
+                                'param' => $param,
+                                'title' => $menuName
+                            ]);
+                        } else {
+                            Db::name('auth_rule')->where([
+                                'app'  => $app,
+                                'name' => $authRuleName,
+                                'type' => 'admin_url',
+                            ])->update([
+                                'param' => $param,
+                                'title' => $menuName
+                            ]);
+                        }
+
+                    }
+                }
+
+                $reflect = new \ReflectionClass($controllerClass);
+                $methods = $reflect->getMethods(\ReflectionMethod::IS_PUBLIC);
+
+                if (!empty($methods)) {
+                    foreach ($methods as $method) {
+
+                        if ($method->class == $controllerClass && strpos($method->name, '_') !== 0) {
+                            $menuAnnotations = Annotations::ofMethod($controllerClass, $method->name, '@adminMenu');
+
+                            if (!empty($menuAnnotations)) {
+
+                                $menuAnnotation = $menuAnnotations[0];
+
+                                $name      = $menuAnnotation->name;
+                                $icon      = $menuAnnotation->icon;
+                                $type      = $menuAnnotation->hasView ? 1 : 2;//1:有界面可访问菜单,2:无界面可访问菜单,0:只作为菜单
+                                $action    = $method->name;
+                                $status    = empty($menuAnnotation->display) ? 0 : 1;
+                                $listOrder = floatval($menuAnnotation->order);
+                                $param     = $menuAnnotation->param;
+                                $remark    = $menuAnnotation->remark;
+
+                                if (empty($menuAnnotation->parent)) {
+                                    $parentId = 0;
+                                } else {
+                                    $parent      = explode('/', $menuAnnotation->parent);
+                                    $countParent = count($parent);
+                                    if ($countParent > 3) {
+                                        throw new \Exception($controllerClass . ':' . $action . '  @menuRoot parent格式不正确!');
+                                    }
+
+                                    $parentApp        = $app;
+                                    $parentController = $controllerName;
+                                    $parentAction     = '';
+
+                                    switch ($countParent) {
+                                        case 1:
+                                            $parentAction = $parent[0];
+                                            break;
+                                        case 2:
+                                            $parentController = $parent[0];
+                                            $parentAction     = $parent[1];
+                                            break;
+                                        case 3:
+                                            $parentApp        = $parent[0];
+                                            $parentController = $parent[1];
+                                            $parentAction     = $parent[2];
+                                            break;
+                                    }
+
+                                    $findParentAdminMenu = Db::name('admin_menu')->where([
+                                        'app'        => $parentApp,
+                                        'controller' => $parentController,
+                                        'action'     => $parentAction
+                                    ])->find();
+
+                                    if (empty($findParentAdminMenu)) {
+                                        $parentId = Db::name('admin_menu')->insertGetId([
+                                            'app'        => $parentApp,
+                                            'controller' => $parentController,
+                                            'action'     => $parentAction,
+                                            'name'       => '--new--'
+                                        ]);
+                                    } else {
+                                        $parentId = $findParentAdminMenu['id'];
+                                    }
+                                }
+
+                                $findAdminMenu = Db::name('admin_menu')->where([
+                                    'app'        => $app,
+                                    'controller' => $controllerName,
+                                    'action'     => $action
+                                ])->find();
+
+                                if (empty($findAdminMenu)) {
+
+                                    Db::name('admin_menu')->insert([
+                                        'parent_id'  => $parentId,
+                                        'type'       => $type,
+                                        'status'     => $status,
+                                        'list_order' => $listOrder,
+                                        'app'        => $app,
+                                        'controller' => $controllerName,
+                                        'action'     => $action,
+                                        'param'      => $param,
+                                        'name'       => $name,
+                                        'icon'       => $icon,
+                                        'remark'     => $remark
+                                    ]);
+
+                                    $menuName = $name;
+
+                                    //array_push($newMenus, "$app/$controllerName/$action 已导入");
+
+                                } else {
+                                    if ($findAdminMenu['name'] == '--new--') {
+                                        Db::name('admin_menu')->where([
+                                            'app'        => $app,
+                                            'controller' => $controllerName,
+                                            'action'     => $action
+                                        ])->update([
+                                            'parent_id'  => $parentId,
+                                            'type'       => $type,
+                                            'status'     => $status,
+                                            'list_order' => $listOrder,
+                                            'param'      => $param,
+                                            'name'       => $name,
+                                            'icon'       => $icon,
+                                            'remark'     => $remark
+                                        ]);
+                                        $menuName = $name;
+                                    } else {
+                                        // 只关注是否有视图
+                                        Db::name('admin_menu')->where([
+                                            'app'        => $app,
+                                            'controller' => $controllerName,
+                                            'action'     => $action
+                                        ])->update([
+                                            //'parent_id' => $parentId,
+                                            'type' => $type,
+                                        ]);
+                                        $menuName = $findAdminMenu['name'];
+                                    }
+
+
+//                                    array_push($newMenus, "$app/$controllerName/$action 已更新");
+                                }
+
+                                $authRuleName      = "plugin/{$pluginName}/{$controllerName}/{$action}";
+                                $findAuthRuleCount = Db::name('auth_rule')->where([
+                                    'app'  => $app,
+                                    'name' => $authRuleName,
+                                    'type' => 'plugin_url'
+                                ])->count();
+
+                                if ($findAuthRuleCount == 0) {
+                                    Db::name('auth_rule')->insert([
+                                        'app'   => $app,
+                                        'name'  => $authRuleName,
+                                        'type'  => 'plugin_url',
+                                        'param' => $param,
+                                        'title' => $menuName
+                                    ]);
+                                } else {
+                                    Db::name('auth_rule')->where([
+                                        'app'  => $app,
+                                        'name' => $authRuleName,
+                                        'type' => 'plugin_url',
+                                    ])->update([
+                                        'param' => $param,
+                                        'title' => $menuName
+                                    ]);
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+            }
+        }
+
     }
 
     /**
@@ -454,6 +799,9 @@ class PluginController extends AdminBaseController
         if ($result !== true) {
             $this->error('卸载失败!');
         }
+
+        Cache::clear('init_hook_plugins');
+        Cache::clear('admin_menus');// 删除后台菜单缓存
 
         $this->success('卸载成功!');
     }

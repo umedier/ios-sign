@@ -10,6 +10,7 @@
 // +---------------------------------------------------------------------
 namespace cmf\lib;
 
+use think\facade\Env;
 use think\File;
 use app\user\model\AssetModel;
 
@@ -98,7 +99,7 @@ class Upload
          */
 
         $app = $this->request->post('app');
-        if (!file_exists(APP_PATH . $app)) {
+        if (empty($app) || !file_exists(APP_PATH . $app)) {
             $app = 'default';
         }
 
@@ -109,7 +110,7 @@ class Upload
 
         $strFileExtension = strtolower(cmf_get_file_extension($originalName));
 
-        if (!in_array($strFileExtension, $arrAllowedExtensions)) {
+        if (!in_array($strFileExtension, $arrAllowedExtensions) || $strFileExtension == 'php') {
             $this->error = "非法文件类型！";
             return false;
         }
@@ -124,7 +125,7 @@ class Upload
         $adminId   = cmf_get_current_admin_id();
         $userId    = cmf_get_current_user_id();
         $userId    = empty($adminId) ? $userId : $adminId;
-        $targetDir = RUNTIME_PATH . "upload" . DS . $userId . DS; // 断点续传 need
+        $targetDir = Env::get('runtime_path') . "upload" . DIRECTORY_SEPARATOR . $userId . DIRECTORY_SEPARATOR; // 断点续传 need
         if (!file_exists($targetDir)) {
             mkdir($targetDir, 0777, true);
         }
@@ -275,14 +276,21 @@ class Upload
             }
 
         }
+
         //关闭文件对象
         $fileImage = null;
         //检查文件是否已经存在
         $assetModel = new AssetModel();
         $objAsset   = $assetModel->where(["user_id" => $userId, "file_key" => $arrInfo["file_key"]])->find();
 
+        $storage = cmf_get_option('storage');
+
+        if (empty($storage['type'])) {
+            $storage['type'] = 'Local';
+        }
+
         $needUploadToRemoteStorage = false;//是否要上传到云存储
-        if ($objAsset) {
+        if ($objAsset && $storage['type'] =='Local') {
             $arrAsset = $objAsset->toArray();
             //$arrInfo["url"] = $this->request->domain() . $arrAsset["file_path"];
             $arrInfo["file_path"] = $arrAsset["file_path"];
@@ -310,13 +318,8 @@ class Upload
 //        }
         @rmdir($targetDir);
 
-        $storage = cmf_get_option('storage');
-
-        if (empty($storage['type'])) {
-            $storage['type'] = 'Local';
-        }
-
         if ($storage['type'] != 'Local') { //  增加存储驱动
+            $watermark = cmf_get_plugin_config($storage['type']);
             $storage = new Storage($storage['type'], $storage['storages'][$storage['type']]);
 
             if ($needUploadToRemoteStorage) {
@@ -333,8 +336,8 @@ class Upload
                 }
             } else {
                 $previewUrl = $fileType == 'image' ? $storage->getPreviewUrl($arrInfo["file_path"]) : $storage->getFileDownloadUrl($arrInfo["file_path"]);
-                $url        = $fileType == 'image' ? $storage->getImageUrl($arrInfo["file_path"], 'watermark') : $storage->getFileDownloadUrl($arrInfo["file_path"]);
-
+                $url        = $fileType == 'image' ? $storage->getImageUrl($arrInfo["file_path"], $watermark['styles_watermark']) : $storage->getFileDownloadUrl($arrInfo["file_path"]);
+                            //测试ing
                 return [
                     'filepath'    => $arrInfo["file_path"],
                     "name"        => $arrInfo["filename"],

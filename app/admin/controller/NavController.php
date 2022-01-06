@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -35,6 +35,12 @@ class NavController extends AdminBaseController
      */
     public function index()
     {
+        $content = hook_one('admin_nav_index_view');
+
+        if (!empty($content)) {
+            return $content;
+        }
+
         $navModel = new NavModel();
 
         $navs = $navModel->select();
@@ -110,7 +116,7 @@ class NavController extends AdminBaseController
         $navModel = new NavModel();
         $intId    = $this->request->param("id", 0, 'intval');
 
-        $objNavCat = $navModel->where(["id" => $intId])->find();
+        $objNavCat = $navModel->where("id", $intId)->find();
         $arrNavCat = $objNavCat ? $objNavCat->toArray() : [];
 
         $this->assign($arrNavCat);
@@ -143,7 +149,7 @@ class NavController extends AdminBaseController
             $navModel->where("is_main", 1)->update(["is_main" => 0]);
         }
 
-        $navModel->allowField(true)->where(["id" => $arrData["id"]])->update($arrData);
+        $navModel->allowField(true)->where("id", intval($arrData["id"]))->update($arrData);
         $this->success(lang("EDIT_SUCCESS"), url("nav/index"));
 
     }
@@ -170,7 +176,7 @@ class NavController extends AdminBaseController
             $this->error(lang("NO_ID"));
         }
 
-        $navModel->where(["id" => $intId])->delete();
+        $navModel->where("id", $intId)->delete();
         $this->success(lang("DELETE_SUCCESS"), url("nav/index"));
 
     }

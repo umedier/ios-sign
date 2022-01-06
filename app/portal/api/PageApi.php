@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -11,6 +11,7 @@
 namespace app\portal\api;
 
 use app\portal\model\PortalPostModel;
+use think\db\Query;
 
 class PageApi
 {
@@ -25,17 +26,19 @@ class PageApi
 
         $where = [
             'post_type'      => 2,
-            'published_time' => [['< time', time()], ['> time', 0]],
             'post_status'    => 1,
             'delete_time'    => 0
         ];
 
-        if (!empty($param['keyword'])) {
-            $where['post_title'] = ['like', "%{$param['keyword']}%"];
-        }
-
         //返回的数据必须是数据集或数组,item里必须包括id,name,如果想表示层级关系请加上 parent_id
-        return $portalPostModel->field('id,post_title AS name')->where($where)->select();
+        return $portalPostModel->field('id,post_title AS name')
+            ->where($where)
+            ->where('published_time',['<', time()], ['> time', 0],'and')
+            ->where(function (Query $query) use ($param) {
+                if (!empty($param['keyword'])) {
+                    $query->where('post_title', 'like', "%{$param['keyword']}%");
+                }
+            })->select();
     }
 
     /**
@@ -48,13 +51,14 @@ class PageApi
 
         $where = [
             'post_type'      => 2,
-            'published_time' => [['< time', time()], ['> time', 0]],
             'post_status'    => 1,
             'delete_time'    => 0
         ];
 
 
-        $pages = $portalPostModel->field('id,post_title AS name')->where($where)->select();
+        $pages = $portalPostModel->field('id,post_title AS name')
+            ->where('published_time',['<', time()], ['> time', 0],'and')
+            ->where($where)->select();
 
         $return = [
             'rule'  => [

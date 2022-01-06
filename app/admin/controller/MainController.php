@@ -1,20 +1,8 @@
 <?php
-# @Author: JokenLiu <Jason>
-# @Date:   2018-02-01 15:30:38
-# @Email:  190646521@qq.com
-# @Project: Demon
-# @Filename: MainController.php
-# @Last modified by:   Jason
-# @Last modified time: 2018-04-21 10:28:09
-# @License: 北京乐维世纪网络科技有限公司开发者协议
-# @Copyright: DemonLive
-
-
-
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -24,15 +12,9 @@ namespace app\admin\controller;
 
 use cmf\controller\AdminBaseController;
 use think\Db;
-use app\admin\model\Menu;
 
 class MainController extends AdminBaseController
 {
-
-    public function _initialize()
-    {
-        parent::_initialize();
-    }
 
     /**
      *  后台欢迎页

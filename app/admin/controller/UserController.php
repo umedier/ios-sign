@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -12,6 +12,7 @@ namespace app\admin\controller;
 
 use cmf\controller\AdminBaseController;
 use think\Db;
+use think\db\Query;
 
 /**
  * Class UserController
@@ -41,25 +42,34 @@ class UserController extends AdminBaseController
      *     'remark' => '管理员管理',
      *     'param'  => ''
      * )
+     * @throws \think\exception\DbException
      */
     public function index()
     {
-        $where = ["user_type" => 1];
+        $content = hook_one('admin_user_index_view');
+
+        if (!empty($content)) {
+            return $content;
+        }
+
         /**搜索条件**/
-        $user_login = $this->request->param('user_login');
-        $user_email = trim($this->request->param('user_email'));
+        $userLogin = $this->request->param('user_login');
+        $userEmail = trim($this->request->param('user_email'));
 
-        if ($user_login) {
-            $where['user_login'] = ['like', "%$user_login%"];
-        }
-
-        if ($user_email) {
-            $where['user_email'] = ['like', "%$user_email%"];;
-        }
         $users = Db::name('user')
-            ->where($where)
+            ->where('user_type', 1)
+            ->where(function (Query $query) use ($userLogin, $userEmail) {
+                if ($userLogin) {
+                    $query->where('user_login', 'like', "%$userLogin%");
+                }
+
+                if ($userEmail) {
+                    $query->where('user_email', 'like', "%$userEmail%");
+                }
+            })
             ->order("id DESC")
             ->paginate(10);
+        $users->appends(['user_login' => $userLogin, 'user_email' => $userEmail]);
         // 获取分页显示
         $page = $users->render();
 
@@ -90,7 +100,13 @@ class UserController extends AdminBaseController
      */
     public function add()
     {
-        $roles = Db::name('role')->where(['status' => 1])->order("id DESC")->select();
+        $content = hook_one('admin_user_add_view');
+
+        if (!empty($content)) {
+            return $content;
+        }
+
+        $roles = Db::name('role')->where('status', 1)->order("id DESC")->select();
         $this->assign("roles", $roles);
         return $this->fetch();
     }
@@ -155,13 +171,19 @@ class UserController extends AdminBaseController
      */
     public function edit()
     {
+        $content = hook_one('admin_user_edit_view');
+
+        if (!empty($content)) {
+            return $content;
+        }
+
         $id    = $this->request->param('id', 0, 'intval');
-        $roles = DB::name('role')->where(['status' => 1])->order("id DESC")->select();
+        $roles = DB::name('role')->where('status', 1)->order("id DESC")->select();
         $this->assign("roles", $roles);
-        $role_ids = DB::name('RoleUser')->where(["user_id" => $id])->column("role_id");
+        $role_ids = DB::name('RoleUser')->where("user_id", $id)->column("role_id");
         $this->assign("role_ids", $role_ids);
 
-        $user = DB::name('user')->where(["id" => $id])->find();
+        $user = DB::name('user')->where("id", $id)->find();
         $this->assign($user);
         return $this->fetch();
     }
@@ -199,7 +221,7 @@ class UserController extends AdminBaseController
                     $result = DB::name('user')->update($_POST);
                     if ($result !== false) {
                         $uid = $this->request->param('id', 0, 'intval');
-                        DB::name("RoleUser")->where(["user_id" => $uid])->delete();
+                        DB::name("RoleUser")->where("user_id", $uid)->delete();
                         foreach ($role_ids as $role_id) {
                             if (cmf_get_current_admin_id() != 1 && $role_id == 1) {
                                 $this->error("为了网站的安全，非网站创建者不可创建超级管理员！");
@@ -234,7 +256,7 @@ class UserController extends AdminBaseController
     public function userInfo()
     {
         $id   = cmf_get_current_admin_id();
-        $user = Db::name('user')->where(["id" => $id])->find();
+        $user = Db::name('user')->where("id", $id)->find();
         $this->assign($user);
         return $this->fetch();
     }
@@ -289,7 +311,7 @@ class UserController extends AdminBaseController
         }
 
         if (Db::name('user')->delete($id) !== false) {
-            Db::name("RoleUser")->where(["user_id" => $id])->delete();
+            Db::name("RoleUser")->where("user_id", $id)->delete();
             $this->success("删除成功！");
         } else {
             $this->error("删除失败！");

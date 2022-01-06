@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -40,7 +40,7 @@ class SettingSiteValidate extends Validate
 
         $routeModel = new RouteModel();
         $fullUrl    = $routeModel->buildFullUrl('admin/Index/index', []);
-        if (!$routeModel->exists($value.'$', $fullUrl)) {
+        if (!$routeModel->existsRoute($value.'$', $fullUrl)) {
             return true;
         } else {
             return "URL规则已经存在,无法设置此加密码!";

@@ -1,19 +1,8 @@
 <?php
-# @Author: JokenLiu <Jason>
-# @Date:   2018-01-19 22:50:12
-# @Email:  190646521@qq.com
-# @Project: Demon
-# @Filename: RegisterController.php
-# @Last modified by:   Jason
-# @Last modified time: 2018-01-29 11:30:54
-# @License: 北京乐维世纪网络科技有限公司开发者协议
-# @Copyright: DemonLive
-
-
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -25,7 +14,9 @@ use cmf\controller\HomeBaseController;
 use think\Validate;
 use app\user\model\UserModel;
 
-class RegisterController extends HomeBaseController{
+class RegisterController extends HomeBaseController
+{
+
     /**
      * 前台用户注册
      */
@@ -49,13 +40,13 @@ class RegisterController extends HomeBaseController{
     /**
      * 前台用户注册提交
      */
-    public function doRegister(){
+    public function doRegister()
+    {
         if ($this->request->isPost()) {
             $rules = [
-                'username'      => 'require',
-                'captcha'       => 'require',
-                'code'          => 'require',
-                'password'      => 'require|min:6|max:32',
+                'captcha'  => 'require',
+                'code'     => 'require',
+                'password' => 'require|min:6|max:32',
 
             ];
 
@@ -65,7 +56,7 @@ class RegisterController extends HomeBaseController{
                 unset($rules['code']);
             }
 
-            $validate = new Validate($rules);
+            $validate = new \think\Validate($rules);
             $validate->message([
                 'code.require'     => '验证码不能为空',
                 'password.require' => '密码不能为空',
@@ -75,11 +66,12 @@ class RegisterController extends HomeBaseController{
             ]);
 
             $data = $this->request->post();
-
             if (!$validate->check($data)) {
                 $this->error($validate->getError());
             }
-            if (!cmf_captcha_check($data['captcha'])) {
+
+            $captchaId = empty($data['_captcha_id']) ? '' : $data['_captcha_id'];
+            if (!cmf_captcha_check($data['captcha'], $captchaId)) {
                 $this->error('验证码错误');
             }
 
@@ -90,22 +82,19 @@ class RegisterController extends HomeBaseController{
                 }
             }
 
-            $register = new UserModel();
-            $config  = get_config();
-
-            $user['downloads'] = $config['new_reg_give_count'];
+            $register          = new UserModel();
             $user['user_pass'] = $data['password'];
             if (Validate::is($data['username'], 'email')) {
                 $user['user_email'] = $data['username'];
-                $log = $register->registerEmail($user);
-            } else if (preg_match('/(^(13\d|15[^4\D]|17[0135678]|18\d)\d{8})$/', $data['username'])) {
+                $log                = $register->register($user, 3);
+            } else if (cmf_check_mobile($data['username'])) {
                 $user['mobile'] = $data['username'];
-                $log = $register->registerMobile($user);
+                $log            = $register->register($user, 2);
             } else {
                 $log = 2;
             }
             $sessionLoginHttpReferer = session('login_http_referer');
-            $redirect = empty($sessionLoginHttpReferer) ? cmf_get_root() . '/' : $sessionLoginHttpReferer;
+            $redirect                = empty($sessionLoginHttpReferer) ? cmf_get_root() . '/' : $sessionLoginHttpReferer;
             switch ($log) {
                 case 0:
                     $this->success('注册成功', $redirect);

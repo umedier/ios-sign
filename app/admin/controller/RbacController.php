@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -12,6 +12,7 @@ namespace app\admin\controller;
 
 use cmf\controller\AdminBaseController;
 use think\Db;
+use think\facade\Cache;
 use tree\Tree;
 use app\admin\model\AdminMenuModel;
 
@@ -30,9 +31,19 @@ class RbacController extends AdminBaseController
      *     'remark' => '角色管理',
      *     'param'  => ''
      * )
+     * @return mixed
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
      */
     public function index()
     {
+        $content = hook_one('admin_rbac_index_view');
+
+        if (!empty($content)) {
+            return $content;
+        }
+
         $data = Db::name('role')->order(["list_order" => "ASC", "id" => "DESC"])->select();
         $this->assign("roles", $data);
         return $this->fetch();
@@ -50,9 +61,16 @@ class RbacController extends AdminBaseController
      *     'remark' => '添加角色',
      *     'param'  => ''
      * )
+     * @return mixed
      */
     public function roleAdd()
     {
+        $content = hook_one('admin_rbac_role_add_view');
+
+        if (!empty($content)) {
+            return $content;
+        }
+
         return $this->fetch();
     }
 
@@ -101,14 +119,24 @@ class RbacController extends AdminBaseController
      *     'remark' => '编辑角色',
      *     'param'  => ''
      * )
+     * @return mixed
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
      */
     public function roleEdit()
     {
+        $content = hook_one('admin_rbac_role_edit_view');
+
+        if (!empty($content)) {
+            return $content;
+        }
+
         $id = $this->request->param("id", 0, 'intval');
         if ($id == 1) {
             $this->error("超级管理员角色不能被修改！");
         }
-        $data = Db::name('role')->where(["id" => $id])->find();
+        $data = Db::name('role')->where("id", $id)->find();
         if (!$data) {
             $this->error("该角色不存在！");
         }
@@ -128,6 +156,8 @@ class RbacController extends AdminBaseController
      *     'remark' => '编辑角色提交',
      *     'param'  => ''
      * )
+     * @throws \think\Exception
+     * @throws \think\exception\PDOException
      */
     public function roleEditPost()
     {
@@ -164,6 +194,8 @@ class RbacController extends AdminBaseController
      *     'remark' => '删除角色',
      *     'param'  => ''
      * )
+     * @throws \think\Exception
+     * @throws \think\exception\PDOException
      */
     public function roleDelete()
     {
@@ -171,7 +203,7 @@ class RbacController extends AdminBaseController
         if ($id == 1) {
             $this->error("超级管理员角色不能被删除！");
         }
-        $count = Db::name('RoleUser')->where(['role_id' => $id])->count();
+        $count = Db::name('RoleUser')->where('role_id', $id)->count();
         if ($count > 0) {
             $this->error("该角色已经有用户！");
         } else {
@@ -196,9 +228,16 @@ class RbacController extends AdminBaseController
      *     'remark' => '设置角色权限',
      *     'param'  => ''
      * )
+     * @return mixed
      */
     public function authorize()
     {
+        $content = hook_one('admin_rbac_authorize_view');
+
+        if (!empty($content)) {
+            return $content;
+        }
+
         $AuthAccess     = Db::name("AuthAccess");
         $adminMenuModel = new AdminMenuModel();
         //角色ID
@@ -214,7 +253,7 @@ class RbacController extends AdminBaseController
         $result = $adminMenuModel->menuCache();
 
         $newMenus      = [];
-        $privilegeData = $AuthAccess->where(["role_id" => $roleId])->column("rule_name");//获取权限表数据
+        $privilegeData = $AuthAccess->where("role_id", $roleId)->column("rule_name");//获取权限表数据
 
         foreach ($result as $m) {
             $newMenus[$m['id']] = $m;
@@ -251,6 +290,11 @@ class RbacController extends AdminBaseController
      *     'remark' => '角色授权提交',
      *     'param'  => ''
      * )
+     * @throws \think\Exception
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     * @throws \think\exception\PDOException
      */
     public function authorizePost()
     {
@@ -263,7 +307,7 @@ class RbacController extends AdminBaseController
 
                 Db::name("authAccess")->where(["role_id" => $roleId, 'type' => 'admin_url'])->delete();
                 foreach ($_POST['menuId'] as $menuId) {
-                    $menu = Db::name("adminMenu")->where(["id" => $menuId])->field("app,controller,action")->find();
+                    $menu = Db::name("adminMenu")->where("id", $menuId)->field("app,controller,action")->find();
                     if ($menu) {
                         $app    = $menu['app'];
                         $model  = $menu['controller'];
@@ -273,10 +317,12 @@ class RbacController extends AdminBaseController
                     }
                 }
 
+                Cache::clear('admin_menus');// 删除后台菜单缓存
+
                 $this->success("授权成功！");
             } else {
                 //当没有数据时，清除当前角色授权
-                Db::name("authAccess")->where(["role_id" => $roleId])->delete();
+                Db::name("authAccess")->where("role_id", $roleId)->delete();
                 $this->error("没有接收到数据，执行清除授权成功！");
             }
         }
@@ -285,7 +331,7 @@ class RbacController extends AdminBaseController
     /**
      * 检查指定菜单是否有权限
      * @param array $menu menu表中数组
-     * @param $privData
+     * @param       $privData
      * @return bool
      */
     private function _isChecked($menu, $privData)
@@ -308,9 +354,9 @@ class RbacController extends AdminBaseController
 
     /**
      * 获取菜单深度
-     * @param $id
+     * @param       $id
      * @param array $array
-     * @param int $i
+     * @param int   $i
      * @return int
      */
     protected function _getLevel($id, $array = [], $i = 0)

@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -41,12 +41,12 @@ class AdminMenuValidate extends Validate
     // 自定义验证规则
     protected function checkParentId($value)
     {
-        $find = Db::name('AdminMenu')->where(["id" => $value])->value('parent_id');
+        $find = Db::name('AdminMenu')->where("id", $value)->value('parent_id');
 
         if ($find) {
-            $find2 = Db::name('AdminMenu')->where(["id" => $find])->value('parent_id');
+            $find2 = Db::name('AdminMenu')->where("id", $find)->value('parent_id');
             if ($find2) {
-                $find3 = Db::name('AdminMenu')->where(["id" => $find2])->value('parent_id');
+                $find3 = Db::name('AdminMenu')->where("id", $find2)->value('parent_id');
                 if ($find3) {
                     return false;
                 }

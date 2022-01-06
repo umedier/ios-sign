@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +---------------------------------------------------------------------
@@ -12,6 +12,7 @@ namespace cmf\controller;
 
 use think\Controller;
 use think\Request;
+use think\Response;
 use think\View;
 use think\Config;
 
@@ -38,8 +39,9 @@ class BaseController extends Controller
         $this->_initializeView();
         $this->view = View::instance(Config::get('template'), Config::get('view_replace_str'));
 
-
         // 控制器初始化
+        $this->initialize();
+        // 老的控制器初始化 即将取消
         $this->_initialize();
 
         // 前置操作方法
@@ -50,6 +52,14 @@ class BaseController extends Controller
                     $this->beforeAction($method, $options);
             }
         }
+    }
+
+    /**
+     * 初始化操作
+     * @access protected
+     */
+    protected function initialize()
+    {
     }
 
 
@@ -80,6 +90,5 @@ class BaseController extends Controller
 
         return true;
     }
-
 
 }

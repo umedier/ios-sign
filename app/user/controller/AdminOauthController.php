@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -31,9 +31,19 @@ class AdminOauthController extends AdminBaseController
      */
     public function index()
     {
-        $oauthUserQuery = Db::name('third_party_user');
+        $content = hook_one('user_admin_oauth_index_view');
 
-        $lists = $oauthUserQuery->field('a.*,u.user_nickname,u.sex,u.avatar')->alias('a')->join('__USER__ u','a.user_id = u.id')->where("status", 1)->order("create_time DESC")->paginate(10);
+        if (!empty($content)) {
+            return $content;
+        }
+
+        $lists = Db::name('third_party_user')->field('a.*,u.user_nickname,u.sex,u.avatar')
+            ->alias('a')
+            ->join('__USER__ u', 'a.user_id = u.id')
+            ->where("status", 1)
+            ->order("create_time DESC")
+            ->paginate(10);
+
         // 获取分页显示
         $page = $lists->render();
         $this->assign('lists', $lists);
@@ -61,12 +71,8 @@ class AdminOauthController extends AdminBaseController
         if (empty($id)) {
             $this->error('非法数据！');
         }
-        $result = Db::name("OauthUser")->where("id", $id)->delete();
-        if ($result !== false) {
-            $this->success("删除成功！", "admin_oauth/index");
-        } else {
-            $this->error('删除失败！');
-        }
+        Db::name("third_party_user")->where("id", $id)->delete();
+        $this->success("删除成功！", "admin_oauth/index");
     }
 
 

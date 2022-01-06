@@ -5,7 +5,7 @@ namespace app\pay\controller;
 use app\pay\ali\AliPay;
 use app\pay\validate\PayValidate;
 use cmf\controller\HomeBaseController;
-use think\Cache;
+use think\facade\Cache;
 use think\Controller;
 use think\Db;
 use think\Request;

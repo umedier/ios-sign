@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -35,6 +35,12 @@ class AdminTagController extends AdminBaseController
      */
     public function index()
     {
+        $content = hook_one('portal_admin_tag_index_view');
+
+        if (!empty($content)) {
+            return $content;
+        }
+
         $portalTagModel = new PortalTagModel();
         $tags           = $portalTagModel->paginate();
 
@@ -140,7 +146,7 @@ class AdminTagController extends AdminBaseController
         }
         $portalTagModel = new PortalTagModel();
 
-        $portalTagModel->where(['id' => $intId])->delete();
+        $portalTagModel->where('id' , $intId)->delete();
         Db::name('portal_tag_post')->where('tag_id', $intId)->delete();
         $this->success(lang("DELETE_SUCCESS"));
     }

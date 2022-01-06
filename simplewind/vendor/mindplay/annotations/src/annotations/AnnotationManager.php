@@ -173,7 +173,7 @@ class AnnotationManager
     /**
      * Retrieves annotation-data from a given source-code file.
      *
-     * members-names in the returned array have the following format: Class, Class::method or Class::$member
+     * Member-names in the returned array have the following format: Class, Class::method or Class::$member
      *
      * @param string $path the path of the source-code file from which to obtain annotation-data.
      * @return AnnotationFile

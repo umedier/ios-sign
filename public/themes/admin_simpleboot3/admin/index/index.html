@@ -5,15 +5,20 @@
     <!-- Set render engine for 360 browser -->
     <meta name="renderer" content="webkit">
     <meta charset="utf-8">
-    <title>{$site_name=ios} {:lang('ADMIN_CENTER')}</title>
-
+    <title>ThinkCMF {:lang('ADMIN_CENTER')}</title>
     <meta name="description" content="This is page-header (.page-header &gt; h1)">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <!-- HTML5 shim for IE8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
     <link href="__TMPL__/public/assets/themes/{:cmf_get_admin_style()}/bootstrap.min.css" rel="stylesheet">
     <link href="__TMPL__/public/assets/simpleboot3/css/simplebootadmin.css" rel="stylesheet">
     <link href="__STATIC__/font-awesome/css/font-awesome.min.css?page=index" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="__TMPL__/public/assets/themes/{:cmf_get_admin_style()}/simplebootadminindex.min.css">
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
     <style>
         /*-----------------导航hack--------------------*/
         .nav-list > li.open {
@@ -43,14 +48,13 @@
         .nav-list > li ul.submenu ul.submenu > li a > [class*="fa-"]:first-child {
             left: 30px;
         }
-
         /*----------------导航hack--------------------*/
     </style>
 
     <script>
         //全局变量
         var GV = {
-            HOST: "{$_SERVER['HTTP_HOST']}",
+            HOST: "{$_SERVER['HTTP_HOST']|default=''}",
             ROOT: "__ROOT__/",
             WEB_ROOT: "__WEB_ROOT__/",
             JS_ROOT: "static/js/"
@@ -58,7 +62,11 @@
     </script>
     <php>$submenus=$menus;</php>
 
-    <php>function getsubmenu($submenus){</php>
+    <php>
+        if (!function_exists('getsubmenu')) {
+            function getsubmenu($submenus){
+
+    </php>
     <notempty name="submenus">
         <php>foreach($submenus as $menu){</php>
         <li>
@@ -90,9 +98,15 @@
 
         <php>}</php>
     </notempty>
-    <php>}</php>
+    <php>
+            }
+        }
+    </php>
 
-    <php>function getsubmenu1($submenus){</php>
+    <php>
+        if (!function_exists('getsubmenu1')) {
+            function getsubmenu1($submenus){
+    </php>
     <php>foreach($submenus as $menu){</php>
     <li>
         <php>
@@ -122,9 +136,13 @@
     </li>
 
     <php>}</php>
-    <php>}</php>
+    <php>}
+    }
+    </php>
 
-    <php>function getsubmenu2($submenus){</php>
+    <php>
+        if (!function_exists('getsubmenu2')) {
+            function getsubmenu2($submenus){</php>
     <php>foreach($submenus as $menu){</php>
     <li>
         <php>
@@ -141,7 +159,9 @@
     </li>
 
     <php>}</php>
-    <php>}</php>
+    <php>}
+    }
+    </php>
 
 
     <if condition="APP_DEBUG">
@@ -160,13 +180,12 @@
 <div id="right-tools-wrapper">
     <!--<span id="right_tools_clearcache" title="清除缓存" onclick="javascript:openapp('{:url('admin/Setting/clearcache')}','right_tool_clearcache','清除缓存');"><i class="fa fa-trash-o right_tool_icon"></i></span>-->
     <!--<span id="refresh-wrapper" title="{:lang('REFRESH_CURRENT_PAGE')}"><i-->
-    <!--class="fa fa-refresh right_tool_icon"></i></span>-->
+            <!--class="fa fa-refresh right_tool_icon"></i></span>-->
 </div>
 <div class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="{:url('admin/index/index')}" class="navbar-brand"
-               style="min-width: 200px;text-align: center;">{$site_name}</a>
+            <a href="{:url('admin/index/index')}" class="navbar-brand" style="min-width: 200px;text-align: center;">ThinkCMF</a>
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -190,9 +209,13 @@
             </div>
 
             <ul class="nav navbar-nav navbar-right simplewind-nav">
+                <li class="light-blue" style="border-left:none;display: none;" id="close-all-tabs-btn">
+                    <a id="close-wrapper" href="javascript:void(0);" title="{:lang('CLOSE_TOP_MENU')}" style="color:#fff;font-size: 16px">
+                        <i class="fa fa-times right_tool_icon"></i>
+                    </a>
+                </li>
                 <li class="light-blue" style="border-left:none;">
-                    <a id="refresh-wrapper" href="javacript:void(0);" title="{:lang('REFRESH_CURRENT_PAGE')}"
-                       style="color:#fff;font-size: 16px">
+                    <a id="refresh-wrapper" href="javacript:void(0);" title="{:lang('REFRESH_CURRENT_PAGE')}" style="color:#fff;font-size: 16px">
                         <i class="fa fa-refresh right_tool_icon"></i>
                     </a>
                 </li>
@@ -237,12 +260,70 @@
 <div class="main-container container-fluid">
 
     <div class="sidebar" id="sidebar">
+        <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+            <a class="btn btn-sm btn-warning" href="__ROOT__/"
+               title="{:lang('WEBSITE_HOME_PAGE')}"
+               target="_blank"
+               data-toggle="tooltip">
+                <i class="fa fa-home"></i>
+            </a>
+            <!--
+            <if condition="cmf_auth_check(cmf_get_current_admin_id(),'portal/AdminCategory/index')">
+                <a class="btn btn-sm btn-success" href="javascript:openapp('{:url('portal/AdminCategory/index')}','index_termlist','文章分类管理');" title="文章分类管理">
+                    <i class="fa fa-th"></i>
+                </a>
+            </if>
 
+            <if condition="cmf_auth_check(cmf_get_current_admin_id(),'portal/AdminArticle/index')">
+                <a class="btn btn-sm btn-info" href="javascript:openapp('{:url('portal/AdminArticle/index')}','index_postlist','文章管理');" title="文章管理">
+                    <i class="fa fa-pencil"></i>
+                </a>
+            </if>
+            -->
+
+            <if condition="cmf_auth_check(cmf_get_current_admin_id(),'user/AdminAsset/index')">
+                <a class="btn btn-sm btn-info"
+                   href="javascript:openapp('{:url('user/AdminAsset/index')}','userAdminAssetindex','资源管理',true);"
+                   title="资源管理"
+                   data-toggle="tooltip">
+                    <i class="fa fa-file"></i>
+                </a>
+            </if>
+
+            <if condition="cmf_auth_check(cmf_get_current_admin_id(),'admin/Setting/clearcache')">
+                <a class="btn btn-sm btn-danger"
+                   href="javascript:openapp('{:url('admin/Setting/clearcache')}','index_clearcache','{:lang('ADMIN_SETTING_CLEARCACHE')}',true);"
+                   title="{:lang('ADMIN_SETTING_CLEARCACHE')}"
+                   data-toggle="tooltip">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </if>
+
+            <if condition="cmf_auth_check(cmf_get_current_admin_id(),'admin/RecycleBin/index')">
+                <a class="btn btn-sm btn-danger"
+                   href="javascript:openapp('{:url('admin/RecycleBin/index')}','index_recycle','回收站',true);"
+                   title="回收站"
+                   data-toggle="tooltip">
+                    <i class="fa fa-recycle"></i>
+                </a>
+            </if>
+
+            <if condition="APP_DEBUG">
+                <a class="btn btn-sm btn-default"
+                   href="javascript:openapp('{:url('admin/Menu/index')}','index_menu','{:lang('ADMIN_MENU_INDEX')}',true);"
+                   title="{:lang('ADMIN_MENU_INDEX')}"
+                   data-toggle="tooltip">
+                    <i class="fa fa-list"></i>
+                </a>
+            </if>
+
+        </div>
         <div id="nav-wrapper">
             <ul class="nav nav-list">
                 {:getsubmenu($submenus)}
             </ul>
         </div>
+
     </div>
 
     <div class="main-content">
@@ -266,6 +347,29 @@
         }, function () {
             $(this).removeClass("open");
         });
+
+        var menus= {:$menus_js_var};
+        //读取url参数。尝试执行菜单功能。
+        if(typeof(menus) != "undefined"){
+
+            var tw = window.top;
+            var twa =tw.location.href.split("#");
+            var url = twa[1];
+            var urlTmp = url;
+            if (url !=null ){
+                //去掉/ 去掉_ 全部小写。
+                urlTmp = urlTmp.replace(/[\\/|_|]/g,"");
+                urlTmp = urlTmp.replace(".html","");
+                var menu = menus[urlTmp];
+                if (menu){
+                    openapp(url,menu.id+menu.app,menu.name,true);
+                }
+            }
+        }
+
+
+
+
     });
 
     var ismenumin = $("#sidebar").hasClass("menu-min");
@@ -301,6 +405,9 @@
         $(closest_a_next).slideToggle(150).parent().toggleClass("open");
         return false;
     });
+
+
+
 </script>
 </body>
 </html>

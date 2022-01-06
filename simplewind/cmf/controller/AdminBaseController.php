@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +---------------------------------------------------------------------
@@ -15,16 +15,16 @@ use think\Db;
 class AdminBaseController extends BaseController
 {
 
-    public function _initialize()
+    protected function initialize()
     {
         // 监听admin_init
         hook('admin_init');
-        parent::_initialize();
-        $session_admin_id = session('ADMIN_ID');
-        if (!empty($session_admin_id)) {
-            $user = Db::name('user')->where(['id' => $session_admin_id])->find();
+        parent::initialize();
+        $sessionAdminId = session('ADMIN_ID');
+        if (!empty($sessionAdminId)) {
+            $user = Db::name('user')->where('id', $sessionAdminId)->find();
 
-            if (!$this->checkAccess($session_admin_id)) {
+            if (!$this->checkAccess($sessionAdminId)) {
                 $this->error("您没有访问权限！");
             }
             $this->assign("admin", $user);
@@ -32,16 +32,15 @@ class AdminBaseController extends BaseController
             if ($this->request->isPost()) {
                 $this->error("您还没有登录！", url("admin/public/login"));
             } else {
-                header("Location:" . url("admin/public/login"));
-                exit();
+                return $this->redirect(url("admin/Public/login"));
             }
         }
     }
 
     public function _initializeView()
     {
-        $cmfAdminThemePath    = config('cmf_admin_theme_path');
-        $cmfAdminDefaultTheme = config('cmf_admin_default_theme');
+        $cmfAdminThemePath    = config('template.cmf_admin_theme_path');
+        $cmfAdminDefaultTheme = cmf_get_current_admin_theme();
 
         $themePath = "{$cmfAdminThemePath}{$cmfAdminDefaultTheme}";
 
@@ -67,7 +66,7 @@ class AdminBaseController extends BaseController
         }
 
         $viewReplaceStr = array_merge(config('view_replace_str'), $viewReplaceStr);
-        config('template.view_base', "$themePath/");
+        config('template.view_base', WEB_ROOT . "$themePath/");
         config('view_replace_str', $viewReplaceStr);
     }
 

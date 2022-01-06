@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -18,7 +18,17 @@ use think\Db;
 
 class ArticleController extends HomeBaseController
 {
-    public function index(){
+    /**
+     * 文章详情
+     * @return mixed
+     * @throws \think\Exception
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
+    public function index()
+    {
+
         $portalCategoryModel = new PortalCategoryModel();
         $postService         = new PostService();
 
@@ -26,9 +36,10 @@ class ArticleController extends HomeBaseController
         $categoryId = $this->request->param('cid', 0, 'intval');
         $article    = $postService->publishedArticle($articleId, $categoryId);
 
-        if (empty($articleId)) {
+        if (empty($article)) {
             abort(404, '文章不存在!');
         }
+
 
         $prevArticle = $postService->publishedPrevArticle($articleId, $categoryId);
         $nextArticle = $postService->publishedNextArticle($articleId, $categoryId);
@@ -56,7 +67,7 @@ class ArticleController extends HomeBaseController
             $tplName = empty($category["one_tpl"]) ? $tplName : $category["one_tpl"];
         }
 
-        Db::name('portal_post')->where(['id' => $articleId])->setInc('post_hits');
+        Db::name('portal_post')->where('id', $articleId)->setInc('post_hits');
 
 
         hook('portal_before_assign_article', $article);
@@ -80,7 +91,7 @@ class ArticleController extends HomeBaseController
         $canLike = cmf_check_user_action("posts$articleId", 1);
 
         if ($canLike) {
-            Db::name('portal_post')->where(['id' => $articleId])->setInc('post_like');
+            Db::name('portal_post')->where('id', $articleId)->setInc('post_like');
 
             $this->success("赞好啦！");
         } else {

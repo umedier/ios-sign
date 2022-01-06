@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -60,7 +60,13 @@ class HookController extends AdminBaseController
     {
         $hook        = $this->request->param('hook');
         $pluginModel = new PluginModel();
-        $plugins     = $pluginModel->field('a.*,b.hook,b.plugin,b.list_order,b.status as hook_plugin_status,b.id as hook_plugin_id')->alias('a')->join('__HOOK_PLUGIN__ b', 'a.name = b.plugin')->where('b.hook', $hook)->select();
+        $plugins     = $pluginModel
+            ->field('a.*,b.hook,b.plugin,b.list_order,b.status as hook_plugin_status,b.id as hook_plugin_id')
+            ->alias('a')
+            ->join('__HOOK_PLUGIN__ b', 'a.name = b.plugin')
+            ->where('b.hook', $hook)
+            ->order('b.list_order asc')
+            ->select();
         $this->assign('plugins', $plugins);
         return $this->fetch();
     }
@@ -104,8 +110,15 @@ class HookController extends AdminBaseController
 
         $apps = cmf_scan_dir(APP_PATH . '*', GLOB_ONLYDIR);
 
+        array_push($apps, 'cmf');
+
         foreach ($apps as $app) {
-            $hookConfigFile = APP_PATH . $app . '/hooks.php';
+            if ($app == 'cmf') {
+                $hookConfigFile = cmf_core_path() . 'hooks.php';
+            } else {
+                $hookConfigFile = APP_PATH . $app . '/hooks.php';
+            }
+
             if (file_exists($hookConfigFile)) {
                 $hooksInFile = include $hookConfigFile;
 
@@ -113,16 +126,16 @@ class HookController extends AdminBaseController
 
                     $hook['type'] = empty($hook['type']) ? 2 : $hook['type'];
 
-                    if (!in_array($hook['type'], [2, 3, 4])) {
+                    if (!in_array($hook['type'], [2, 3, 4]) && $app != 'cmf') {
                         $hook['type'] = 2;
                     }
 
-                    $findHook = Db::name('hook')->where(['hook' => $hookName])->count();
+                    $findHook = Db::name('hook')->where('hook', $hookName)->count();
 
                     $hook['app'] = $app;
 
                     if ($findHook > 0) {
-                        Db::name('hook')->where(['hook' => $hookName])->strict(false)->field(true)->update($hook);
+                        Db::name('hook')->where('hook', $hookName)->strict(false)->field(true)->update($hook);
                     } else {
                         $hook['hook'] = $hookName;
                         Db::name('hook')->insert($hook);

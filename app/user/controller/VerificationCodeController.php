@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -11,19 +11,20 @@
 namespace app\user\controller;
 
 use cmf\controller\HomeBaseController;
-use think\Validate;
-use think\Db;
-use AlibabaCloud\Client\AlibabaCloud;
+use think\facade\Validate;
+
 class VerificationCodeController extends HomeBaseController
 {
     public function send()
     {
-        $validate = new Validate([
+        $validate = new \think\Validate([
             'username' => 'require',
+            'captcha'  => 'require',
         ]);
 
         $validate->message([
             'username.require' => '请输入手机号或邮箱!',
+            'captcha.require'  => '图片验证码不能为空',
         ]);
 
         $data = $this->request->param();
@@ -31,20 +32,45 @@ class VerificationCodeController extends HomeBaseController
             $this->error($validate->getError());
         }
 
+        $captchaId = empty($data['captcha_id']) ? '' : $data['captcha_id'];
+        if (!cmf_captcha_check($data['captcha'], $captchaId, false)) {
+            $this->error('图片验证码错误!');
+        }
+
+        $registerCaptcha = session('register_captcha');
+
+        session('register_captcha', $data['captcha']);
+
+        if ($registerCaptcha == $data['captcha']) {
+            cmf_captcha_check($data['captcha'], $captchaId, true);
+            $this->error('请输入新图片验证码!');
+        }
+
         $accountType = '';
 
         if (Validate::is($data['username'], 'email')) {
             $accountType = 'email';
-        } else if (preg_match('/(^(13\d|15[^4\D]|17[0135678]|18\d)\d{8})$/', $data['username'])) {
+        } else if (cmf_check_mobile($data['username'])) {
             $accountType = 'mobile';
         } else {
             $this->error("请输入正确的手机或者邮箱格式!");
         }
 
+        if (isset($data['type']) && $data['type'] == 'register') {
+            if ($accountType == 'email') {
+                $findUserCount = db('user')->where('user_email', $data['username'])->count();
+            } else if ($accountType == 'mobile') {
+                $findUserCount = db('user')->where('mobile', $data['username'])->count();
+            }
+
+            if ($findUserCount > 0) {
+                $this->error('账号已注册！');
+            }
+        }
+
         //TODO 限制 每个ip 的发送次数
 
         $code = cmf_get_verification_code($data['username']);
-       // print_r($data['username']);exit;
         if (empty($code)) {
             $this->error("验证码发送过多,请明天再试!");
         }
@@ -69,118 +95,31 @@ class VerificationCodeController extends HomeBaseController
             }
 
         } else if ($accountType == 'mobile') {
-            $config = get_config();
-            if($config['system_type']==1){
-                $gets = $this->alicode($data['username'],$code);
-                if($gets['Message']=='OK'){
-                    cmf_verification_code_log($data['username'], $code);
-                    $rs['code']=0;
-                    $rs['msg']='验证码已经发送成功!';
-                }else{
-                    $rs['code']=1002;
-                    $rs['msg']='验证码发送失败';
-                }
-            }else{
-                //互亿无线
-                $target = "http://106.ihuyi.cn/webservice/sms.php?method=Submit";
-                $key=Db::name('config')->where("code='system_sms_key'")->field("val")->find();
-                $key_id=Db::name('config')->where("code='system_sms_id'")->field("val")->find();
 
-                $post_data = "account=".$key['val']."&password=".$key_id['val']."&mobile=".$data['username']."&content=".rawurlencode("您的验证码是：".$code."。请不要把验证码泄露给其他人。");
-                //密码可以使用明文密码或使用32位MD5加密
-                $gets = $this->xml_to_array($this->Post($post_data, $target));
+            $param  = ['mobile' => $data['username'], 'code' => $code];
+            $result = hook_one("send_mobile_verification_code", $param);
 
-
-                if($gets['SubmitResult']['code']==2){
-                    cmf_verification_code_log($data['username'], $code);
-                    $rs['code']=0;
-                    $rs['msg']='验证码已经发送成功!';
-                }else{
-                    $rs['code']=1002;
-                    $rs['msg']=$gets['SubmitResult']['msg'];
-                }
+            if ($result !== false && !empty($result['error'])) {
+                $this->error($result['message']);
             }
-            return $rs;
 
-        }
-
-
-    }
-    public function Post($curlPost,$url){
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_HEADER, false);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_NOBODY, true);
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $curlPost);
-        $return_str = curl_exec($curl);
-        curl_close($curl);
-        return $return_str;
-    }
-
-    public function xml_to_array($xml){
-        $reg = "/<(\w+)[^>]*>([\\x00-\\xFF]*)<\\/\\1>/";
-        if(preg_match_all($reg, $xml, $matches)){
-            $count = count($matches[0]);
-            for($i = 0; $i < $count; $i++){
-                $subxml= $matches[2][$i];
-                $key = $matches[1][$i];
-                if(preg_match( $reg, $subxml )){
-                    $arr[$key] = $this->xml_to_array( $subxml );
-                }else{
-                    $arr[$key] = $subxml;
-                }
+            if ($result === false) {
+                $this->error('未安装验证码发送插件,请联系管理员!');
             }
+
+            $expireTime = empty($result['expire_time']) ? 0 : $result['expire_time'];
+
+            cmf_verification_code_log($data['username'], $code, $expireTime);
+
+            if (!empty($result['message'])) {
+                $this->success($result['message']);
+            } else {
+                $this->success('验证码已经发送成功!');
+            }
+
         }
-        return $arr;
+
+
     }
 
-    public function al(){
-        $a = $this->alicode(18301467476,1111);
-        dump($a['Message']);
-    }
-    public function alicode($mobile,$code){
-        
-        require_once(PLUGINS_PATH . 'alicloud/autoload.php');
-
-        // Download：https://github.com/aliyun/openapi-sdk-php
-        // Usage：https://github.com/aliyun/openapi-sdk-php/blob/master/README.md
-        $config = get_config();
-        
-        $accessKeyId = $config['aliyun_access_key_id'];//'LTAI4FfaRAyJbhk1iVpSVyeD';
-        $accessSecret = $config['aliyun_access_secret'];//'zzSnqGM6ky43ReiRTPp5ZDcAfe41fb';
-        //$PhoneNumbers = ;
-        $SignName = $config['aliyun_sms_sign'];
-        $TemplateCode = $config['aliyun_sms_tpl_id'];
-        //$TemplateParam = ;
-        AlibabaCloud::accessKeyClient($accessKeyId, $accessSecret)
-                                ->regionId('cn-hangzhou')
-                                ->asDefaultClient();
-
-        try {
-            $result = AlibabaCloud::rpc()
-                                  ->product('Dysmsapi')
-                                  // ->scheme('https') // https | http
-                                  ->version('2017-05-25')
-                                  ->action('SendSms')
-                                  ->method('POST')
-                                  ->host('dysmsapi.aliyuncs.com')
-                                  ->options([
-                                                'query' => [
-                                                  'RegionId' => "cn-hangzhou",
-                                                  'PhoneNumbers' => "$mobile",
-                                                  'SignName' => "$SignName",
-                                                  'TemplateCode' => "$TemplateCode",
-                                                  'TemplateParam' => "{\"code\":$code}",
-                                                ],
-                                            ])
-                                  ->request();
-            return $result->toArray();
-        } catch (ClientException $e) {
-            echo $e->getErrorMessage() . PHP_EOL;
-        } catch (ServerException $e) {
-            echo $e->getErrorMessage() . PHP_EOL;
-        }
-    }
 }

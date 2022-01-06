@@ -7,6 +7,7 @@ namespace app\admin\controller;
 use cmf\controller\AdminBaseController;
 use think\Db;
 use MingYuanYun\AppStore\Client;
+use think\Log;
 
 class CertificateController extends AdminBaseController
 {
@@ -294,9 +295,10 @@ class CertificateController extends AdminBaseController
         $output		= [];
         $return_var = '';
         $p12_name   = $name.'.p12';
-        
-        exec('openssl x509 -in '.$app_path.$name.'.cer -inform DER -outform PEM -out '.$app_path.$name.'.pem 2>&1',$output,$return_var);
-        exec('openssl pkcs12 -export -inkey '.$key_path.'ios.key -in '.$app_path.$name.'.pem -out '.$app_path.$p12_name.' -passout pass:'.$p12_pwd,$output,$return_var);
+        $x509 = 'openssl x509 -in '.$app_path.$name.'.cer -inform DER -outform PEM -out '.$app_path.$name.'.pem 2>&1';
+        $pkcs12 = 'openssl pkcs12 -export -inkey '.$key_path.'ios.key -in '.$app_path.$name.'.pem -out '.$app_path.$p12_name.' -passout pass:'.$p12_pwd;
+        exec($x509,$output,$return_var);
+        exec($pkcs12,$output,$return_var);
         
         $data = [
             'type'	  => 1,
@@ -338,10 +340,10 @@ class CertificateController extends AdminBaseController
         $path = $path[0];
         $cer = $path.'.cer';
         $pem = $path.'.pem';
-        unlink(APP_ROOT.$p12);
-        unlink(APP_ROOT.$p8);
-        unlink(APP_ROOT.$cer);
-        unlink(APP_ROOT.$pem);
+        @unlink(APP_ROOT.$p12);
+        @unlink(APP_ROOT.$p8);
+        @unlink(APP_ROOT.$cer);
+        @unlink(APP_ROOT.$pem);
         db('ios_certificate')->where('id',$id)->delete();
         $this->success('删除成功！');
     }

@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -30,6 +30,12 @@ class AdminAssetController extends AdminBaseController
      */
     public function index()
     {
+        $content = hook_one('user_admin_asset_index_view');
+
+        if (!empty($content)) {
+            return $content;
+        }
+
         $join   = [
             ['__USER__ u', 'a.user_id = u.id']
         ];

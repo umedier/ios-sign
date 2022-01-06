@@ -25,8 +25,15 @@
 
 <div class="wrap " style="padding:5px;">
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#wrapper" data-toggle="tab">上传文件</a></li>
-        <li class=""><a href="#B" data-toggle="tab">网络文件</a></li>
+        <li class="{$tab=='local'?'active':''}"><a href="#wrapper" data-toggle="tab">上传文件</a></li>
+        <li class="{$tab=='url'?'active':''}"><a href="#B" data-toggle="tab">网络文件</a></li>
+        <notempty name="has_cloud_storage">
+            <php>
+                $url_params=input('param.');
+                $url_params['tab']='cloud';
+            </php>
+            <li><a href="{:url('user/Asset/webuploader',$url_params)}">上传到云存储</a></li>
+        </notempty>
         <!--<li class=""><a href="#explorer" data-toggle="tab">文件管理</a></li>-->
     </ul>
     <div class="tabbable">
@@ -60,7 +67,7 @@
                 <div class="bk3"></div>
                 <input type="hidden" id="img_name" value="">
                 <input type="text" id="info" name="info[filename]" class="input form-control" value=""
-                       style="width:600px;" placeholder="http://">
+                       placeholder="http://">
             </div>
             <div class="tab-pane" id="explorer">
                 <div class="bk3"></div>
@@ -155,7 +162,6 @@
                     var data    = new Image();
                     var support = true;
                     data.onload = data.onerror = function () {
-
                         if (this.width != 1 || this.height != 1) {
                             support = false;
                         }
@@ -396,7 +402,6 @@
 
                     // 成功
                     if (cur === 'error' || cur === 'invalid') {
-                        console.log(file.statusText);
                         showError(file.statusText);
                         percentages[file.id][1] = 1;
                     } else if (cur === 'interrupt') {
@@ -664,8 +669,6 @@
             });
 
             uploader.on("uploadAccept", function (object, ret) {
-                console.log(object);
-                console.log(ret);
                 if (ret.code == 0) {
                     fileErrorMsg[object.file.id] = ret.msg;
                     return false;
@@ -676,8 +679,6 @@
             });
 
             uploader.on('uploadError', function (file, reason) {
-                console.log(file.id);
-                console.log(reason);
                 if (reason == 'server') {
                     $('#' + file.id).find('p.error').text(fileErrorMsg[file.id]);
                 }

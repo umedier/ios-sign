@@ -30,7 +30,7 @@
         UEDITOR_HOME_URL: URL
 
         // 服务器统一请求接口路径
-        , serverUrl: URL + "../../../user/Ueditor/upload"//"../../../index.php?g=Asset&m=Ueditor&a=upload"
+        , serverUrl: GV.ROOT + "user/Ueditor/upload"//"../../../index.php?g=Asset&m=Ueditor&a=upload"
 
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的从新定义
         , toolbars: [[
@@ -410,7 +410,7 @@
 			hr:     ['class', 'style', 'id'],
 			i:      ['class', 'style', 'id'],
 			iframe: ['src', 'width', 'height', 'class', 'id', 'style', 'frameborder', 'name'],
-			img:    ['src', 'alt', 'title', 'width', 'height', 'id', '_src', 'loadingclass', '_url', 'data-latex'],
+			img:    ['src', 'alt', 'title', 'width', 'height', 'id', '_src', 'loadingclass', 'class', 'style','_url', 'data-latex'],
 			ins:    ['datetime', 'class', 'style', 'id'],
 			li:     ['class', 'style', 'id'],
 			mark:   [],
@@ -436,7 +436,7 @@
 			tt:     ['class', 'style', 'id'],
 			u:      [],
 			ul:     ['class', 'style', 'id'],
-			video:  ['autoplay', 'controls', 'loop', 'preload', 'src', 'height', 'width', 'class', 'style', 'id']
+			video:  ['autoplay', 'controls', 'loop', 'preload', 'src', 'height', 'width', 'class', 'style', 'id', 'poster']
 		}
     };
 

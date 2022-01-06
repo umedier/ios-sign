@@ -63,7 +63,7 @@
     var ajaxForm_list = $('form.js-ajax-form');
     if (ajaxForm_list.length) {
         Wind.css('artDialog');
-        Wind.use('ajaxForm', 'artDialog', 'noty3', 'validate', function () {
+        Wind.use('ajaxForm', 'artDialog', 'noty', 'validate', function () {
             var $btn;
             $('button.js-ajax-submit').on('click', function (e) {
                 var btn = $(this), form = btn.parents('form.js-ajax-form');
@@ -181,7 +181,7 @@
                                 var text = $btn.text();
 
                                 //按钮文案、状态修改
-                                $btn.text(text + '中...').prop('disabled', true).addClass('disabled');
+                                $btn.text(text + '...').prop('disabled', true).addClass('disabled');
                             },
                             success: function (data, statusText, xhr, $form) {
 
@@ -200,27 +200,35 @@
                                 var text = $btn.text();
 
                                 //按钮文案、状态修改
-                                $btn.removeClass('disabled').prop('disabled', false).text(text.replace('中...', '')).parent().find('span').remove();
+                                $btn.removeClass('disabled').prop('disabled', false).text(text.replace('...', '')).parent().find('span').remove();
                                 if (data.code == 1) {
                                     if ($btn.data('success')) {
                                         var successCallback = $btn.data('success');
                                         window[successCallback](data, statusText, xhr, $form);
                                         return;
                                     }
-                                    new Noty({
+                                    noty({
                                         text: data.msg,
                                         type: 'success',
                                         layout: 'topCenter',
                                         modal: true,
-                                        animation: {
-                                            open: 'animated bounceInDown', // Animate.css class names
-                                            close: 'animated bounceOutUp', // Animate.css class names
-                                        },
-                                        timeout: 1,
-                                        callbacks: {
+                                        // animation: {
+                                        //     open: 'animated bounceInDown', // Animate.css class names
+                                        //     close: 'animated bounceOutUp', // Animate.css class names
+                                        // },
+                                        timeout: 800,
+                                        callback: {
                                             afterClose: function () {
                                                 if ($btn.data('refresh') == undefined || $btn.data('refresh')) {
-                                                    _refresh();
+
+                                                    if ($btn.data('success_refresh')) {
+                                                        var successRefreshCallback = $btn.data('success_refresh');
+                                                        window[successRefreshCallback](data, statusText, xhr, $form);
+                                                        return;
+                                                    } else {
+                                                        _refresh();
+                                                    }
+
                                                 }
                                             }
                                         }
@@ -238,17 +246,17 @@
                                     //$('<span class="tips_error">' + data.msg + '</span>').appendTo($btn.parent()).fadeIn('fast');
                                     $btn.removeProp('disabled').removeClass('disabled');
 
-                                    new Noty({
+                                    noty({
                                         text: data.msg,
                                         type: 'error',
                                         layout: 'topCenter',
                                         modal: true,
-                                        animation: {
-                                            open: 'animated bounceInDown', // Animate.css class names
-                                            close: 'animated bounceOutUp', // Animate.css class names
-                                        },
-                                        timeout: 1,
-                                        callbacks: {
+                                        // animation: {
+                                        //     open: 'animated bounceInDown', // Animate.css class names
+                                        //     close: 'animated bounceOutUp', // Animate.css class names
+                                        // },
+                                        timeout: 800,
+                                        callback: {
                                             afterClose: function () {
                                                 _refresh();
                                             }
@@ -302,7 +310,7 @@
     //所有的删除操作，删除数据后刷新页面
     if ($('a.js-ajax-delete').length) {
         Wind.css('artDialog');
-        Wind.use('artDialog', 'noty3', function () {
+        Wind.use('artDialog', 'noty', function () {
             $('.js-ajax-delete').on('click', function (e) {
                 e.preventDefault();
                 var $_this  = this,
@@ -325,17 +333,17 @@
                     ok: function () {
                         $.getJSON(href).done(function (data) {
                             if (data.code == '1') {
-                                new Noty({
+                                noty({
                                     text: data.msg,
                                     type: 'success',
                                     layout: 'topCenter',
                                     modal: true,
-                                    animation: {
-                                        open: 'animated bounceInDown', // Animate.css class names
-                                        close: 'animated bounceOutUp', // Animate.css class names
-                                    },
-                                    timeout: 1,
-                                    callbacks: {
+                                    // animation: {
+                                    //     open: 'animated bounceInDown', // Animate.css class names
+                                    //     close: 'animated bounceOutUp', // Animate.css class names
+                                    // },
+                                    timeout: 800,
+                                    callback: {
                                         afterClose: function () {
                                             if (refresh == undefined || refresh) {
                                                 if (data.url) {
@@ -374,7 +382,7 @@
 
 
     if ($('a.js-ajax-dialog-btn').length) {
-        Wind.use('artDialog', 'noty3', function () {
+        Wind.use('artDialog', 'noty', function () {
             $('.js-ajax-dialog-btn').on('click', function (e) {
                 e.preventDefault();
                 var $_this  = this,
@@ -402,17 +410,17 @@
                             type: 'post',
                             success: function (data) {
                                 if (data.code == 1) {
-                                    new Noty({
+                                    noty({
                                         text: data.msg,
                                         type: 'success',
                                         layout: 'topCenter',
                                         modal: true,
-                                        animation: {
-                                            open: 'animated bounceInDown', // Animate.css class names
-                                            close: 'animated bounceOutUp', // Animate.css class names
-                                        },
-                                        timeout: 1,
-                                        callbacks: {
+                                        // animation: {
+                                        //     open: 'animated bounceInDown', // Animate.css class names
+                                        //     close: 'animated bounceOutUp', // Animate.css class names
+                                        // },
+                                        timeout: 800,
+                                        callback: {
                                             afterClose: function () {
                                                 if (refresh == undefined || refresh) {
                                                     if (data.url) {
@@ -449,6 +457,60 @@
         });
     }
 
+    if ($('a.js-ajax-btn').length) {
+        Wind.use('noty', function () {
+            $('.js-ajax-btn').on('click', function (e) {
+                e.preventDefault();
+                var $_this = this,
+                    $this  = $($_this),
+                    href   = $this.data('href'),
+                    msg    = $this.data('msg');
+                refresh    = $this.data('refresh');
+                href       = href ? href : $this.attr('href');
+                refresh    = refresh == undefined ? 1 : refresh;
+
+
+                $.getJSON(href).done(function (data) {
+                    if (data.code == 1) {
+                        noty({
+                            text: data.msg,
+                            type: 'success',
+                            layout: 'center',
+                            callback: {
+                                afterClose: function () {
+                                    if (data.url) {
+                                        location.href = data.url;
+                                        return;
+                                    }
+
+                                    if (refresh || refresh == undefined) {
+                                        reloadPage(window);
+                                    }
+                                }
+                            }
+                        });
+                    } else if (data.code == 0) {
+                        noty({
+                            text: data.msg,
+                            type: 'error',
+                            layout: 'center',
+                            callback: {
+                                afterClose: function () {
+                                    if (data.url) {
+                                        location.href = data.url;
+                                    }
+                                }
+                            }
+                        });
+                    }
+                });
+
+            });
+
+        });
+    }
+
+
     /*复选框全选(支持多个，纵横双控全选)。
      *实例：版块编辑-权限相关（双控），验证机制-验证策略（单控）
      *说明：
@@ -469,7 +531,9 @@
             //分组各纵横项
             var check_all_direction = check_all.data('direction');
             check_items             = $('input.js-check[data-' + check_all_direction + 'id="' + check_all.data('checklist') + '"]').not(":disabled");
-
+            if($('.js-check-all').is(':checked')) {
+                check_items.prop('checked', true);
+            }
             //点击全选框
             check_all.change(function (e) {
                 var check_wrap = check_all.parents('.js-check-wrap'); //当前操作区域所有复选框的父标签（重用考虑）
@@ -542,6 +606,22 @@
                 startView: 'decade',
                 minView: 'decade',
                 format: 'yyyy',
+                autoclose: true
+            });
+        });
+    }
+
+    // bootstrap年选择器
+    var bootstrapYearInput = $("input.js-bootstrap-year")
+    if (bootstrapYearInput.length) {
+        Wind.css('bootstrapDatetimePicker');
+        Wind.use('bootstrapDatetimePicker', function () {
+            bootstrapYearInput.datetimepicker({
+                language: 'zh-CN',
+                format: 'yyyy',
+                minView: 'decade',
+                startView: 'decade',
+                todayBtn: 1,
                 autoclose: true
             });
         });
@@ -777,7 +857,6 @@ function openMapDialog(url, title, options, callback) {
  * @param app  应用名，CMF的应用名
  */
 function openUploadDialog(dialog_title, callback, extra_params, multi, filetype, app) {
- //   print_r(filetype);exit;
     Wind.css('artDialog');
     multi      = multi ? 1 : 0;
     filetype   = filetype ? filetype : 'image';
@@ -820,10 +899,13 @@ function openUploadDialog(dialog_title, callback, extra_params, multi, filetype,
  * @param app  应用名,CMF的应用名
  */
 function uploadOne(dialog_title, input_selector, filetype, extra_params, app) {
+    filetype = filetype ? filetype : 'file';
     openUploadDialog(dialog_title, function (dialog, files) {
         $(input_selector).val(files[0].filepath);
         $(input_selector + '-preview').attr('href', files[0].preview_url);
+
         $(input_selector + '-name').val(files[0].name);
+        $(input_selector + '-name-text').text(files[0].name);
     }, extra_params, 0, filetype, app);
 }
 
@@ -838,7 +920,10 @@ function uploadOneImage(dialog_title, input_selector, extra_params, app) {
     openUploadDialog(dialog_title, function (dialog, files) {
         $(input_selector).val(files[0].filepath);
         $(input_selector + '-preview').attr('src', files[0].preview_url);
+
         $(input_selector + '-name').val(files[0].name);
+        $(input_selector + '-name-text').text(files[0].name);
+
     }, extra_params, 0, 'image', app);
 }
 

@@ -33,7 +33,6 @@
 </div>
 <script type="text/javascript">
     var map = new BMap.Map("container"),marker,point,styleStr;
-
     map.enableScrollWheelZoom();
     map.enableContinuousZoom();
     function doSearch(){
@@ -65,7 +64,6 @@
     //获得参数
     function getPars(str,par){
         var reg = new RegExp(par+"=((\\d+|[.,])*)","g");
-
         return reg.exec(str)[1];
     }
     function init(){

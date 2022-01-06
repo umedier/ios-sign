@@ -64,7 +64,7 @@ function set_thead(thead){
 function set_tbody(tbody,thead){
 	var tbody_str="<tbody>";
 	if(tbody.length==0){
-		tbody_str+='<tr class=""><td colspan="6"><img style="width: 500px;max-width: 500px" src="https://img.cengxuyuan.com/wechat/abnor_no_data.png?x-oss-process=style/default"><p style="font-size: 16px;margin-top: 20px;margin-bottom: 20px">应用列表未空</p></td></tr>';
+		tbody_str+='<tr class=""><td colspan="6"><img style="width: 500px;max-width: 500px" src="/themes/admin_simpleboot3/public/assets/images/logo-18.png"><p style="font-size: 16px;margin-top: 20px;margin-bottom: 20px">应用列表未空</p></td></tr>';
 	}else{
 		for(var i=0;i<tbody.length;i++){
 			tbody_str+='<tr>';

@@ -116,8 +116,7 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
             $plistUrl = 'http://'.$_SERVER['HTTP_HOST'] ."/upload/plist/" . md5($resultAPP['url']) . ".plist";
             $title    = false;
         }
-		$resultAPP['er_logo'] = 'https://app.ios999.com/'. $resultAPP['er_logo'];
-		//$resultAPP['er_logo'] = 'https://' . $_SERVER['HTTP_HOST'] .'/'. $resultAPP['er_logo'];
+		$resultAPP['er_logo'] = 'https://' . $_SERVER['HTTP_HOST'] .'/'. $resultAPP['er_logo'];
 		if($resultAPP['andriod_url'] && strpos($resultAPP['andriod_url'],'http') === false && strpos($resultAPP['andriod_url'],'https') === false){
 			 $resultAPP['andriod_url'] = 'http://'.upd_tok_config()['domain'].'/'.$resultAPP['andriod_url'];
         }
@@ -364,15 +363,26 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
 
         //生成证书文件
         $absolute_path = config('absolute_path');
-
-        exec('openssl pkcs12 -in '.$absolute_path.'public'.$certificate_record['p12_file'].' -out '.$absolute_path.'public/spcer/'.$certificate_record['id'].'certificate.pem -clcerts -nokeys -password pass:'.$certificate_record['p12_pwd']);
-        exec('openssl pkcs12 -in '.$absolute_path.'public'.$certificate_record['p12_file'].' -out '.$absolute_path.'public/spcer/'.$certificate_record['id'].'key.pem -nocerts -nodes -password pass:'.$certificate_record['p12_pwd']);
+        $output		= [];
+        $return_var = '';
+        $pkcs121 = 'openssl pkcs12 -in '.$absolute_path.'public'.$certificate_record['p12_file'].' -out '.$absolute_path.'public/spcer/'.$certificate_record['id'].'certificate.pem -clcerts -nokeys -password pass:'.$certificate_record['p12_pwd'];
+        $pkcs122 = 'openssl pkcs12 -in '.$absolute_path.'public'.$certificate_record['p12_file'].' -out '.$absolute_path.'public/spcer/'.$certificate_record['id'].'key.pem -nocerts -nodes -password pass:'.$certificate_record['p12_pwd'];
+        exec($pkcs121,$output,$return_var);
+        exec($pkcs122,$output,$return_var);
+        
 
         //生成签名后的包
         $files = $absolute_path."public/ios_movileprovision/$udid.mobileprovision";
         $ipa   = $absolute_path."public/".$app['url'];
+        Log::record("生成签名后的包", "debug");
+        Log::record($files, "debug");
+        Log::record($ipa, "debug");
         // exec('export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin;isign -c '.$absolute_path.'public/spcer/'.$certificate_record['id'].'certificate.pem -k '.$absolute_path.'public/spcer/'.$certificate_record['id'].'key.pem -p "'.$files.'"  -o '.$absolute_path.'public/upload/super_signature_ipa/'.$udid.md5($app['bundle']).$app['er_logo'].'.ipa "'.$ipa.'" 2>&1',$out,$status);
-		exec('export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/home/zsign;zsign -c '.$absolute_path.'public/spcer/'.$certificate_record['id'].'certificate.pem -k '.$absolute_path.'public/spcer/'.$certificate_record['id'].'key.pem -m "'.$files.'"  -o '.$absolute_path.'public/upload/super_signature_ipa/'.$udid.md5($app['bundle']).$app['er_logo'].'.ipa -z 9 '.$ipa.' 2>&1',$out,$status);
+        Log::record("export", "debug");
+        $exc = 'export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/home/zsign;zsign -c '.$absolute_path.'public/spcer/'.$certificate_record['id'].'certificate.pem -k '.$absolute_path.'public/spcer/'.$certificate_record['id'].'key.pem -m "'.$files.'"  -o '.$absolute_path.'public/upload/super_signature_ipa/'.$udid.md5($app['bundle']).$app['er_logo'].'.ipa -z 9 '.$ipa.' 2>&1';
+        Log::record($exc, "debug");
+        exec($exc,$out,$status);
+        Log::record($status, "debug");
         // 存储错误日志
         file_put_contents('./sign_error_log/'.$udid.$app['bundle'].time().'.txt',$out);
 
@@ -391,7 +401,7 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
             'udid'    => $udid,
             'addtime' => time(),
         ]);
-
+        Log::record("sup_id --- " . $sup_id, "debug");
         //TODO 删除排队下载的记录 暂时没用
         $downloading = Db::name('downloading')->select()->toArray();
 
@@ -399,7 +409,9 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
             Db::name('downloading')->delete($downloading[0]['id']);
         }
 
-        $this->redirect(get_site_url() . "/user/install/ios_install?sup_id=" . $sup_id.'&c_id='.$certificate_record['id'].'&version='.$ios_version, 301);
+        $red = get_site_url() . "/user/install/ios_install?sup_id=" . $sup_id.'&c_id='.$certificate_record['id'].'&version='.$ios_version;
+        Log::record("url --- " . $red, "debug");
+        $this->redirect($red, 301);
     }
 
     //超级签名下载
@@ -411,7 +423,7 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
             ->join('user_posted posted','posted.id=ipa.appid')
             ->where('ipa.id',$sup_id)
             ->find();
-
+        $download_url = 'https://' . $_SERVER['HTTP_HOST'] . '/' . $ipaResult["supurl"];
         if (!$ipaResult) {
             $this->error('该应用不存在或已过期...');
             exit();
@@ -453,7 +465,7 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
 	                                    <key>kind</key>
 	                                    <string>software-package</string>
 	                                    <key>url</key>
-	                                    <string>' . $ipaResult["supurl"] . '</string>
+	                                    <string>' . $download_url . '</string>
 	                                </dict>
 	                            </array>
 	                            <key>metadata</key>
@@ -481,7 +493,7 @@ if ($_SERVER['HTTP_HOST'] == 'app.ios999.com'){
 	        }
         }
 
-        $this->assign('supurl',$ipaResult["supurl"]);
+        $this->assign('supurl',$download_url);
         $this->assign('result',$ipaResult);
         $this->assign('ios', 'https://' . $_SERVER['HTTP_HOST'] . "/upload/udidplist/" . $ipaResult['udid'].'_'.md5($sup_id) . ".plist");
 

@@ -107,7 +107,7 @@
             $("#weixin-tip").css("background-color", "rgba(0,0,0,0.8)");
 
             $("#weixin-tip").show();
-              
+
               $("html").append("<body> <div class='weixin-tip' id='weixin-tip'> <p> <img src='/themes/simpleboot3/public/static/image/qq97013266.png' alt='在浏览器打开'/></p></div></body>");
             }
     	})
@@ -133,7 +133,7 @@
 								<else/>
 									<span data-id="{$result.id}" data-url="/user/install/getudid_mobileconfig" class="install-btn j-ios-install">
 									    免费安装
-									</span>	
+									</span>
 								</if>
 	                        </div>
 	                    </div>
@@ -342,7 +342,7 @@
 	                    <img src="{$result.img}" alt="" class="icon">
 	                    <p>{$result.name}</p>
 	                </div>
-	
+
 	                <div class="pc-platform__code">
 	                    <div class="j-qr-code" date-url="{$result.er_logo}"></div>
 	                    <p class="code-title">使用相机扫码下载</p>
@@ -375,12 +375,8 @@
         //苹果下载  mobileconfig文件
         $('.j-ios-install').click(function(){
             var appId = $(this).data('id');
-            
+			// window.location.href = $(this).data('url');
 			window.location.href = '/ios_describe/'+appId+'.mobileconfig';
-
-            setTimeout(function(){
-                window.location.href = 'https://app.ios999.com/mobileprovision/embedded1.mobileprovision';
-        	},1000)
 
         })
     });

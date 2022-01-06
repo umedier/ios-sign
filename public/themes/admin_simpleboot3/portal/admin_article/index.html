@@ -6,7 +6,7 @@
         <li class="active"><a href="javascript:;">所有文章</a></li>
         <li><a href="{:url('AdminArticle/add')}">添加文章</a></li>
     </ul>
-    <form class="well form-inline margin-top-20" method="post" action="{:url('AdminArticle/index')}">
+    <form class="well form-inline margin-top-20" method="get" action="{:url('AdminArticle/index')}">
         分类:
         <select class="form-control" name="category" style="width: 140px;">
             <option value='0'>全部</option>
@@ -79,10 +79,10 @@
                 <th width="65">点击量</th>
                 <th width="65">评论量</th>
                 <th width="160">关键字/来源<br>摘要/缩略图</th>
-                <th width="130">更新时间</th>
-                <th width="130">发布时间</th>
+                <th width="160">更新时间</th>
+                <th width="160">发布时间</th>
                 <th width="70">状态</th>
-                <th width="90">操作</th>
+                <th width="95">操作</th>
             </tr>
             </thead>
             <foreach name="articles" item="vo">
@@ -109,12 +109,10 @@
                     </td>
                     <td>
                         <foreach name="vo.categories" item="voo">
-                            <span class="label label-default">
-                                <a href="{:cmf_url('portal/List/index',array('id'=>$voo['id']))}"
-                                   style="color: #fff;"
+                                <a class="label label-default"
+                                   href="{:cmf_url('portal/List/index',array('id'=>$voo['id']))}"
                                    target="_blank"
                                 >{$voo.name}</a>
-                            </span>&nbsp;
                         </foreach>
                     </td>
                     <td>{$vo.user_nickname}</td>
@@ -148,6 +146,8 @@
                             <a href="javascript:parent.imagePreviewDialog('{:cmf_get_image_preview_url($vo.more.thumbnail)}');">
                                 <i class="fa fa-photo fa-fw"></i>
                             </a>
+                            <else/>
+                            <i class="fa fa-close fa-fw"></i>
                         </notempty>
                     </td>
                     <td>
@@ -182,8 +182,9 @@
                         </notempty>
                     </td>
                     <td>
-                        <a href="{:url('AdminArticle/edit',array('id'=>$vo['id']))}">{:lang('EDIT')}</a>
-                        <a href="{:url('AdminArticle/delete',array('id'=>$vo['id']))}" class="js-ajax-delete">{:lang('DELETE')}</a>
+                        <a class="btn btn-xs btn-primary" href="{:url('AdminArticle/edit',array('id'=>$vo['id']))}">{:lang('EDIT')}</a>
+                        <a class="btn btn-xs btn-danger js-ajax-delete"
+                           href="{:url('AdminArticle/delete',array('id'=>$vo['id']))}">{:lang('DELETE')}</a>
                     </td>
                 </tr>
             </foreach>
@@ -201,8 +202,8 @@
                 <th width="65">点击量</th>
                 <th width="65">评论量</th>
                 <th width="160">关键字/来源<br>摘要/缩略图</th>
-                <th width="130">更新时间</th>
-                <th width="130">发布时间</th>
+                <th width="160">更新时间</th>
+                <th width="160">发布时间</th>
                 <th width="70">状态</th>
                 <th width="90">操作</th>
             </tr>

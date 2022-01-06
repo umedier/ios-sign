@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -10,6 +10,7 @@
 // +----------------------------------------------------------------------
 namespace app\admin\controller;
 
+use app\admin\model\RecycleBinModel;
 use app\admin\model\RouteModel;
 use cmf\controller\AdminBaseController;
 use think\Db;
@@ -29,9 +30,16 @@ class RecycleBinController extends AdminBaseController
      *     'param'  => ''
      * )
      */
-    function index()
+    public function index()
     {
-        $list = Db::name('recycleBin')->order('create_time desc')->paginate(10);
+        $content = hook_one('admin_recycle_bin_index_view');
+
+        if (!empty($content)) {
+            return $content;
+        }
+
+        $recycleBinModel = new RecycleBinModel();
+        $list            = $recycleBinModel->order('create_time desc')->paginate(10);
         // 获取分页显示
         $page = $list->render();
         $this->assign('page', $page);
@@ -52,22 +60,22 @@ class RecycleBinController extends AdminBaseController
      *     'param'  => ''
      * )
      */
-    function restore()
+    public function restore()
     {
 
-        $id     = $this->request->param('id');
-        $result = Db::name('recycleBin')->where(['id' => $id])->find();
+        $id     = $this->request->param('id', 0, 'intval');
+        $result = Db::name('recycleBin')->where('id', $id)->find();
 
         $tableName = explode('#', $result['table_name']);
         $tableName = $tableName[0];
         //还原资源
         if ($result) {
             $res = Db::name($tableName)
-                ->where(['id' => $result['object_id']])
+                ->where('id', $result['object_id'])
                 ->update(['delete_time' => '0']);
-            if ($tableName =='portal_post'){
-                Db::name('portal_category_post')->where('post_id',$result['object_id'])->update(['status'=>1]);
-                Db::name('portal_tag_post')->where('post_id',$result['object_id'])->update(['status'=>1]);
+            if ($tableName == 'portal_post') {
+                Db::name('portal_category_post')->where('post_id', $result['object_id'])->update(['status' => 1]);
+                Db::name('portal_tag_post')->where('post_id', $result['object_id'])->update(['status' => 1]);
             }
 
             if ($res) {
@@ -92,29 +100,29 @@ class RecycleBinController extends AdminBaseController
      *     'param'  => ''
      * )
      */
-    function delete()
+    public function delete()
     {
         $id     = $this->request->param('id');
-        $result = Db::name('recycleBin')->where(['id' => $id])->find();
+        $result = Db::name('recycleBin')->where('id', $id)->find();
         //删除资源
         if ($result) {
 
             //页面没有单独的表.
-            if($result['table_name'] === 'portal_post#page'){
+            if ($result['table_name'] === 'portal_post#page') {
                 $re = Db::name('portal_post')->where('id', $result['object_id'])->delete();
                 //消除路由
                 $routeModel = new RouteModel();
                 $routeModel->setRoute('', 'portal/Page/index', ['id' => $result['object_id']], 2, 5000);
                 $routeModel->getRoutes(true);
-            }else{
+            } else {
                 $re = Db::name($result['table_name'])->where('id', $result['object_id'])->delete();
             }
 
             if ($re) {
                 $res = Db::name('recycleBin')->where('id', $id)->delete();
-                if($result['table_name'] === 'portal_post'){
-                    Db::name('portal_category_post')->where('post_id',$result['object_id'])->delete();
-                    Db::name('portal_tag_post')->where('post_id',$result['object_id'])->delete();
+                if ($result['table_name'] === 'portal_post') {
+                    Db::name('portal_category_post')->where('post_id', $result['object_id'])->delete();
+                    Db::name('portal_tag_post')->where('post_id', $result['object_id'])->delete();
                 }
                 if ($res) {
                     $this->success("删除成功！");

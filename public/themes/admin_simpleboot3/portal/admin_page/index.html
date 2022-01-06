@@ -6,7 +6,7 @@
         <li class="active"><a href="{:url('AdminPage/index')}">页面管理</a></li>
         <li><a href="{:url('AdminPage/add')}">添加页面</a></li>
     </ul>
-    <form class="well form-inline margin-top-20" method="post" action="{:url('AdminPage/index')}">
+    <form class="well form-inline margin-top-20" method="get" action="{:url('AdminPage/index')}">
         标题:
         <input type="text" class="form-control" name="keyword" style="width: 200px;"
                value="{$keyword|default=''}" placeholder="请输入关键字">
@@ -63,8 +63,8 @@
                         </notempty>
                     </td>
                     <td>
-                        <a href="{:url('AdminPage/edit',array('id'=>$vo['id']))}">{:lang('EDIT')}</a>
-                        <a href="{:url('AdminPage/delete',array('id'=>$vo['id']))}" class="js-ajax-delete">{:lang('DELETE')}</a>
+                        <a class="btn btn-xs btn-primary" href="{:url('AdminPage/edit',array('id'=>$vo['id']))}">{:lang('EDIT')}</a>
+                        <a class="btn btn-xs btn-danger js-ajax-delete" href="{:url('AdminPage/delete',array('id'=>$vo['id']))}">{:lang('DELETE')}</a>
                     </td>
                 </tr>
             </foreach>

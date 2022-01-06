@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -21,7 +21,7 @@ class PluginModel extends Model
      */
     public function getList()
     {
-        $dirs = array_map('basename', glob(PLUGINS_PATH . '*', GLOB_ONLYDIR));
+        $dirs = array_map('basename', glob(WEB_ROOT . 'plugins/*', GLOB_ONLYDIR));
         if ($dirs === false) {
             $this->error = '插件目录不可读';
             return false;
@@ -75,7 +75,7 @@ class PluginModel extends Model
         $systemHooks = [
             //系统钩子
             "app_init", "app_begin", "module_init", "action_begin", "view_filter",
-            "app_end", "log_write", "response_end",
+            "app_end", "log_write", "log_write_done", "response_end",
             "admin_init",
             "home_init",
             "send_mobile_verification_code",
@@ -115,7 +115,7 @@ class PluginModel extends Model
 
         Db::startTrans();
         try {
-            $this->where(['name' => $findPlugin['name']])->delete();
+            $this->where('name', $findPlugin['name'])->delete();
             Db::name('hook_plugin')->where('plugin', $findPlugin['name'])->delete();
 
             if (class_exists($class)) {
@@ -127,6 +127,14 @@ class PluginModel extends Model
                     return -2;
                 }
             }
+
+            // 删除后台菜单
+            Db::name('admin_menu')->where([
+                'app' => "plugin/{$findPlugin['name']}",
+            ])->delete();
+
+            // 删除权限规则
+            Db::name('auth_rule')->where('app', "plugin/{$findPlugin['name']}")->delete();
 
             Db::commit();
         } catch (\Exception $e) {

@@ -2,7 +2,7 @@
 // +----------------------------------------------------------------------
 // | ThinkCMF [ WE CAN DO IT MORE SIMPLE ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2013-2017 http://www.thinkcmf.com All rights reserved.
+// | Copyright (c) 2013-2019 http://www.thinkcmf.com All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
@@ -31,13 +31,33 @@ class AdminCategoryController extends AdminBaseController
      *     'remark' => '文章分类列表',
      *     'param'  => ''
      * )
+     * @return mixed
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
      */
     public function index()
     {
-        $portalCategoryModel = new PortalCategoryModel();
-        $categoryTree        = $portalCategoryModel->adminCategoryTableTree();
+        $content = hook_one('portal_admin_category_index_view');
 
-        $this->assign('category_tree', $categoryTree);
+        if (!empty($content)) {
+            return $content;
+        }
+
+        $portalCategoryModel = new PortalCategoryModel();
+        $keyword             = $this->request->param('keyword');
+
+        if (empty($keyword)) {
+            $categoryTree = $portalCategoryModel->adminCategoryTableTree();
+            $this->assign('category_tree', $categoryTree);
+        } else {
+            $categories = $portalCategoryModel->where('name', 'like', "%{$keyword}%")
+                ->where('delete_time', 0)->select();
+            $this->assign('categories', $categories);
+        }
+
+        $this->assign('keyword', $keyword);
+
         return $this->fetch();
     }
 
@@ -53,9 +73,19 @@ class AdminCategoryController extends AdminBaseController
      *     'remark' => '添加文章分类',
      *     'param'  => ''
      * )
+     * @return mixed
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
      */
     public function add()
     {
+        $content = hook_one('portal_admin_category_add_view');
+
+        if (!empty($content)) {
+            return $content;
+        }
+
         $parentId            = $this->request->param('parent', 0, 'intval');
         $portalCategoryModel = new PortalCategoryModel();
         $categoriesTree      = $portalCategoryModel->adminCategoryTree($parentId);
@@ -88,29 +118,12 @@ class AdminCategoryController extends AdminBaseController
         $portalCategoryModel = new PortalCategoryModel();
 
         $data = $this->request->param();
-        /*dump($data);
-        die();
-        //$result = $this->validate($data, 'PortalCategory');
-        $validate = new Validate([
-            'captcha' => 'require',
-            'username' => 'require',
-            'password' => 'require|min:6|max:32',
-        ]);
-        $validate->message([
-            'username.require' => '用户名不能为空',
-            'password.require' => '密码不能为空',
-            'password.max' => '密码不能超过32个字符',
-            'password.min' => '密码不能小于6个字符',
-            'captcha.require' => '验证码不能为空',
-        ]);
 
-        $data = $this->request->post();
-        if (!$validate->check($data)) {
-            $this->error($validate->getError());
-        }*/
-        /*if ($result !== true) {
+        $result = $this->validate($data, 'PortalCategory');
+
+        if ($result !== true) {
             $this->error($result);
-        }*/
+        }
 
         $result = $portalCategoryModel->addCategory($data);
 
@@ -119,7 +132,6 @@ class AdminCategoryController extends AdminBaseController
         }
 
         $this->success('添加成功!', url('AdminCategory/index'));
-
     }
 
     /**
@@ -134,15 +146,27 @@ class AdminCategoryController extends AdminBaseController
      *     'remark' => '编辑文章分类',
      *     'param'  => ''
      * )
+     * @return mixed
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
      */
     public function edit()
     {
+
+        $content = hook_one('portal_admin_category_edit_view');
+
+        if (!empty($content)) {
+            return $content;
+        }
+
         $id = $this->request->param('id', 0, 'intval');
         if ($id > 0) {
-            $category = PortalCategoryModel::get($id)->toArray();
-
             $portalCategoryModel = new PortalCategoryModel();
-            $categoriesTree      = $portalCategoryModel->adminCategoryTree($category['parent_id'], $id);
+            $category            = $portalCategoryModel->get($id)->toArray();
+
+
+            $categoriesTree = $portalCategoryModel->adminCategoryTree($category['parent_id'], $id);
 
             $themeModel        = new ThemeModel();
             $listThemeFiles    = $themeModel->getActionThemeFiles('portal/List/index');
@@ -209,6 +233,10 @@ class AdminCategoryController extends AdminBaseController
      *     'remark' => '文章分类选择对话框',
      *     'param'  => ''
      * )
+     * @return mixed
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
      */
     public function select()
     {
@@ -229,8 +257,7 @@ tpl;
 
         $categoryTree = $portalCategoryModel->adminCategoryTableTree($selectedIds, $tpl);
 
-        $where      = ['delete_time' => 0];
-        $categories = $portalCategoryModel->where($where)->select();
+        $categories = $portalCategoryModel->where('delete_time', 0)->select();
 
         $this->assign('categories', $categories);
         $this->assign('selectedIds', $selectedIds);
@@ -258,6 +285,37 @@ tpl;
     }
 
     /**
+     * 文章分类显示隐藏
+     * @adminMenu(
+     *     'name'   => '文章分类显示隐藏',
+     *     'parent' => 'index',
+     *     'display'=> false,
+     *     'hasView'=> false,
+     *     'order'  => 10000,
+     *     'icon'   => '',
+     *     'remark' => '文章分类显示隐藏',
+     *     'param'  => ''
+     * )
+     */
+    public function toggle()
+    {
+        $data                = $this->request->param();
+        $portalCategoryModel = new PortalCategoryModel();
+        $ids                 = $this->request->param('ids/a');
+
+        if (isset($data['ids']) && !empty($data["display"])) {
+            $portalCategoryModel->where('id', 'in', $ids)->update(['status' => 1]);
+            $this->success("更新成功！");
+        }
+
+        if (isset($data['ids']) && !empty($data["hide"])) {
+            $portalCategoryModel->where('id', 'in', $ids)->update(['status' => 0]);
+            $this->success("更新成功！");
+        }
+
+    }
+
+    /**
      * 删除文章分类
      * @adminMenu(
      *     'name'   => '删除文章分类',
@@ -280,8 +338,8 @@ tpl;
         if (empty($findCategory)) {
             $this->error('分类不存在!');
         }
-//判断此分类有无子分类（不算被删除的子分类）
-        $categoryChildrenCount = $portalCategoryModel->where(['parent_id' => $id,'delete_time' => 0])->count();
+        //判断此分类有无子分类（不算被删除的子分类）
+        $categoryChildrenCount = $portalCategoryModel->where(['parent_id' => $id, 'delete_time' => 0])->count();
 
         if ($categoryChildrenCount > 0) {
             $this->error('此分类有子类无法删除!');
