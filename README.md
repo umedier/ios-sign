@@ -7,6 +7,8 @@ location / {
 	}
 }
 ```
+
+php -m |findstr fileinfo
 解除禁用函数:exec
 移动ssl证书
 安装zsign
