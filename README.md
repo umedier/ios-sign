@@ -1,3 +1,28 @@
+静态
+```
+location / {
+	if (!-e $request_filename){
+   	 	rewrite "^/([a-zA-Z0-9]{6})$" /user/install/index/$1/ last;
+		rewrite  ^(.*)$  /index.php?s=$1  last;   break;
+	}
+}
+```
+解除禁用函数:exec
+移动ssl证书
+安装zsign
+```
+git clone https://github.com/zhlynn/zsign.git
+cd zsign
+chmod +x INSTALL.sh
+./INSTALL.sh
+ln -s ./build/zsign /usr/bin/zsign
+```
+
+
+
+
+
+
 数据清理
 ```
 
