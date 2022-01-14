@@ -1,4 +1,3 @@
-静态
 ```
 location / {
 	if (!-e $request_filename){
@@ -7,7 +6,7 @@ location / {
 	}
 }
 ```
-
+模块
 php -m |findstr fileinfo
 解除禁用函数:exec
 移动ssl证书
