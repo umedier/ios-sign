@@ -69,31 +69,6 @@ class InstallController extends HomeBaseController
     //首页安装
     public function index()
     {
-        //域名跳转
-        if ($_SERVER['HTTP_HOST'] == 'app.ios999.com') {
-            $url[1] = "chaochang1314520.app3333.cn:81";
-            $url[2] = "cnm.app3333.cn:81";
-            //$url[3] = "chaochang1314520.app3333.cn:81";
-            //$url[4] = "";
-            //$url[5] = "";
-            $out = rand(1, 2);
-            function Www($len = 32)
-            {
-                $str     = "abcdefjhijklmnopqrstuvwxyz0123456789";
-                $strlen  = strlen($str);
-                $randstr = "";
-                for ($i = 0; $i < $len; $i++) {
-                    $randstr .= $str[mt_rand(0, $strlen - 1)];
-                }
-                return $randstr;
-            }
-
-            $tzurl = Www(32) . '.' . $url[$out];
-            exit(header('location:http://' . $tzurl . $_SERVER['REQUEST_URI']));
-        }
-
-        //$er_logo = explode('?', substr($_SERVER['REQUEST_URI'], 1))[0];
-
         $er_logo = explode('?', substr($_SERVER['REQUEST_URI'], 1))[0];
 
         if (!$resultAPP = Db::name("user_posted")->where('er_logo', $er_logo)->find()) {

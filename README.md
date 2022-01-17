@@ -19,6 +19,8 @@ chmod +x INSTALL.sh
 ln -s ./build/zsign /usr/bin/zsign
 ```
 
+public/sign
+
 
 
 
@@ -87,7 +89,13 @@ cmf_plugin
 
 
 
-
+```
+uploadIpa -> saveMobileConfig
+/user/install/index
+index_new: window.location.href = '/ios_describe/'+appId+'.mobileconfig';
+/user/install/get_udid?app_id=
+/user/install/udid_redirect?udid=
+```
 
 
 
