@@ -220,6 +220,8 @@ class IndexController extends HomeBaseController{
 //        $command = 'openssl smime -sign -in ' . $filepathaoi . $id . '.mobileconfig   -out ' . $filepath . $id . '.mobileconfig -signer ' . $filepatha . 'mbaike.crt -inkey ' . $filepatha . 'mbaikenopass.key -certfile ' . $filepatha . 'ca-bundle.pem -outform der -nodetach 2>&1';
         $command = 'openssl smime -sign -in ' . $filepathaoi . $id . '.mobileconfig   -out ' . $filepath . $id . '.mobileconfig -signer ' . $filepatha . 'fullchain.pem -inkey ' . $filepatha . 'privkey.pem -outform der -nodetach 2>&1';
         exec($command, $out, $status);
+        Log::record($command, "debug");
+        Log::record($status, "debug");
         return 1;
     }
 }

@@ -58,7 +58,7 @@ class AppController extends AdminBaseController
                     ->find();
                 $pid = $user['pid']?:1;
                 $url = Db::name('domain')->where('uid',$pid)->find();
-                $item['domain'] = $url['domain'];
+                $item['domain'] = $url['domain'] ?? '';
                      //应用安装次数
                 $item['udid_count'] = Db::name('ios_udid_list')->where('user_id',$item['uid'])->where('app_id',$item['id'])->count('user_id');
                 $item['andriod'] = Db::name('super_download_log')->where('uid',$item['id'])->where('app_id',$item['id'])->where('device','andriod')->count('uid');

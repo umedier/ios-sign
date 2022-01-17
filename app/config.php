@@ -152,7 +152,7 @@ $configs = [
         // 日志保存目录
         'path'  => LOG_PATH,
         // 日志记录级别
-        'level' => ['debug'],
+        'level' => ['log','error','notice','info','debug','sql'],
     ],
     // +----------------------------------------------------------------------
     // | Trace设置 开启 app_trace 后 有效
@@ -231,5 +231,7 @@ $configs = [
     'queue'                  => [
         'connector' => '\\cmf\\queue\\connector\\Database'
     ],
+    //项目绝对目录
+    'absolute_path' => substr($_SERVER['DOCUMENT_ROOT'], 0, strpos($_SERVER['DOCUMENT_ROOT'], '/public')) . '/'
 ];
 return array_replace_recursive($configs, $runtimeConfig);

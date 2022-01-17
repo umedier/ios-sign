@@ -10,7 +10,7 @@
 // [ 入口文件 ]
 
 // 调试模式开关
-define("APP_DEBUG", true);
+define("APP_DEBUG", false);
 
 define("APP_ROOT",dirname(__FILE__));
 

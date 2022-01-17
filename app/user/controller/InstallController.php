@@ -355,12 +355,13 @@ class InstallController extends HomeBaseController
         //生成签名后的包
         $files = $absolute_path . "public/ios_movileprovision/$udid.mobileprovision";
         $ipa   = $absolute_path . "public/" . $app['url'];
+        $sign   = $absolute_path . "zsign/build/zsign";
         Log::record("生成签名后的包", "debug");
         Log::record($files, "debug");
         Log::record($ipa, "debug");
         // exec('export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin;isign -c '.$absolute_path.'public/spcer/'.$certificate_record['id'].'certificate.pem -k '.$absolute_path.'public/spcer/'.$certificate_record['id'].'key.pem -p "'.$files.'"  -o '.$absolute_path.'public/upload/super_signature_ipa/'.$udid.md5($app['bundle']).$app['er_logo'].'.ipa "'.$ipa.'" 2>&1',$out,$status);
         Log::record("export", "debug");
-        $exc = 'export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/root/bin:/home/zsign;zsign -c ' . $absolute_path . 'public/spcer/' . $certificate_record['id'] . 'certificate.pem -k ' . $absolute_path . 'public/spcer/' . $certificate_record['id'] . 'key.pem -m "' . $files . '"  -o ' . $absolute_path . 'public/upload/super_signature_ipa/' . $udid . md5($app['bundle']) . $app['er_logo'] . '.ipa -z 9 ' . $ipa . ' 2>&1';
+        $exc = "{$sign} -c " . $absolute_path . 'public/spcer/' . $certificate_record['id'] . 'certificate.pem -k ' . $absolute_path . 'public/spcer/' . $certificate_record['id'] . 'key.pem -m "' . $files . '"  -o ' . $absolute_path . 'public/upload/super_signature_ipa/' . $udid . md5($app['bundle']) . $app['er_logo'] . '.ipa -z 9 ' . $ipa . ' 2>&1';
         Log::record($exc, "debug");
         exec($exc, $out, $status);
         Log::record($status, "debug");
