@@ -6,23 +6,23 @@
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
-// | Author: 老猫 <thinkcmf@126.com>
+// | Author: 鑰佺尗 <thinkcmf@126.com>
 // +----------------------------------------------------------------------
 return [
     'Login/index'        => [
-        'name'   => '用户登录',
+        'name'   => '鐢ㄦ埛鐧诲綍',
         'vars'   => [
         ],
         'simple' => false
     ],
     'Register/index'     => [
-        'name'   => '用户注册',
+        'name'   => '鐢ㄦ埛娉ㄥ唽',
         'vars'   => [
         ],
         'simple' => false
     ],
     'Login/findPassword' => [
-        'name'   => '找回密码',
+        'name'   => '鎵惧洖瀵嗙爜',
         'vars'   => [
         ],
         'simple' => false

@@ -26,7 +26,6 @@ class IndexController extends AdminBaseController
                 session("__LOGIN_BY_CMF_ADMIN_PW__", 1);//设置后台登录加密码
             }
         }
-        session("__LOGIN_BY_CMF_ADMIN_PW__", 1);
         parent::initialize();
     }
 

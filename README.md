@@ -7,7 +7,7 @@ location / {
 }
 ```
 模块
-php -m |findstr fileinfo
+php -m
 解除禁用函数:exec
 移动ssl证书
 安装zsign
@@ -18,6 +18,14 @@ chmod +x INSTALL.sh
 ./INSTALL.sh
 ln -s ./build/zsign /usr/bin/zsign
 ```
+
+
+nginx php 上传配置
+
+php.ini 
+upload_max_filesize = 1000M;
+post_max_size = 1000M;
+
 
 public/sign
 
