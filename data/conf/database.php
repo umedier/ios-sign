@@ -9,10 +9,6 @@ return [
     // 服务器地址
     'hostname' => '127.0.0.1',
 
-//找主题资源网源码提供：zzhuti.com
-//找主题资源网源码提供：zzhuti.com
-//找主题资源网源码提供：zzhuti.com
-
     // 数据库名
     'database' => 'ios',
     // 用户名
