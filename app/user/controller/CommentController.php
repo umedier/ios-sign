@@ -38,9 +38,9 @@ class CommentController extends UserBaseController
      */
     public function delete()
     {
-        $id   = $this->request->param("id", 0, "intval");
+        $id     = $this->request->param("id", 0, "intval");
         $delete = new UserModel();
-        $data = $delete->deleteComment($id);
+        $data   = $delete->deleteComment($id);
         if ($data) {
             $this->success("删除成功！");
         } else {

@@ -17,9 +17,9 @@ class CertificateController extends HomeBaseController
             exit;
         }
 
-        $uid = session('user.id');
+        $uid   = session('user.id');
         $where = 'user_id=' . $uid;
-        $list = Db::name('ios_certificate')
+        $list  = Db::name('ios_certificate')
             ->where($where)
             ->order("create_time DESC")
             ->paginate(10);
@@ -29,7 +29,7 @@ class CertificateController extends HomeBaseController
         $this->assign("page", $page);
         $this->assign("list", $list);
 
-        $this->assign('nav','certificate');
+        $this->assign('nav', 'certificate');
 
         return $this->fetch();
     }
@@ -37,7 +37,7 @@ class CertificateController extends HomeBaseController
     //添加证书
     public function add_certificate()
     {
-        $this->assign('nav','certificate');
+        $this->assign('nav', 'certificate');
 
         return $this->fetch();
     }
@@ -50,13 +50,13 @@ class CertificateController extends HomeBaseController
             exit;
         }
 
-        $uid = session("user.id");
+        $uid     = session("user.id");
         $team_id = input('param.team_id');
-        $iss = input('param.iss');
-        $kid = input('param.kid');
-        $tid = input('param.tid');
+        $iss     = input('param.iss');
+        $kid     = input('param.kid');
+        $tid     = input('param.tid');
         $p12_pwd = input('param.p12_pwd');
-        $mark = trim(input('param.mark'));
+        $mark    = trim(input('param.mark'));
 
         $record = db('ios_certificate')->where('tid', $team_id)->find();
         if ($record) {
@@ -64,18 +64,18 @@ class CertificateController extends HomeBaseController
             exit;
         }
         $data = [
-            'type'    => 0,
-            'user_id' => $uid,
-            'team_id' => $team_id,
-            'iss'     => $iss,
-            'kid'     => $kid,
-            'tid'     => $tid,
-            'p12_pwd' => $p12_pwd,
+            'type'        => 0,
+            'user_id'     => $uid,
+            'team_id'     => $team_id,
+            'iss'         => $iss,
+            'kid'         => $kid,
+            'tid'         => $tid,
+            'p12_pwd'     => $p12_pwd,
             'create_time' => time(),
-            'mark' => $mark,
-            'status' => 1,
-            'limit_count'=>100,
-            'total_count'=>0,
+            'mark'        => $mark,
+            'status'      => 1,
+            'limit_count' => 100,
+            'total_count' => 0,
         ];
 
         // 获取表单上传文件 例如上传了001.jpg
@@ -135,7 +135,7 @@ class CertificateController extends HomeBaseController
         }
 
         $this->assign('certificate', $certificate);
-        $this->assign('nav','certificate');
+        $this->assign('nav', 'certificate');
         return $this->fetch();
     }
 
@@ -147,26 +147,26 @@ class CertificateController extends HomeBaseController
             exit;
         }
 
-        $id = input('param.id');
+        $id  = input('param.id');
         $uid = session("user.id");
 
         $team_id = input('param.team_id');
-        $iss = input('param.iss');
-        $kid = input('param.kid');
-        $tid = input('param.tid');
+        $iss     = input('param.iss');
+        $kid     = input('param.kid');
+        $tid     = input('param.tid');
         $p12_pwd = input('param.p12_pwd');
-        $mark = trim(input('param.mark'));
+        $mark    = trim(input('param.mark'));
 
         $data = [
-            'type' => 0,
-            'user_id' => $uid,
-            'team_id' => $team_id,
-            'iss' => $iss,
-            'kid' => $kid,
-            'tid' => $tid,
-            'p12_pwd' => $p12_pwd,
+            'type'        => 0,
+            'user_id'     => $uid,
+            'team_id'     => $team_id,
+            'iss'         => $iss,
+            'kid'         => $kid,
+            'tid'         => $tid,
+            'p12_pwd'     => $p12_pwd,
             'create_time' => time(),
-            'mark' => $mark,
+            'mark'        => $mark,
         ];
 
         // 获取表单上传文件 例如上传了001.jpg
@@ -178,7 +178,7 @@ class CertificateController extends HomeBaseController
             $p12_info = $p12_file->validate(['size' => 15678, 'ext' => 'p12,p8'])->move(ROOT_PATH . 'public' . DS . 'certificate' . DS . $team_id);
             if ($p12_info) {
                 // 成功上传后 获取上传信息
-                $p12_file_path = DS . 'certificate' .DS.$team_id. DS . $p12_info->getSaveName();
+                $p12_file_path = DS . 'certificate' . DS . $team_id . DS . $p12_info->getSaveName();
             } else {
                 // 上传失败获取错误信息
                 $this->error($p12_info->getError());
@@ -192,7 +192,7 @@ class CertificateController extends HomeBaseController
 
             if ($p8_info) {
                 // 成功上传后 获取上传信息
-                $p8_file_path = DS . 'certificate' .DS.$team_id. DS . $p8_info->getSaveName();
+                $p8_file_path = DS . 'certificate' . DS . $team_id . DS . $p8_info->getSaveName();
             } else {
                 // 上传失败获取错误信息
                 $this->error($p8_info->getError());
@@ -206,27 +206,29 @@ class CertificateController extends HomeBaseController
     }
 
 
-    public function del_certificate(){
-        $data=array(
-            'code'=> 0,
-            'msg' => '删除失败',
+    public function del_certificate()
+    {
+        $data = array(
+            'code' => 0,
+            'msg'  => '删除失败',
         );
         if (!cmf_is_user_login()) {
-            $data['msg']='请登录后再操作！';
-            echo json_encode($data);exit;
+            $data['msg'] = '请登录后再操作！';
+            echo json_encode($data);
+            exit;
         }
 
-        $id = input('param.id');
+        $id  = input('param.id');
         $uid = session("user.id");
 
-        $where = 'user_id=' . $uid.' and id='.$id;
+        $where = 'user_id=' . $uid . ' and id=' . $id;
         $filed = Db::name('ios_certificate')->where($where)->find();
         $list  = Db::name('ios_certificate')->where($where)->delete();
-        if($list){
+        if ($list) {
             unlink($filed['p12_file']);
             unlink($filed['p8_file']);
-            $data['code']=1;
-            $data['msg']='删除成功';
+            $data['code'] = 1;
+            $data['msg']  = '删除成功';
         }
         echo json_encode($data);
         exit;

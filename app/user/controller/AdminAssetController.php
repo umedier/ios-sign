@@ -66,7 +66,7 @@ class AdminAssetController extends AdminBaseController
         $id            = $this->request->param('id');
         $file_filePath = Db::name('asset')->where('id', $id)->value('file_path');
         $file          = 'upload/' . $file_filePath;
-        $res = true;
+        $res           = true;
         if (file_exists($file)) {
             $res = unlink($file);
         }

@@ -31,7 +31,7 @@ class LoginController extends HomeBaseController
                 $redirect = base64_decode($redirect);
             }
         }
-        if(!empty($redirect)){
+        if (!empty($redirect)) {
             session('login_http_referer', $redirect);
         }
         if (cmf_is_user_login()) { //已经登录时直接跳到首页

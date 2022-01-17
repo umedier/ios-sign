@@ -43,28 +43,31 @@ class AdminIndexController extends AdminBaseController
 {
 
     //审核认证信息
-    public function examine_auth(){
-        $id = input('param.id');
+    public function examine_auth()
+    {
+        $id     = input('param.id');
         $status = input('param.status');
 
-        db('user_auth_info') -> where('id',$id) -> setField('status',$status);
+        db('user_auth_info')->where('id', $id)->setField('status', $status);
 
         $this->success('操作成功！');
         exit;
     }
 
     //删除认证记录
-    public function delete_auth(){
+    public function delete_auth()
+    {
         $id = input('param.id');
 
-        db('user_auth_info') -> delete($id);
+        db('user_auth_info')->delete($id);
 
         $this->success('操作成功！');
         exit;
     }
 
     //认证信息管理
-    public function auth_info_manage(){
+    public function auth_info_manage()
+    {
         $where   = [];
         $request = input('request.');
 
@@ -79,7 +82,7 @@ class AdminIndexController extends AdminBaseController
         }
         $usersQuery = Db::name('user_auth_info a');
 
-        $list = $usersQuery -> join('user u','u.id=a.user_id')
+        $list = $usersQuery->join('user u', 'u.id=a.user_id')
             ->field('a.*,u.mobile,u.user_login,u.user_nickname')
             ->whereOr($keywordComplex)->where($where)->order("create_time DESC")->paginate(10);
         // 获取分页显示
@@ -111,59 +114,60 @@ class AdminIndexController extends AdminBaseController
         if (!empty($request['uid'])) {
             $where['id'] = intval($request['uid']);
         }
-         $_where = '1=1';
+        $_where = '1=1';
         if (!empty($request['pid']) && $request['pid'] != -1) {
             $pid = intval($request['pid']);
-            if($pid == 0 || $pid ==1 ){
+            if ($pid == 0 || $pid == 1) {
                 $_where = ' pid in (0,1) ';
-            }else{
-                $_where = ' pid = '.$pid;
+            } else {
+                $_where = ' pid = ' . $pid;
             }
         }
         $keywordComplex = [];
         if (!empty($request['keyword'])) {
             $keyword = $request['keyword'];
 
-            $keywordComplex['user_login|user_nickname|user_email']    = ['like', "%$keyword%"];
+            $keywordComplex['user_login|user_nickname|user_email'] = ['like', "%$keyword%"];
         }
-        $usersQuery = Db::name('user');
-		$domain_list = Db::name('domain')->field('domain,uid')->select();
-		
+        $usersQuery  = Db::name('user');
+        $domain_list = Db::name('domain')->field('domain,uid')->select();
+
         $list = $usersQuery
             ->whereOr($keywordComplex)
             ->where($where)
-             ->where($_where)
+            ->where($_where)
             ->order("create_time DESC")
             ->paginate(20)
-            ->each(function($item){
-                $pid = $item['pid']?:1;
-                $domain = Db::name('domain')->where('uid',$pid)->field('domain')->find();
-                $domain = $domain['domain'];
-                $udid_count = Db::name('ios_udid_list')->where('user_id',$item['id'])->count('user_id');
-                $coin_count = Db::name('charge_log')->where('uid',$item['id'])->where('status',1)->sum('download_coin');
-                $andriod =  Db::name('super_download_log')->where('uid',$item['id'])->where('device','andriod')->count('uid');
-                $item['andriod']=$andriod;
-                $item['domain']=$domain;
+            ->each(function ($item) {
+                $pid                = $item['pid'] ?: 1;
+                $domain             = Db::name('domain')->where('uid', $pid)->field('domain')->find();
+                $domain             = $domain['domain'];
+                $udid_count         = Db::name('ios_udid_list')->where('user_id', $item['id'])->count('user_id');
+                $coin_count         = Db::name('charge_log')->where('uid', $item['id'])->where('status', 1)->sum('download_coin');
+                $andriod            = Db::name('super_download_log')->where('uid', $item['id'])->where('device', 'andriod')->count('uid');
+                $item['andriod']    = $andriod;
+                $item['domain']     = $domain;
                 $item['coin_count'] = $coin_count;
                 $item['udid_count'] = $udid_count;
                 return $item;
             });
-         $ids = Db::name('user')->field('id')->select();
+        $ids  = Db::name('user')->field('id')->select();
         // 获取分页显示
         $page = $list->render();
         $this->assign('list', $list);
         $this->assign('page', $page);
         $this->assign('ids', $ids);
-        $this->assign('domain_list',$domain_list);
+        $this->assign('domain_list', $domain_list);
         // 渲染模板输出
         return $this->fetch();
     }
-    
-    public function add(){
-        if($this->request->isPost()){
-            $data = input('post.');
+
+    public function add()
+    {
+        if ($this->request->isPost()) {
+            $data     = input('post.');
             $register = new UserModel();
-            $log = $register->registerMobile($data);
+            $log      = $register->registerMobile($data);
             switch ($log) {
                 case 0:
                     $this->success('注册成功', url('AdminIndex/index'));
@@ -179,7 +183,7 @@ class AdminIndexController extends AdminBaseController
             }
         }
         $domain = Db::name('domain')->select();
-        $this->assign('domain',$domain);
+        $this->assign('domain', $domain);
         return $this->fetch();
     }
 

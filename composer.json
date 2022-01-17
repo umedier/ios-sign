@@ -28,7 +28,8 @@
         "topthink/think-image": "^1.0",
         "ezyang/htmlpurifier": "^4.9",
         "topthink/think-queue": "^1.1.4",
-        "electrolinux/phpquery": "^0.9.6"
+        "electrolinux/phpquery": "^0.9.6",
+      "ext-xml": "*"
     },
     "extra": {
         "think-path": "simplewind/thinkphp"

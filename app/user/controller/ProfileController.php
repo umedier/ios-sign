@@ -17,19 +17,25 @@ use think\Image;
 use cmf\controller\UserBaseController;
 use app\user\model\UserModel;
 use think\Db;
-use Qiniu\Auth;    // 引入鉴权类
-use Qiniu\Storage\UploadManager;    // 引入上传类
+use Qiniu\Auth;
+
+// 引入鉴权类
+use Qiniu\Storage\UploadManager;
+
+// 引入上传类
 use qrcode;
 
 class ProfileController extends UserBaseController
 {
 
-    function _initialize(){
+    function _initialize()
+    {
         parent::_initialize();
     }
 
     //实名认证
-    public function real_name_auth(){
+    public function real_name_auth()
+    {
         $uid = session('user.id');
         if (cmf_is_user_login()) {
             $auth_info = db('user_auth_info')->where('user_id', $uid)->find();
@@ -45,13 +51,14 @@ class ProfileController extends UserBaseController
         } else {
             $status = '未认证';
         }
-        $this->assign('nav','user');
-        $this->assign('status',$status);
+        $this->assign('nav', 'user');
+        $this->assign('status', $status);
         return $this->fetch();
     }
 
     //提交认证信息
-    public function editAuthInfoPost(){
+    public function editAuthInfoPost()
+    {
         $user_real_name   = trim(input('param.user_real_name'));
         $user_card_number = input('param.user_card_number');
         $card_img1        = trim(input('param.card_img1'));
@@ -66,15 +73,15 @@ class ProfileController extends UserBaseController
             }
 
             $plugin = db('plugin')->where('name', '=', 'Qiniu')->find();
-            $qiniu = json_decode($plugin['config'], true);
+            $qiniu  = json_decode($plugin['config'], true);
 
             $data = [
-                'user_id' => $uid,
+                'user_id'        => $uid,
                 'user_real_name' => $user_real_name,
-                'card_img1' => 'http://' . $qiniu['domain'] . '/' . $card_img1,
-                'card_img2' => 'http://' . $qiniu['domain'] . '/' . $card_img2,
-                'create_time' => time(),
-                'card_number' => $user_card_number,
+                'card_img1'      => 'http://' . $qiniu['domain'] . '/' . $card_img1,
+                'card_img2'      => 'http://' . $qiniu['domain'] . '/' . $card_img2,
+                'create_time'    => time(),
+                'card_number'    => $user_card_number,
             ];
 
             db('user_auth_info')->insert($data);
@@ -87,27 +94,30 @@ class ProfileController extends UserBaseController
     }
 
     //设置首页
-    public function center(){
-        $this->assign('nav','user');
+    public function center()
+    {
+        $this->assign('nav', 'user');
 
         return $this->fetch();
     }
 
     //基本资料
-    public function edit(){
+    public function edit()
+    {
         $this->assign([
-            'user' => Db::name("user")->where("id",session('user.id'))->find(),
+            'user' => Db::name("user")->where("id", session('user.id'))->find(),
             'nav'  => 'user'
         ]);
         return $this->fetch('edit');
     }
 
     //保存基本资料
-    public function editPost(){
+    public function editPost()
+    {
         if ($this->request->isPost()) {
             $validate = new Validate([
                 'user_nickname' => 'chsDash|max:32',
-                'user_email'   => 'email|max:64',
+                'user_email'    => 'email|max:64',
             ]);
 
             $validate->message([
@@ -124,29 +134,31 @@ class ProfileController extends UserBaseController
             }
 
             if (Db::name("user")->where('id', cmf_get_current_user_id())->update([
-                'user_nickname' =>$data['user_nickname'],
-                'user_email'    =>$data['user_email'],
+                'user_nickname' => $data['user_nickname'],
+                'user_email'    => $data['user_email'],
             ])) {
-                return json(['code'=>200]);
+                return json(['code' => 200]);
             } else {
-                return json(['code'=>0,'message'=>'没有新的修改信息']);
+                return json(['code' => 0, 'message' => '没有新的修改信息']);
             }
         } else {
-            return json(['code'=>0,'message'=>'请求错误']);
+            return json(['code' => 0, 'message' => '请求错误']);
         }
     }
 
     //修改密码
-    public function password(){
+    public function password()
+    {
         $this->assign([
-            'user' => Db::name("user")->where("id",session('user.id'))->find(),
+            'user' => Db::name("user")->where("id", session('user.id'))->find(),
             'nav'  => 'user'
         ]);
         return $this->fetch();
     }
 
     //保存密码
-    public function passwordPost(){
+    public function passwordPost()
+    {
         if ($this->request->isPost()) {
             $validate = new Validate([
                 'old_password' => 'require|min:6|max:32',
@@ -171,13 +183,13 @@ class ProfileController extends UserBaseController
                 $this->error($validate->getError());
             }
 
-            $userId    = cmf_get_current_user_id();
-            $userInfo  = Db::name("user")->where('id', $userId)->find();
+            $userId   = cmf_get_current_user_id();
+            $userInfo = Db::name("user")->where('id', $userId)->find();
 
             if ($data['password'] != $data['repassword']) {
                 $this->error('密码输入不一致');
                 exit;
-            }else if(!cmf_compare_password($data['old_password'], $userInfo['user_pass'])){
+            } else if (!cmf_compare_password($data['old_password'], $userInfo['user_pass'])) {
                 $this->error('原始密码不正确');
                 exit;
             }
@@ -195,22 +207,23 @@ class ProfileController extends UserBaseController
     }
 
     //消费记录
-    public function financialInfo($page=1){
+    public function financialInfo($page = 1)
+    {
         $userId  = get_user('id');
         $iosList = Db::name('sup_charge_log')
-            ->where('uid','=',$userId)
-            ->where('is_add',0)
+            ->where('uid', '=', $userId)
+            ->where('is_add', 0)
             ->order('addtime desc')
             ->paginate(10)
-            ->each(function($item){
-                $item['addtime'] = date('Y-m-d',$item['addtime']);
+            ->each(function ($item) {
+                $item['addtime'] = date('Y-m-d', $item['addtime']);
                 return $item;
             });
 
         $this->assign([
             'iosList' => $iosList,
             'page'    => $iosList->render(),
-            'user'    => Db::name("user")->where("id",$userId)->find(),
+            'user'    => Db::name("user")->where("id", $userId)->find(),
             'nav'     => 'user'
         ]);
 
@@ -218,53 +231,55 @@ class ProfileController extends UserBaseController
     }
 
     //充值记录
-    public function payLog(){
-        $userId  = session('user.id');
-        $supLog  = Db::name('sup_charge_log')
-            ->where('uid','=',$userId)
-            ->where('is_add',1)
+    public function payLog()
+    {
+        $userId = session('user.id');
+        $supLog = Db::name('sup_charge_log')
+            ->where('uid', '=', $userId)
+            ->where('is_add', 1)
             ->order('addtime desc')
             ->select()
-            ->each(function($item){
-                $item['addtime'] = date('Y-m-d',$item['addtime']);
-                if($item['addtype'] == 0){
+            ->each(function ($item) {
+                $item['addtime'] = date('Y-m-d', $item['addtime']);
+                if ($item['addtype'] == 0) {
                     $item['addtype'] = '人工';
-                }else if($item['addtype'] == 1){
+                } else if ($item['addtype'] == 1) {
                     $item['addtype'] = '自动';
-                }else if($item['addtype'] == 2){
+                } else if ($item['addtype'] == 2) {
                     $item['addtype'] = '上线';
                 }
                 return $item;
             });;
 
         $this->assign([
-            'supLog'  => $supLog,
-            'user'    => Db::name("user")->where("id",$userId)->find(),
-            'nav'     => 'user'
+            'supLog' => $supLog,
+            'user'   => Db::name("user")->where("id", $userId)->find(),
+            'nav'    => 'user'
         ]);
 
         return $this->fetch();
     }
 
     //设备数预警
-    public function warning(){
-        $uid = get_user('id');
-        $is_have = Db::name('user_warning')->where('uid',$uid)->field('id,num')->find();
-        if($this->request->isPost()){
+    public function warning()
+    {
+        $uid     = get_user('id');
+        $is_have = Db::name('user_warning')->where('uid', $uid)->field('id,num')->find();
+        if ($this->request->isPost()) {
             $num = input('num');
-            if($is_have){
-                Db::name('user_warning')->where('uid',$uid)->update(['num'=>$num]);
-            }else{
-                Db::name('user_warning')->insert(['uid'=>$uid,'num'=>$num]);
+            if ($is_have) {
+                Db::name('user_warning')->where('uid', $uid)->update(['num' => $num]);
+            } else {
+                Db::name('user_warning')->insert(['uid' => $uid, 'num' => $num]);
             }
-            return json(['code'=>200,'msg'=>'修改成功']);
+            return json(['code' => 200, 'msg' => '修改成功']);
         }
-        if(!isset($is_have['num'])){
+        if (!isset($is_have['num'])) {
             $is_have['num'] = 0;
         }
         $this->assign([
-            'nav'  => 'user',
-            'num'  => $is_have['num'],
+            'nav' => 'user',
+            'num' => $is_have['num'],
 
         ]);
         return $this->fetch();
@@ -272,23 +287,24 @@ class ProfileController extends UserBaseController
 
 
     // 用户头像上传
-    public function avatarUpload(){
-        $file = $this->request->file('file');
+    public function avatarUpload()
+    {
+        $file   = $this->request->file('file');
         $result = $file->validate([
-            'ext' => 'jpg,jpeg,png',
+            'ext'  => 'jpg,jpeg,png',
             'size' => 1024 * 1024
         ])->move('.' . DS . 'upload' . DS . 'avatar' . DS);
 
         if ($result) {
             $avatarSaveName = str_replace('//', '/', str_replace('\\', '/', $result->getSaveName()));
-            $avatar = 'avatar/' . $avatarSaveName;
+            $avatar         = 'avatar/' . $avatarSaveName;
             session('avatar', $avatar);
 
             return json_encode([
                 'code' => 1,
-                "msg" => "上传成功",
+                "msg"  => "上传成功",
                 "data" => ['file' => $avatar],
-                "url" => ''
+                "url"  => ''
             ]);
         } else {
             return json_encode([
@@ -301,7 +317,8 @@ class ProfileController extends UserBaseController
     }
 
     // 用户头像裁剪
-    public function avatarUpdate(){
+    public function avatarUpdate()
+    {
         $avatar = session('avatar');
         if (!empty($avatar)) {
             $w = $this->request->param('w', 0, 'intval');
@@ -317,7 +334,7 @@ class ProfileController extends UserBaseController
             $result = true;
             if ($result === true) {
                 $storage = new Storage();
-                $result = $storage->upload($avatar, $avatarPath, 'image');
+                $result  = $storage->upload($avatar, $avatarPath, 'image');
 
                 $userId = cmf_get_current_user_id();
                 Db::name("user")->where(["id" => $userId])->update(["avatar" => $avatar]);
@@ -330,23 +347,25 @@ class ProfileController extends UserBaseController
     }
 
     // 绑定手机号或邮箱
-    public function binding(){
+    public function binding()
+    {
         $user = cmf_get_current_user();
         $this->assign($user);
         return $this->fetch();
     }
 
     // 绑定手机号
-    public function bindingMobile(){
+    public function bindingMobile()
+    {
         if ($this->request->isPost()) {
             $validate = new Validate([
-                'username' => 'require|number|unique:user,mobile',
+                'username'          => 'require|number|unique:user,mobile',
                 'verification_code' => 'require',
             ]);
             $validate->message([
-                'username.require' => '手机号不能为空',
-                'username.number' => '手机号只能为数字',
-                'username.unique' => '手机号已存在',
+                'username.require'          => '手机号不能为空',
+                'username.number'           => '手机号只能为数字',
+                'username.unique'           => '手机号已存在',
                 'verification_code.require' => '验证码不能为空',
             ]);
 
@@ -359,7 +378,7 @@ class ProfileController extends UserBaseController
                 $this->error($errMsg);
             }
             $userModel = new UserModel();
-            $log = $userModel->bindingMobile($data);
+            $log       = $userModel->bindingMobile($data);
             switch ($log) {
                 case 0:
                     $this->success('手机号绑定成功');
@@ -377,13 +396,13 @@ class ProfileController extends UserBaseController
     {
         if ($this->request->isPost()) {
             $validate = new Validate([
-                'username' => 'require|email|unique:user,user_email',
+                'username'          => 'require|email|unique:user,user_email',
                 'verification_code' => 'require',
             ]);
             $validate->message([
-                'username.require' => '邮箱地址不能为空',
-                'username.email' => '邮箱地址不正确',
-                'username.unique' => '邮箱地址已存在',
+                'username.require'          => '邮箱地址不能为空',
+                'username.email'            => '邮箱地址不正确',
+                'username.unique'           => '邮箱地址已存在',
                 'verification_code.require' => '验证码不能为空',
             ]);
 
@@ -396,7 +415,7 @@ class ProfileController extends UserBaseController
                 $this->error($errMsg);
             }
             $userModel = new UserModel();
-            $log = $userModel->bindingEmail($data);
+            $log       = $userModel->bindingEmail($data);
             switch ($log) {
                 case 0:
                     $this->success('邮箱绑定成功');
@@ -410,7 +429,8 @@ class ProfileController extends UserBaseController
     }
 
     /*七牛配置*/
-    public function cattle(){
+    public function cattle()
+    {
         $user = cmf_get_current_user();
         $this->assign($user);
         return $this->fetch();
@@ -440,7 +460,7 @@ class ProfileController extends UserBaseController
                 $this->error($validate->getError());
             }
             $userModel = new UserModel();
-            $log = $userModel->cattleData($data);
+            $log       = $userModel->cattleData($data);
             if ($log == 1) {
                 $this->success('七牛配置成功');
             } else {
@@ -456,10 +476,10 @@ class ProfileController extends UserBaseController
     public function downFile()
     {
         //  print_r($_POST['type']);exit;
-        $name = $_POST['name'];
-        $big  = $_POST['big'];
+        $name     = $_POST['name'];
+        $big      = $_POST['big'];
         $savePath = './upload/app';
-        $url = "http://" . session('user.domain') . "/" . $name;
+        $url      = "http://" . session('user.domain') . "/" . $name;
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -472,11 +492,11 @@ class ProfileController extends UserBaseController
 
         //分离header与body
         $header = '';
-        $body = '';
+        $body   = '';
         if (curl_getinfo($ch, CURLINFO_HTTP_CODE) == '200') {
             $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE); //头信息size
-            $header = substr($response, 0, $headerSize);
-            $body = substr($response, $headerSize);
+            $header     = substr($response, 0, $headerSize);
+            $body       = substr($response, $headerSize);
         }
 
         curl_close($ch);
@@ -485,7 +505,7 @@ class ProfileController extends UserBaseController
         $arr = array();
         if (preg_match('/filename="(.*?)"/', $header, $arr)) {
 
-            $file = date('Ym') . '/' . $arr[1];
+            $file     = date('Ym') . '/' . $arr[1];
             $fullName = rtrim($savePath, '/') . '/' . $file;
 
             //创建目录并设置权限
@@ -495,11 +515,11 @@ class ProfileController extends UserBaseController
                 @chmod($basePath, 0777);
             }
             if (file_put_contents($fullName, $body)) {
-                $ur = Db::name('config')->where("code='system_parsing'")->find();
-                $urls = $ur['val'];
+                $ur    = Db::name('config')->where("code='system_parsing'")->find();
+                $urls  = $ur['val'];
                 $files = $this->filesd($file, $urls);
-                $arr = json_decode($files);
-                $arr = json_decode(json_encode($arr), true);
+                $arr   = json_decode($files);
+                $arr   = json_decode(json_encode($arr), true);
 
                 $add_qiniu = $this->add_qiniu($arr, $url, $urls, $big);
 
@@ -516,11 +536,11 @@ class ProfileController extends UserBaseController
         header("Content-type: text/html; charset=utf-8");
 
         // $filePath =dirname(__FILE__)."/../../../public/upload/app/".$file;
-        $filePath = "upload/app/" . $file;
+        $filePath  = "upload/app/" . $file;
         $post_data = array(
             "package" => "@" . $filePath   //要上传的本地文件地址
         );
-        $ch = curl_init();
+        $ch        = curl_init();
         if (class_exists('\CURLFile')) {
             $post_data['package'] = new \CURLFile(realpath($filePath));
         } else {
@@ -544,37 +564,37 @@ class ProfileController extends UserBaseController
     //上传保存数据库
     public function add_qiniu($file, $url, $urls, $big, $imgs, $files)
     {
-        $utype = substr($urls, 0, -6);
-        $img = $utype . "icon/" . $file['guid'] . ".png";
-        $down = $this->download($img);
+        $utype    = substr($urls, 0, -6);
+        $img      = $utype . "icon/" . $file['guid'] . ".png";
+        $down     = $this->download($img);
         $url_name = $files['upfile']['name'];
-        $version = Db::name("user_posted")->where("uid=" . session('user.id') . " and  url_name='" . $url_name . "'")->find();
+        $version  = Db::name("user_posted")->where("uid=" . session('user.id') . " and  url_name='" . $url_name . "'")->find();
         if ($version and ($version['version'] != $file['version'])) {
             $er_logo = $version['er_logo'];
         } else {
             $er_logo = 'http://' . $_SERVER['HTTP_HOST'] . '/D' . rand(000, 999);
         }
-        $valid = session('user.valid_time');
+        $valid     = session('user.valid_time');
         $validtime = Db::name("valid_time")->where("id", $valid)->find();
-        $big = round($big / 1024 / 1024, 2);
-        $vtime = $validtime['mun'] * 3600 * 24 + time();
-        $data = array(
-            'name' => $file['name'] . rand(000, 999),
+        $big       = round($big / 1024 / 1024, 2);
+        $vtime     = $validtime['mun'] * 3600 * 24 + time();
+        $data      = array(
+            'name'     => $file['name'] . rand(000, 999),
             'url_name' => $url_name,
-            'url' => $url,
-            'uid' => session('user.id'),
-            'addtime' => time(),
-            'version' => $file['version'],
-            'build' => $file['build'],
-            'type' => $file['platform'],
-            'img' => $down,
-            'bundle' => $file['bundleID'],
-            'big' => $big,
-            'er_img' => $imgs,
-            'er_logo' => $er_logo,
-            'endtime' => $vtime
+            'url'      => $url,
+            'uid'      => session('user.id'),
+            'addtime'  => time(),
+            'version'  => $file['version'],
+            'build'    => $file['build'],
+            'type'     => $file['platform'],
+            'img'      => $down,
+            'bundle'   => $file['bundleID'],
+            'big'      => $big,
+            'er_img'   => $imgs,
+            'er_logo'  => $er_logo,
+            'endtime'  => $vtime
         );
-        $sert = Db::name("user_posted")->where("uid=" . session('user.id') . " and version='" . $file['version'] . "'")->find();
+        $sert      = Db::name("user_posted")->where("uid=" . session('user.id') . " and version='" . $file['version'] . "'")->find();
         if ($sert) {
             Db::name("user_posted")->where("id=" . $sert['id'])->update($data);
             return $sert['id'];
@@ -588,15 +608,15 @@ class ProfileController extends UserBaseController
     public function add_Files()
     {
         $result = array('code' => 0, 'msg' => '');
-        $name = $_FILES['upfile']['name'];
-        $type = substr($name, -3);
+        $name   = $_FILES['upfile']['name'];
+        $type   = substr($name, -3);
 
         if ($type == 'apk' || $type == 'ipa') {
             if ($_FILES["upfile"]["error"] > 0) {
                 //   print_r("上传已超出上线");exit;
                 $result['msg'] = "上传已超出上线";
             } else {
-                $flie_abk = substr($_FILES['upfile']["name"], -4, 4);
+                $flie_abk  = substr($_FILES['upfile']["name"], -4, 4);
                 $file_name = md5(rand(0000, 9999)) . $flie_abk;
 
                 $domain = Db::name('user')->where("id=" . session('user.id'))->find();
@@ -606,8 +626,8 @@ class ProfileController extends UserBaseController
                     $tok = $this->upd_tok($_FILES, $file_name);  //上传七牛
 
                     $tok_url = "http://" . $domain['domain'] . "/" . $tok['key'];
-                    $img = '';
-                    $retype = $this->acquire_file($_FILES, $tok_url, $img, $file_name);
+                    $img     = '';
+                    $retype  = $this->acquire_file($_FILES, $tok_url, $img, $file_name);
 
                     if ($retype) {
                         $result['msg'] = "上传成功";
@@ -622,8 +642,8 @@ class ProfileController extends UserBaseController
                         $tok = $this->upd_tok($_FILES, $file_name);  //上传七牛
 
                         $tok_url = "http://" . $domain['domain'] . "/" . $tok['key'];
-                        $img = '';
-                        $retype = $this->acquire_file($_FILES, $tok_url, $img, $file_name);
+                        $img     = '';
+                        $retype  = $this->acquire_file($_FILES, $tok_url, $img, $file_name);
 
                         if ($retype) {
                             $result['msg'] = "上传成功";
@@ -648,11 +668,11 @@ class ProfileController extends UserBaseController
     //存数据库
     public function acquire_file($file, $tok_url, $img, $file_name)
     {
-        $ur = Db::name('config')->where("code='system_parsing'")->find();
-        $urls = $ur['val'];
+        $ur    = Db::name('config')->where("code='system_parsing'")->find();
+        $urls  = $ur['val'];
         $files = $this->filesd($file_name, $urls); //获取文件信息
-        $arr = json_decode($files);
-        $arr = json_decode(json_encode($arr), true);
+        $arr   = json_decode($files);
+        $arr   = json_decode(json_encode($arr), true);
 
         $add_qiniu = $this->add_qiniu($arr, $tok_url, $urls, $file["upfile"]["size"], $img, $file);//入数据库
 
@@ -672,12 +692,12 @@ class ProfileController extends UserBaseController
         if ($user_info['accessKey'] && $user_info['secretKey'] && $user_info['bucket'] && $user_info['domain']) {
             $accessKey = $user_info['accessKey'];
             $secretKey = $user_info['secretKey'];
-            $bucket = $user_info['bucket'];
+            $bucket    = $user_info['bucket'];
         } else {
-            $user = Db::name('user')->find('1');
+            $user      = Db::name('user')->find('1');
             $accessKey = $user['accessKey'];
             $secretKey = $user['secretKey'];
-            $bucket = $user['bucket'];
+            $bucket    = $user['bucket'];
         }
 
         // 构建鉴权对象
