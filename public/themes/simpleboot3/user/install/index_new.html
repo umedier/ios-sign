@@ -7,8 +7,20 @@
     <title>{$result.name} 下载</title>
     <link rel="stylesheet" href="__STATIC__/js/layui/css/layui.css" media="all">
     <style>
+
+        html {
+            box-sizing: border-box;
+        }
+
+        html,
         body {
-            font-size: 16px
+            font-size: 16px;
+            height: 100%;
+
+        }
+
+        #app {
+            height: 100%;
         }
 
         .base-info {
@@ -419,18 +431,33 @@
 
         .pc-platform {
             text-align: center;
-            padding: 20px 30px;
+            background: url('/themes/simpleboot3/public/static/image/bg.jpg');
+            height: 100%;
         }
 
         .pc-platform .pc-platform__logo {
             margin-bottom: 30px;
         }
 
+        .pc-platform .pc-platform__logo > p {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.5em;
+        }
+
         .pc-platform .pc-platform__code {
         }
 
-        .pc-platform .pc-platform__code .code-title {
-            font-weight: bold
+        .code-title {
+            font-weight: bold;
+            padding: 40px;
+        }
+
+        .tipss {
+            font-size: 14px;
+            text-align: center;
+            margin-top: 30px;
+            width: 100%;
         }
     </style>
     <style type="text/css">
@@ -718,12 +745,14 @@
         <p>{$result.name}</p>
     </div>
 
-    <div class="pc-platform__code">
-        <div class="j-qr-code" date-url="{$result.er_logo}"></div>
-        <p class="code-title">使用相机扫码下载</p>
-    </div>
-</div>
-</if>
+            <div class="pc-platform__code">
+                <div class="j-qr-code" date-url="{$result.er_logo}"></div>
+            </div>
+            <div class="tipss">Tuyên bố từ chối trách nhiệm: Nền tảng này chỉ cung cấp dịch vụ lưu trữ tải xuống và nội
+                dung của ứng dụng là trách nhiệm của nhà phát triển và không liên quan gì đến nền tảng này
+            </div>
+        </div>
+    </if>
 </div>
 </if>
 
@@ -734,8 +763,8 @@
     $(function () {
         $(".j-qr-code").qrcode({
             render: "canvas", //table方式
-            width: 140, //宽度
-            height: 140, //高度
+            width: 220, //宽度
+            height: 220, //高度
             text: $('.j-qr-code').attr("date-url") //任意内容
         });
 
