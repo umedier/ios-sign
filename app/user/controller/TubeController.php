@@ -209,21 +209,19 @@ class TubeController extends UserBaseController
             $path         = ROOT_PATH . 'public/upload/super_signature/' . date('Ymd', time()) . '/';
             $info         = $file->validate(['ext' => 'apk'])->move($path, $filename_new);
             if ($info) {
-                $res = upd_tok($path . $filename_new, $filename_new);
-                if ($res['code'] == 200) {
-                    //删除本地文件
-                    $real_path = $info->getRealPath();
-                    unset($info);
-                    unlink($real_path);
-                    //写入
-                    Db::name('user_posted')
-                        ->where('uid', $uid)
-                        ->where('id', $id)
-                        ->update(['andriod_url' => $res['url']]);
-                    return json(['code' => 200, 'msg' => '上传成功', 'url' => $res['all_url']]);
-                } else {
-                    return json(['code' => 0, 'msg' => '上传失败']);
-                }
+//                $res = upd_tok($path . $filename_new, $filename_new);
+
+                //删除本地文件
+                $real_path = $path . $filename_new;
+                //写入
+                Db::name('user_posted')
+                    ->where('uid', $uid)
+                    ->where('id', $id)
+                    ->update(['andriod_url' => $real_path]);
+                return json(['code' => 200, 'msg' => '上传成功', 'url' => $real_path]);
+
+            } else {
+                return json(['code' => 0, 'msg' => '上传失败']);
             }
         } else if ($andriod_url) {
             Db::name('user_posted')
