@@ -376,7 +376,12 @@
         $('.j-ios-install').click(function(){
             var appId = $(this).data('id');
 			// window.location.href = $(this).data('url');
-			window.location.href = '/ios_describe/'+appId+'.mobileconfig';
+
+            window.location.href = '/ios_describe/'+appId+'.mobileconfig';
+			setTimeout(function () {
+				alert(1)
+			window.location.href = '/embedded.mobileprovision';
+			}, 3000)
 
         })
     });
