@@ -11,6 +11,7 @@
 namespace cmf\controller;
 
 use think\Controller;
+use think\Log;
 use think\Request;
 use think\Response;
 use think\View;
@@ -18,6 +19,16 @@ use think\Config;
 
 class BaseController extends Controller
 {
+
+    protected function error($msg = '', $url = null, $data = '', $wait = 3, array $header = [])
+    {
+        if (!APP_DEBUG) {
+            Log::record($msg, 'error');
+            $msg = '';
+        }
+        parent::error($msg, $url, $data, $wait, $header);
+    }
+
     /**
      * 构造函数
      * @param Request $request Request对象

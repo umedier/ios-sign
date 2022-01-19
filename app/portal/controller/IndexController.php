@@ -6,6 +6,7 @@ use cmf\controller\HomeBaseController;
 use think\Db;
 use ApkParser;
 use app\pay\ali\AliPay;
+use think\Exception;
 use think\Log;
 
 class IndexController extends HomeBaseController{
@@ -16,6 +17,7 @@ class IndexController extends HomeBaseController{
 
     //首页
     public function index(){
+        return $this->fetch(':c');
         return $this->fetch(':index');
     }
 
